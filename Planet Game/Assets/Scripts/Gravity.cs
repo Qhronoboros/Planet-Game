@@ -14,11 +14,11 @@ public class Gravity : MonoBehaviour
     void Update()
     {
         // Calc Gravitational Constant
-        G = (1e+14f * GetComponent<Rigidbody>().mass / Mathf.Pow(Vector3.Distance(transform.position, planet.transform.position), 2)) * 6.67384e-11f;
-        Debug.Log("Gravitational Constant: " + G.ToString());
+        G = (planet.GetComponent<TempPlanetScript>().mass * GetComponent<Rigidbody>().mass / Mathf.Pow(Vector3.Distance(transform.position, planet.transform.position), 2)) * 6.67384e-11f;
+        //Debug.Log("Gravitational Constant: " + G.ToString());
 
-        // Move
-        Vector3 pos = Vector3.MoveTowards(transform.position, planet.transform.position, 0) * G * Time.deltaTime;
-        GetComponent<Rigidbody>().AddForce(-pos);
+        // Pull object to planet
+        Vector3 pos = Vector3.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * G * Time.deltaTime;
+        GetComponent<Rigidbody>().AddForce(-pos, ForceMode.Acceleration);
     }
 }
