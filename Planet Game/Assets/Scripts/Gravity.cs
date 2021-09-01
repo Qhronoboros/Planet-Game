@@ -1,11 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Gravity : MonoBehaviour
 {
     public GameObject planet;
     float G;
+    static bool gravity = true;
+
+    public void GravityToggle(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            gravity = !gravity;
+            Debug.Log("gravity:" + gravity.ToString());
+        }
+    }
 
     void Start()
     {
@@ -19,6 +30,16 @@ public class Gravity : MonoBehaviour
 
         // Pull object to planet
         Vector3 pos = Vector3.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * G * Time.deltaTime;
-        GetComponent<Rigidbody>().AddForce(-pos, ForceMode.Acceleration);
+        
+        if (gravity)
+        {
+            Debug.Log("on");
+            GetComponent<Rigidbody>().AddForce(-pos, ForceMode.Acceleration);
+        }
+        else
+        {
+            Debug.Log("off");
+            //GetComponent<Rigidbody>().AddForce(pos, ForceMode.Acceleration);
+        }
     }
 }

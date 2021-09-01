@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/GravityTest.unity
+    guid: ec282b6c902e9224ca59f77ceabf5fe8
   m_configObjects: {}
