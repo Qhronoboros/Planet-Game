@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public GameObject planet;
-    
+    public GameObject projectilePrefab;
+
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
     public float accMovementSpeed = 10.0f;
     public float decMovementSpeed = 10.0f;
     public float jumpHeight = 0.05f;
+    public float shootDelay = 0.2f;
 
     static MovementOptions currentMovement = MovementOptions.Default;
     static float distance = 0;
     static bool grounded = false;
 
+    float timeLastProjectile = 0;
+
     static bool holdFly = false;
     static bool holdLeft = false;
     static bool holdRight = false;
+    static bool holdShoot = false;
 
     // Enums for the 3 movements options
     public enum MovementOptions
@@ -31,51 +36,82 @@ public class PlayerMovementController : MonoBehaviour
 
     public void OnFly(InputAction.CallbackContext value)
     {
-        if (value.ReadValueAsButton())
+        if (value.started)
         {
+            Debug.Log("holdFly True");
             holdFly = true;
         }
-        else
+        else if (value.canceled)
         {
+            Debug.Log("holdFly False");
             holdFly = false;
         }
     }
 
     public void OnLeft(InputAction.CallbackContext value)
     {
-        if (value.ReadValueAsButton())
+        if (value.started)
         {
+            Debug.Log("holdLeft True");
             currentMovement = MovementOptions.Left;
             holdLeft = true;
         }
-        else
+        else if (value.canceled)
         {
+            Debug.Log("holdLeft False");
             holdLeft = false;
         }
     }
 
     public void OnRight(InputAction.CallbackContext value)
     {
-        if (value.ReadValueAsButton())
+        if (value.started)
         {
+            Debug.Log("holdRight True");
             currentMovement = MovementOptions.Right;
             holdRight = true;
         }
-        else
+        else if (value.canceled)
         {
+            Debug.Log("holdRight False");
             holdRight = false;
+        }
+    }
+
+    public void OnShoot(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            Debug.Log("holdShoot True");
+            holdShoot = true;
+        }
+        else if (value.canceled)
+        {
+            Debug.Log("holdShoot False");
+            holdShoot = false;
         }
     }
 
     void Update()
     {
+        // Keeps the player's rotation consistent
+        transform.up = planet.transform.position - transform.position;
+
+        // Shoot
+        if (holdShoot && Time.time - timeLastProjectile > shootDelay)
+        {
+            GameObject laser = Instantiate(projectilePrefab, transform.position, transform.rotation);
+            laser.GetComponent<ProjectileController>().planet = planet;
+
+            timeLastProjectile = Time.time;
+        }
+
         // Distance between planet and player
         distance = Vector2.Distance(transform.position, planet.transform.position);
 
         // Makes the player fly, hold spacebar to fly higher
         if (holdFly && distance < 17.5f)
         {
-            Debug.Log("fly");
             GetComponent<Rigidbody2D>().AddForce(Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * jumpHeight / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime, ForceMode2D.Impulse);
         }
 
