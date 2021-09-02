@@ -3,12 +3,12 @@
     "maps": [
         {
             "name": "PlayerControls",
-            "id": "3f6fc3a1-32f9-454e-8132-29aea798ae2e",
+            "id": "6260126b-b6e6-4f99-a4b5-6a982bc9983f",
             "actions": [
                 {
                     "name": "Left",
                     "type": "Button",
-                    "id": "8b70992e-7122-4ae0-8377-936dfb4c5f16",
+                    "id": "91853cda-e06d-4a1b-aa17-3ee282736785",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -16,7 +16,7 @@
                 {
                     "name": "Right",
                     "type": "Button",
-                    "id": "3df7fde2-c076-460b-9fb2-e01d3840afa3",
+                    "id": "19168546-6ef0-420b-bc3a-6e1ba6da0006",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -24,7 +24,7 @@
                 {
                     "name": "Fly",
                     "type": "Button",
-                    "id": "b3a4ee1a-8ef8-426e-a97b-2fe09f1beb5e",
+                    "id": "3629db5f-e9f5-45b4-965e-f36ba12193e5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -32,7 +32,7 @@
                 {
                     "name": "GravityToggle",
                     "type": "Button",
-                    "id": "c59422d5-7bab-4207-beaf-2183993112ac",
+                    "id": "3216d1d5-1321-4c39-adc3-8ef27ba964e4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -41,7 +41,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "3f675fb3-de70-4ede-85ef-8a335491699b",
+                    "id": "b0765ec3-27b6-4c41-be10-16295e7b7b98",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -52,7 +52,7 @@
                 },
                 {
                     "name": "",
-                    "id": "67313cf5-ad9b-4bf0-b5f5-b8daae197dae",
+                    "id": "738295d3-3e99-4d50-be0a-a492e43cb035",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -63,7 +63,7 @@
                 },
                 {
                     "name": "",
-                    "id": "96640f0c-3bb6-450a-8a93-0f7c023dc5b8",
+                    "id": "5137930c-1a87-4276-8959-2c137a958db1",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -74,7 +74,7 @@
                 },
                 {
                     "name": "",
-                    "id": "82e27d40-7414-499d-8338-f0e2af3b4a42",
+                    "id": "11456b29-c548-46b0-9761-e1dfc0745d76",
                     "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",

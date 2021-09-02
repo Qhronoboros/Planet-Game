@@ -70,13 +70,13 @@ public class PlayerMovementController : MonoBehaviour
     void Update()
     {
         // Distance between planet and player
-        distance = Vector3.Distance(transform.position, planet.transform.position);
+        distance = Vector2.Distance(transform.position, planet.transform.position);
 
         // Makes the player fly, hold spacebar to fly higher
         if (holdFly && distance < 17.5f)
         {
             Debug.Log("fly");
-            GetComponent<Rigidbody>().AddForce(Vector3.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * jumpHeight / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime, ForceMode.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * jumpHeight / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime, ForceMode2D.Impulse);
         }
 
         // grounded is true if player is grounded, false if not
@@ -93,7 +93,7 @@ public class PlayerMovementController : MonoBehaviour
         }
         else
         {
-            if (movementSpeed > 0)
+            if (movementSpeed > 0.1)
             {
                 if (grounded)
                 {
@@ -104,7 +104,7 @@ public class PlayerMovementController : MonoBehaviour
                     movementSpeed -= decMovementSpeed * Time.deltaTime;
                 }
             }
-            else if (movementSpeed < 0)
+            else if (movementSpeed < -0.1f)
             {
                 if (grounded)
                 {
@@ -114,6 +114,10 @@ public class PlayerMovementController : MonoBehaviour
                 {
                     movementSpeed += decMovementSpeed * Time.deltaTime;
                 }
+            }
+            else
+            {
+                movementSpeed = 0;
             }
         }
 
