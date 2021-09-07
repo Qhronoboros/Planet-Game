@@ -12,12 +12,15 @@ public class PlayerController : MonoBehaviour
     public float maxMovementSpeed = 10.0f;
     public float accMovementSpeed = 10.0f;
     public float decMovementSpeed = 10.0f;
-    public float jumpHeight = 0.05f;
+    public float jumpHeight = 5.0f;
+    public float doubleJumpHeight = 1.0f;
+    public float flySpeed = 5.0f;
     public float shootDelay = 0.2f;
 
     static MovementOptions currentMovement = MovementOptions.Default;
-    static float distance = 0;
-    static bool grounded = false;
+    public static float distance = 0;
+    static bool isGrounded = false;
+    static int jumpCounter = 0;
 
     float timeLastProjectile = 0;
 
@@ -34,17 +37,39 @@ public class PlayerController : MonoBehaviour
         Right
     }
 
-    public void OnFly(InputAction.CallbackContext value)
+    //public void OnFly(InputAction.CallbackContext value)
+    //{
+    //    if (value.started)
+    //    {
+    //        Debug.Log("holdFly True");
+    //        holdFly = true;
+    //    }
+    //    else if (value.canceled)
+    //    {
+    //        Debug.Log("holdFly False");
+    //        holdFly = false;
+    //    }
+    //}
+
+    public void OnJump(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (value.started && jumpCounter < 3)
         {
-            Debug.Log("holdFly True");
-            holdFly = true;
-        }
-        else if (value.canceled)
-        {
-            Debug.Log("holdFly False");
-            holdFly = false;
+            if (isGrounded)
+            {
+                Debug.Log("Jump");
+                GetComponent<Rigidbody2D>().AddForce(
+                    Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * jumpHeight,
+                    ForceMode2D.Impulse);
+            }
+            else
+            {
+                Debug.Log("Double Jump");
+                GetComponent<Rigidbody2D>().AddForce(
+                    Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * doubleJumpHeight,
+                    ForceMode2D.Impulse);
+            }
+            jumpCounter += 1;
         }
     }
 
@@ -112,12 +137,21 @@ public class PlayerController : MonoBehaviour
         // Makes the player fly, hold spacebar to fly higher
         if (holdFly && distance < 17.5f)
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * jumpHeight / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime, ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(
+                Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * flySpeed / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime,
+                ForceMode2D.Impulse);
         }
 
         // grounded is true if player is grounded, false if not
-        if (distance <= 6.25f && !grounded) { grounded = true; }
-        else if (distance > 6.25f && grounded) { grounded = false; }
+        if (distance <= 6.25f && !isGrounded)
+        {
+            isGrounded = true;
+            jumpCounter = 0;
+        }
+        else if (distance > 6.25f && isGrounded)
+        {
+            isGrounded = false;
+        }
 
         if (currentMovement == MovementOptions.Left && holdLeft && movementSpeed > -maxMovementSpeed)
         {
@@ -131,7 +165,7 @@ public class PlayerController : MonoBehaviour
         {
             if (movementSpeed > 0.1)
             {
-                if (grounded)
+                if (isGrounded)
                 {
                     movementSpeed -= decMovementSpeed * 4 * Time.deltaTime;
                 }
@@ -142,7 +176,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (movementSpeed < -0.1f)
             {
-                if (grounded)
+                if (isGrounded)
                 {
                     movementSpeed += decMovementSpeed * 4 * Time.deltaTime;
                 }
