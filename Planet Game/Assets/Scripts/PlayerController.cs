@@ -73,6 +73,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnMovement(InputAction.CallbackContext value)
+    {
+        float joystickMovement = value.ReadValue<Vector2>().x;
+
+        if (joystickMovement < 0)
+        {
+            Debug.Log("holdLeft True");
+            currentMovement = MovementOptions.Left;
+            holdLeft = true;
+
+        }
+        else if (joystickMovement > 0)
+        {
+            Debug.Log("holdRight True");
+            currentMovement = MovementOptions.Right;
+            holdRight = true;
+        }
+        else
+        {
+            holdLeft = false;
+            holdRight = false;
+            Debug.Log("neutral");
+        }
+    }
+
     public void OnLeft(InputAction.CallbackContext value)
     {
         if (value.started)
@@ -116,6 +141,22 @@ public class PlayerController : MonoBehaviour
             holdShoot = false;
         }
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            isGrounded = true;
+            jumpCounter = 0;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            isGrounded = false;
+        }
+    }
 
     void Update()
     {
@@ -140,17 +181,6 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(
                 Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * flySpeed / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime,
                 ForceMode2D.Impulse);
-        }
-
-        // grounded is true if player is grounded, false if not
-        if (distance <= 6.25f && !isGrounded)
-        {
-            isGrounded = true;
-            jumpCounter = 0;
-        }
-        else if (distance > 6.25f && isGrounded)
-        {
-            isGrounded = false;
         }
 
         if (currentMovement == MovementOptions.Left && holdLeft && movementSpeed > -maxMovementSpeed)
