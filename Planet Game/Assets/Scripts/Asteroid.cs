@@ -8,8 +8,8 @@ public class Asteroid : MonoBehaviour
     public float a_size = 1.0f;
     public float a_min_size = 0.75f;
     public float a_max_size = 2.5f;
-    public float a_speed = 25.0f;
-    public float max_lifetime = 2.0f;
+    public float a_speed = 15.0f;
+    public float max_lifetime = 15.0f;
     private SpriteRenderer sprite_renderer;
     private Rigidbody2D rigid_body2D;
 
@@ -32,5 +32,12 @@ public class Asteroid : MonoBehaviour
     public void set_trajectory(Vector2 direction){
         rigid_body2D.AddForce(direction * this.a_speed);
         Destroy(this.gameObject, this.max_lifetime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.tag == "Bullet"){
+            Debug.Log("FUCCCCCCCCCCCCCCCCCCCCCCCCCK");
+            Destroy(this.gameObject);
+        }
     }
 }

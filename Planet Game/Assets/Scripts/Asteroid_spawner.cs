@@ -10,10 +10,10 @@ public class Asteroid_spawner : MonoBehaviour
     // amount of spawns
     public int spawn_amount = 1;
     //offset of the trajectory towards the center in degrees
-    public float trajectory_variance = 20.0f;
+    public float trajectory_variance = 13.0f;
     //spawn distance of how far asteroid spawn from spawner
     // they will spawn 15 units away which will be a off screen
-    public float spawn_distance = 50.0f;
+    public float spawn_distance = 60.0f;
 
     // Start is called before the first frame update
     void Start()

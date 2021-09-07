@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3996525464930748553}
   - component: {fileID: 3996525464930748554}
   - component: {fileID: 3996525464930748555}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2, y: 2}
   m_Direction: 0
 --- !u!114 &3996525464930748554
 MonoBehaviour:
