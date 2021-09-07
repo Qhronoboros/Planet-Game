@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Keeps the player's rotation consistent
-        transform.up = planet.transform.position - transform.position;
+        transform.up = -(planet.transform.position - transform.position);
 
         // Shoot
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
