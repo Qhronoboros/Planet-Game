@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     static MovementOptions currentMovement = MovementOptions.Default;
     public static float distance = 0;
     static bool isGrounded = false;
+    static int jumpCounter = 0;
 
     float timeLastProjectile = 0;
 
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (value.started && jumpCounter < 3)
         {
             if (isGrounded)
             {
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
                     Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * doubleJumpHeight,
                     ForceMode2D.Impulse);
             }
+            jumpCounter += 1;
         }
     }
 
@@ -141,8 +143,15 @@ public class PlayerController : MonoBehaviour
         }
 
         // grounded is true if player is grounded, false if not
-        if (distance <= 6.25f && !isGrounded) { isGrounded = true; }
-        else if (distance > 6.25f && isGrounded) { isGrounded = false; }
+        if (distance <= 6.25f && !isGrounded)
+        {
+            isGrounded = true;
+            jumpCounter = 0;
+        }
+        else if (distance > 6.25f && isGrounded)
+        {
+            isGrounded = false;
+        }
 
         if (currentMovement == MovementOptions.Left && holdLeft && movementSpeed > -maxMovementSpeed)
         {
