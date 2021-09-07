@@ -1697,6 +1697,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3996525464930748553, guid: 6373457e824149b4aa2cb97ac5c825a2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3996525464930748554, guid: 6373457e824149b4aa2cb97ac5c825a2, type: 3}
       propertyPath: planet
       value: 
