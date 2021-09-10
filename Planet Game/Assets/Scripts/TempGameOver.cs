@@ -7,7 +7,6 @@ public class TempGameOver : MonoBehaviour
 {
     public void OnClick()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 }

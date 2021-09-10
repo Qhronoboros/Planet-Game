@@ -18,7 +18,7 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Update()
+    private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, planet.transform.position, -1 * speed * Time.deltaTime);
     }
