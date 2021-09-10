@@ -5,32 +5,44 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraStates cameraState = CameraStates.PlanetView;
+    public CameraStates cameraState = CameraStates.PlanetView;
     public Cinemachine.CinemachineVirtualCamera VCamPlanet;
     public Cinemachine.CinemachineVirtualCamera VCamPlayer;
+    public Cinemachine.CinemachineVirtualCamera VCamBorder;
+    public float planetCamDistance = 20.0f;
+    public float playerCamDistance = 22.5f;
 
     // Enums for the 2 camera states
     public enum CameraStates
     {
         PlanetView,
-        PlayerView
+        PlayerView,
+        BorderView
     }
+
     private void Update()
     {
-        if (PlayerController.distance >= 22.5f && cameraState == CameraStates.PlanetView)
+        if (PlayerController.distance >= playerCamDistance && !BorderDetector.playerDead && cameraState != CameraStates.PlayerView)
         {
             TransitionPlayer();
         }
-        else if (PlayerController.distance < 20.0f && cameraState == CameraStates.PlayerView)
+        else if (PlayerController.distance < planetCamDistance && !BorderDetector.playerDead && cameraState != CameraStates.PlanetView)
         {
             TransitionPlanet();
+        }
+        else if (BorderDetector.playerDead && cameraState != CameraStates.BorderView)
+        {
+            VCamBorder.Follow = null;
+            VCamBorder.LookAt = null;
+            TransitionBorder();
         }
     }
 
     public void TransitionPlanet()
     {
-        VCamPlayer.Priority = 0;
         VCamPlanet.Priority = 1;
+        VCamPlayer.Priority = 0;
+        VCamBorder.Priority = 0;
         cameraState = CameraStates.PlanetView;
     }
 
@@ -38,6 +50,15 @@ public class CameraController : MonoBehaviour
     {
         VCamPlanet.Priority = 0;
         VCamPlayer.Priority = 1;
+        VCamBorder.Priority = 0;
         cameraState = CameraStates.PlayerView;
+    }
+
+    public void TransitionBorder()
+    {
+        VCamPlanet.Priority = 0;
+        VCamPlayer.Priority = 0;
+        VCamBorder.Priority = 1;
+        cameraState = CameraStates.BorderView;
     }
 }

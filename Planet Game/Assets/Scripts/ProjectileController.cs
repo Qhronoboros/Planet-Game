@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     public GameObject planet;
-    public float delay = 30.0f;
+    public float lifeTime = 30.0f;
     public float speed = 0.3f;
     void Start()
     {
@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour
 
     IEnumerator selfDestruct()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
 

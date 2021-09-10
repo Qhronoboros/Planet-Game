@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
-  - Asteroid
   - Planet
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -18,7 +18,7 @@ TagManager:
   - bullet
   - player
   - asteroid
-  - Planet
+  - 
   - 
   - 
   - 

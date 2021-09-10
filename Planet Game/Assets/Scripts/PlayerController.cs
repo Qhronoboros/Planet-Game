@@ -19,17 +19,15 @@ public class PlayerController : MonoBehaviour
     public float doubleJumpHeight = 1.0f;
     public float flySpeed = 5.0f;
     public float shootDelay = 0.2f;
+    public int jumpCounter = 0;
 
     static MovementOptions currentMovement = MovementOptions.Default;
     public static float distance = 0;
     static bool isGrounded = false;
-    static int jumpCounter = 0;
 
     float timeLastProjectile = 0;
 
     static bool holdFly = false;
-    static bool holdLeft = false;
-    static bool holdRight = false;
     static bool holdShoot = false;
 
     // Enums for the 3 movements options
@@ -38,6 +36,16 @@ public class PlayerController : MonoBehaviour
         Default,
         Left,
         Right
+    }
+
+    // Reset Static Variables
+    private void Awake()
+    {
+        currentMovement = MovementOptions.Default;
+        distance = 0;
+        isGrounded = false;
+        holdFly = false;
+        holdShoot = false;
     }
 
     //public void OnFly(InputAction.CallbackContext value)
@@ -76,33 +84,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnLeft(InputAction.CallbackContext value)
+    public void OnMovement(InputAction.CallbackContext value)
     {
-        if (value.started)
+        float joystickMovement = value.ReadValue<Vector2>().x;
+
+        if (joystickMovement < 0)
         {
             Debug.Log("holdLeft True");
             currentMovement = MovementOptions.Left;
-            holdLeft = true;
-        }
-        else if (value.canceled)
-        {
-            Debug.Log("holdLeft False");
-            holdLeft = false;
-        }
-    }
 
-    public void OnRight(InputAction.CallbackContext value)
-    {
-        if (value.started)
+        }
+        else if (joystickMovement > 0)
         {
             Debug.Log("holdRight True");
             currentMovement = MovementOptions.Right;
-            holdRight = true;
         }
-        else if (value.canceled)
+        else
         {
-            Debug.Log("holdRight False");
-            holdRight = false;
+            currentMovement = MovementOptions.Default;
+            Debug.Log("neutral");
         }
     }
 
@@ -119,6 +119,22 @@ public class PlayerController : MonoBehaviour
             holdShoot = false;
         }
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            isGrounded = true;
+            jumpCounter = 0;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            isGrounded = false;
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Asteroid"){
@@ -133,7 +149,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Keeps the player's rotation consistent
-        transform.up = planet.transform.position - transform.position;
+        transform.up = -(planet.transform.position - transform.position);
 
         // Shoot
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
@@ -155,22 +171,11 @@ public class PlayerController : MonoBehaviour
                 ForceMode2D.Impulse);
         }
 
-        // grounded is true if player is grounded, false if not
-        if (distance <= 6.25f && !isGrounded)
-        {
-            isGrounded = true;
-            jumpCounter = 0;
-        }
-        else if (distance > 6.25f && isGrounded)
-        {
-            isGrounded = false;
-        }
-
-        if (currentMovement == MovementOptions.Left && holdLeft && movementSpeed > -maxMovementSpeed)
+        if (currentMovement == MovementOptions.Left && movementSpeed > -maxMovementSpeed)
         {
             movementSpeed -= accMovementSpeed * Time.deltaTime;
         }
-        else if (currentMovement == MovementOptions.Right && holdRight && movementSpeed < maxMovementSpeed)
+        else if (currentMovement == MovementOptions.Right && movementSpeed < maxMovementSpeed)
         {
             movementSpeed += accMovementSpeed * Time.deltaTime;
         }
