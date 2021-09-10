@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
 
 public class BorderDetector : MonoBehaviour
 {
+    public PlayerInput playerInput;
+    public GameObject gameUI;
     public GameObject warning;
     public GameObject tempGameOver;
     Vignette vignette;
@@ -62,6 +65,8 @@ public class BorderDetector : MonoBehaviour
                 //Kill player
                 playerDead = true;
                 Debug.Log("Death");
+                playerInput.SwitchCurrentActionMap("EmptyMap");
+                gameUI.SetActive(false);
                 tempGameOver.SetActive(true);
             }
         }

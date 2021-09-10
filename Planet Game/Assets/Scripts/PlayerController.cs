@@ -117,19 +117,19 @@ public class PlayerController : MonoBehaviour
             holdShoot = false;
         }
     }
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.tag == "Planet")
-    //     {
-    //         isGrounded = true;
-    //         jumpCounter = 0;
-    //     }
-    //     else if (collision.gameObject.tag == "Asteroid")
-    //     {
-    //         score += 100;
-    //         UIText.text = "score " + score;
-    //     }
-    // }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            isGrounded = true;
+            jumpCounter = 0;
+        }
+        //else if (collision.gameObject.tag == "Asteroid")
+        //{
+        //    score += 100;
+        //    UIText.text = "score " + score;
+        //}
+    }
 
     void OnCollisionExit2D(Collision2D collision)
     {
