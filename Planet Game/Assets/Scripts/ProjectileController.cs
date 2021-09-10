@@ -18,6 +18,12 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision){
+
+        if(collision.gameObject.tag == "Asteroid"){
+            Destroy(this.gameObject);
+        }
+    }
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, planet.transform.position, -1 * speed * Time.deltaTime);

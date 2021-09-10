@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject planet;
     public GameObject projectilePrefab;
-
+    public GameObject score_text;
+    private Text UIText;
+    private double score = 0;
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
     public float accMovementSpeed = 10.0f;
@@ -115,6 +118,16 @@ public class PlayerController : MonoBehaviour
             Debug.Log("holdShoot False");
             holdShoot = false;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.tag == "Asteroid"){
+            score += 100;
+            UIText.text = "score" + score;
+        }
+    }
+    void Awake(){
+        UIText = score_text.GetComponent<Text>();
     }
 
     void Update()
