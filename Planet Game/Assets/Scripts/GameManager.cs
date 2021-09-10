@@ -5,10 +5,19 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
-{   
+{   //score
     public GameObject score_text;
     private Text UIText;
-    private double score = 0;
+    private float score = 0;
+    //life
+    private int life = 3;
+    private int max_life = 3;
+    public Image[] hearts;
+    public Sprite full_heart;
+    public Sprite empty_heart;
+    //game over
+    public GameObject game_over_menu;
+
     private static GameManager manager_instance;
     public static GameManager Instance{
         get{
@@ -24,11 +33,45 @@ public class GameManager : MonoBehaviour
         UIText = score_text.GetComponent<Text>();
     }
 
-    public void setScore(double game_score){
+    //score
+    public void setScore(float game_score){
         this.score = game_score;
-        UIText.text = "Score: " + this.score;
+        UIText.text = this.score.ToString();
     }
-    public double getScore(){
+    public float getScore(){
         return this.score;
+    }
+
+    // life
+    public void set_life(int game_life){
+        this.life = game_life;
+
+        if(this.life > max_life){
+            this.life = max_life;
+        }
+        if(this.life >= 0){
+            for(int i = 0; i < hearts.Length; i++){
+                if(i<this.life){
+                    hearts[i].sprite = full_heart;
+                }else{
+                    hearts[i].sprite = empty_heart;
+                }
+            }
+        }
+
+        if(this.life == 0){
+            game_over();
+        }
+    }
+    public int get_life(){
+        return this.life;
+    }
+    //
+    public void game_over(){
+        freeze_game();
+        game_over_menu.SetActive(true);
+    }
+    public void freeze_game(){
+        Time.timeScale = 0f;
     }
 }
