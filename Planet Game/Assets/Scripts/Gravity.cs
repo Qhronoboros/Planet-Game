@@ -27,7 +27,7 @@ public class Gravity : MonoBehaviour
     void Update()
     {
         // If player dies (too far from planet)
-        if (tag == "Player" && BorderDetector.playerDead && gravity)
+        if (tag == "Player" && GameManager.playerDead && gravity)
         {
             gravity = false;
         }

@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 
 public class BorderDetector : MonoBehaviour
 {
+    public GameManager gameManager;
     public PlayerInput playerInput;
-    public GameObject gameUI;
+    public GameObject gameControls;
     public GameObject warning;
     public GameObject tempGameOver;
     Vignette vignette;
@@ -17,7 +18,6 @@ public class BorderDetector : MonoBehaviour
     public float killBorderDistance = 10.0f;
     public static float fullKillBorderDistance;
     public static bool playerInBorder = true;
-    public static bool playerDead = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,7 +42,6 @@ public class BorderDetector : MonoBehaviour
     {
         fullKillBorderDistance = transform.localScale.x + killBorderDistance;
         playerInBorder = true;
-        playerDead = false;
     }
 
     private void Start()
@@ -56,18 +55,14 @@ public class BorderDetector : MonoBehaviour
 
     private void Update()
     {
-        if (!playerInBorder && !playerDead)
+        if (!playerInBorder && !GameManager.playerDead)
         {
             intensity = Mathf.Max((PlayerController.distance - transform.localScale.x/2) / killBorderDistance * maxIntensity, 0.1f);
             vignette.intensity.value = intensity;
             if (PlayerController.distance > transform.localScale.x/2 + killBorderDistance)
             {
                 //Kill player
-                playerDead = true;
-                Debug.Log("Death");
-                playerInput.SwitchCurrentActionMap("EmptyMap");
-                gameUI.SetActive(false);
-                tempGameOver.SetActive(true);
+                gameManager.set_life(0);
             }
         }
     }

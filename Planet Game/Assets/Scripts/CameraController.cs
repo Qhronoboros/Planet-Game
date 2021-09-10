@@ -22,15 +22,15 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.distance >= playerCamDistance && !BorderDetector.playerDead && cameraState != CameraStates.PlayerView)
+        if (PlayerController.distance >= playerCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlayerView)
         {
             TransitionPlayer();
         }
-        else if (PlayerController.distance < planetCamDistance && !BorderDetector.playerDead && cameraState != CameraStates.PlanetView)
+        else if (PlayerController.distance < planetCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlanetView)
         {
             TransitionPlanet();
         }
-        else if (BorderDetector.playerDead && cameraState != CameraStates.BorderView)
+        else if (GameManager.playerDead && cameraState != CameraStates.BorderView)
         {
             VCamBorder.Follow = null;
             VCamBorder.LookAt = null;

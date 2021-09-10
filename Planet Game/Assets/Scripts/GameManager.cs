@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {   //score
@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
     public Sprite full_heart;
     public Sprite empty_heart;
     //game over
-    public GameObject game_over_menu;
+    public PlayerInput playerInput;
+    public GameObject gameControls;
+    public GameObject tempGameOver;
+    public static bool playerDead = false;
 
     private static GameManager manager_instance;
     public static GameManager Instance{
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Awake(){
+        playerDead = false;
         manager_instance = this;
         UIText = score_text.GetComponent<Text>();
     }
@@ -68,10 +72,14 @@ public class GameManager : MonoBehaviour
     }
     //
     public void game_over(){
-        freeze_game();
-        game_over_menu.SetActive(true);
+        //freeze_game();
+        playerDead = true;
+        Debug.Log("Death");
+        playerInput.SwitchCurrentActionMap("EmptyMap");
+        gameControls.SetActive(false);
+        tempGameOver.SetActive(true);
     }
-    public void freeze_game(){
-        Time.timeScale = 0f;
-    }
+    //public void freeze_game(){
+    //    Time.timeScale = 0f;
+    //}
 }
