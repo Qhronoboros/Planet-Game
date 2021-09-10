@@ -34,7 +34,7 @@ public class Asteroid : MonoBehaviour
         Destroy(this.gameObject, this.max_lifetime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision){
+    void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Bullet"){
             Debug.Log("FUCCCCCCCCCCCCCCCCCCCCCCCCCK");
             Destroy(this.gameObject);

@@ -16,17 +16,15 @@ public class PlayerController : MonoBehaviour
     public float doubleJumpHeight = 1.0f;
     public float flySpeed = 5.0f;
     public float shootDelay = 0.2f;
+    public int jumpCounter = 0;
 
     static MovementOptions currentMovement = MovementOptions.Default;
     public static float distance = 0;
     static bool isGrounded = false;
-    static int jumpCounter = 0;
 
     float timeLastProjectile = 0;
 
     static bool holdFly = false;
-    static bool holdLeft = false;
-    static bool holdRight = false;
     static bool holdShoot = false;
 
     // Enums for the 3 movements options
@@ -35,6 +33,16 @@ public class PlayerController : MonoBehaviour
         Default,
         Left,
         Right
+    }
+
+    // Reset Static Variables
+    private void Awake()
+    {
+        currentMovement = MovementOptions.Default;
+        distance = 0;
+        isGrounded = false;
+        holdFly = false;
+        holdShoot = false;
     }
 
     //public void OnFly(InputAction.CallbackContext value)
@@ -81,50 +89,17 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("holdLeft True");
             currentMovement = MovementOptions.Left;
-            holdLeft = true;
 
         }
         else if (joystickMovement > 0)
         {
             Debug.Log("holdRight True");
             currentMovement = MovementOptions.Right;
-            holdRight = true;
         }
         else
         {
-            holdLeft = false;
-            holdRight = false;
+            currentMovement = MovementOptions.Default;
             Debug.Log("neutral");
-        }
-    }
-
-    public void OnLeft(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            Debug.Log("holdLeft True");
-            currentMovement = MovementOptions.Left;
-            holdLeft = true;
-        }
-        else if (value.canceled)
-        {
-            Debug.Log("holdLeft False");
-            holdLeft = false;
-        }
-    }
-
-    public void OnRight(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            Debug.Log("holdRight True");
-            currentMovement = MovementOptions.Right;
-            holdRight = true;
-        }
-        else if (value.canceled)
-        {
-            Debug.Log("holdRight False");
-            holdRight = false;
         }
     }
 
@@ -183,11 +158,11 @@ public class PlayerController : MonoBehaviour
                 ForceMode2D.Impulse);
         }
 
-        if (currentMovement == MovementOptions.Left && holdLeft && movementSpeed > -maxMovementSpeed)
+        if (currentMovement == MovementOptions.Left && movementSpeed > -maxMovementSpeed)
         {
             movementSpeed -= accMovementSpeed * Time.deltaTime;
         }
-        else if (currentMovement == MovementOptions.Right && holdRight && movementSpeed < maxMovementSpeed)
+        else if (currentMovement == MovementOptions.Right && movementSpeed < maxMovementSpeed)
         {
             movementSpeed += accMovementSpeed * Time.deltaTime;
         }

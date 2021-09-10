@@ -5,15 +5,4 @@ using UnityEngine;
 public class TempPlanetScript : MonoBehaviour
 {
     public float mass = 7e+14f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
