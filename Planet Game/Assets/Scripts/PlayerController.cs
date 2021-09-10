@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject planet;
     public GameObject projectilePrefab;
-    public GameObject score_text;
-    private Text UIText;
-    private double score = 0;
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
     public float accMovementSpeed = 10.0f;
@@ -47,7 +44,6 @@ public class PlayerController : MonoBehaviour
         holdFly = false;
         holdShoot = false;
 
-        UIText = score_text.GetComponent<Text>();
     }
 
     //public void OnFly(InputAction.CallbackContext value)
@@ -121,19 +117,19 @@ public class PlayerController : MonoBehaviour
             holdShoot = false;
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Planet")
-        {
-            isGrounded = true;
-            jumpCounter = 0;
-        }
-        else if (collision.gameObject.tag == "Asteroid")
-        {
-            score += 100;
-            UIText.text = "score" + score;
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Planet")
+    //     {
+    //         isGrounded = true;
+    //         jumpCounter = 0;
+    //     }
+    //     else if (collision.gameObject.tag == "Asteroid")
+    //     {
+    //         score += 100;
+    //         UIText.text = "score " + score;
+    //     }
+    // }
 
     void OnCollisionExit2D(Collision2D collision)
     {
