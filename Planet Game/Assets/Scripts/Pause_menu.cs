@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Pause_menu : MonoBehaviour
 {
-
-
     public void Resume(){
         Time.timeScale = 1f;
     }
@@ -22,6 +20,4 @@ public class Pause_menu : MonoBehaviour
     public void Quit(){
         Application.Quit(); 
     }
-
-
 }

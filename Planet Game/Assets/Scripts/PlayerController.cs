@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
         holdFly = false;
         holdShoot = false;
+
+        UIText = score_text.GetComponent<Text>();
     }
 
     //public void OnFly(InputAction.CallbackContext value)
@@ -126,6 +128,11 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumpCounter = 0;
         }
+        else if (collision.gameObject.tag == "Asteroid")
+        {
+            score += 100;
+            UIText.text = "score" + score;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -134,16 +141,6 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.tag == "Asteroid"){
-            score += 100;
-            UIText.text = "score" + score;
-        }
-    }
-    void Awake(){
-        UIText = score_text.GetComponent<Text>();
     }
 
     void Update()
