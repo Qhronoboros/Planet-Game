@@ -191,6 +191,12 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "EmptyMap",
+            "id": "0e26c2a5-b1f9-456a-bb81-d8108b6f0ba0",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
