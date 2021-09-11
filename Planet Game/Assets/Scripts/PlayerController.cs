@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     float timeLastProjectile = 0;
 
-    static bool holdFly = false;
+    //static bool holdFly = false;
     static bool holdShoot = false;
 
     // Enums for the 3 movements options
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         currentMovement = MovementOptions.Default;
         distance = 0;
         isGrounded = false;
-        holdFly = false;
+        //holdFly = false;
         holdShoot = false;
     }
 
@@ -155,13 +155,13 @@ public class PlayerController : MonoBehaviour
         // Distance between planet and player
         distance = Vector2.Distance(transform.position, planet.transform.position);
 
-        // Makes the player fly, hold spacebar to fly higher
-        if (holdFly && distance < 17.5f)
-        {
-            GetComponent<Rigidbody2D>().AddForce(
-                Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * flySpeed / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime,
-                ForceMode2D.Impulse);
-        }
+        //// Makes the player fly, hold spacebar to fly higher
+        //if (holdFly && distance < 17.5f)
+        //{
+        //    GetComponent<Rigidbody2D>().AddForce(
+        //        Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * flySpeed / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime,
+        //        ForceMode2D.Impulse);
+        //}
 
         if (currentMovement == MovementOptions.Left && movementSpeed > -maxMovementSpeed)
         {

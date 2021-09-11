@@ -27,7 +27,7 @@ public class Gravity : MonoBehaviour
     void Update()
     {
         // If player dies (too far from planet)
-        if (tag == "Player" && GameManager.playerDead && gravity)
+        if (gravity && tag == "Player" && GameManager.playerDead)
         {
             gravity = false;
         }
@@ -35,7 +35,7 @@ public class Gravity : MonoBehaviour
         if (gravity)
         {
             // Calc Gravitational Constant
-            G = (planet.GetComponent<TempPlanetScript>().mass * GetComponent<Rigidbody2D>().mass / Mathf.Pow(Vector2.Distance(transform.position, planet.transform.position), 2)) * 6.67384e-11f;
+            G = (planet.GetComponent<PlanetScript>().mass * GetComponent<Rigidbody2D>().mass / Mathf.Pow(Vector2.Distance(transform.position, planet.transform.position), 2)) * 6.67384e-11f;
             //Debug.Log("Gravitational Constant: " + G.ToString());
 
             // Pull object to planet

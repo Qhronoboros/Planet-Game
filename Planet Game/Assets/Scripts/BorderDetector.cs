@@ -15,7 +15,7 @@ public class BorderDetector : MonoBehaviour
     Vignette vignette;
     public float maxIntensity = 0.45f;
     public float intensity = 0.0f;
-    public float killBorderDistance = 10.0f;
+    public float killBorderDistance = 20.0f;
     public static float fullKillBorderDistance;
     public static bool playerInBorder = true;
 
