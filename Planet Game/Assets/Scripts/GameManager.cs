@@ -5,7 +5,27 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
-{   //score
+{
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                Debug.LogError("No GameManager instance");
+
+            return _instance;
+        }
+    }
+
+    // Important GameObjects
+    public GameObject player;
+    public GameObject playerPlanet;
+    public List<GameObject> planets;
+    public CameraController cameraController;
+    public GameObject warning;
+
+    //score
     public GameObject score_text;
     private Text UIText;
     private float score = 0;
@@ -21,20 +41,27 @@ public class GameManager : MonoBehaviour
     public GameObject tempGameOver;
     public static bool playerDead = false;
 
-    private static GameManager manager_instance;
-    public static GameManager Instance{
-        get{
-            if(manager_instance == null)
-                Debug.LogError("you fucked");
-            
-            return manager_instance;
-        }
-    }
 
     private void Awake(){
+        _instance = this;
         playerDead = false;
-        manager_instance = this;
         UIText = score_text.GetComponent<Text>();
+    }
+
+    // Set the planet the player is orbiting
+    public void setPlayerPlanet(GameObject planet)
+    {
+        playerPlanet = planet;
+    }
+
+    // Get the planet the player is orbiting
+    public GameObject getPlayerPlanet()
+    {
+        if (!playerPlanet)
+        {
+            playerPlanet = player.GetComponent<PlayerController>().mainPlanetObj;
+        }
+        return playerPlanet;
     }
 
     //score
@@ -75,6 +102,7 @@ public class GameManager : MonoBehaviour
         //freeze_game();
         playerDead = true;
         Debug.Log("Death");
+        player.GetComponent<Gravity>().gravity = false;
         playerInput.SwitchCurrentActionMap("EmptyMap");
         gameControls.SetActive(false);
         tempGameOver.SetActive(true);

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BreadshipController : MonoBehaviour
 {
-    public GameObject planet;
+    public GameObject planetObj;
     public GameObject projectilePrefab;
 
     public float movementSpeed = 0f;
@@ -66,7 +66,7 @@ public class BreadshipController : MonoBehaviour
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position, transform.rotation);
-            laser.GetComponent<ProjectileController>().planet = planet;
+            laser.GetComponent<ProjectileController>().planetObj = planetObj;
 
             timeLastProjectile = Time.time;
         }

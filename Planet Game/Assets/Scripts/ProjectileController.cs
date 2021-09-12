@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    public GameObject planet;
+    public GameObject planetObj;
     public float lifeTime = 30.0f;
     public float speed = 0.3f;
     void Start()
@@ -30,6 +30,6 @@ public class ProjectileController : MonoBehaviour
     }
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, planet.transform.position, -1 * speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, planetObj.transform.position, -1 * speed * Time.deltaTime);
     }
 }
