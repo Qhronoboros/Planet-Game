@@ -124,10 +124,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Asteroid")
         {
-        int temp_life = GameManager.Instance.get_life();
-        temp_life-=1;
-        GameManager.Instance.set_life(temp_life);
+            int temp_life = GameManager.Instance.get_life();
+            temp_life-=1;
+            GameManager.Instance.set_life(temp_life);
         }
+
     }
 
     void OnCollisionExit2D(Collision2D collision)

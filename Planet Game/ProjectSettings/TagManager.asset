@@ -7,20 +7,24 @@ TagManager:
   - Bullet
   - Planet
   - Border
+  - Asteroid
+  - Coin
+  - Special_obj
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
   - 
   - bullet
   - player
   - asteroid
-  - 
-  - 
-  - 
+  - coins
+  - special
+  - enemy
   - 
   - 
   - 

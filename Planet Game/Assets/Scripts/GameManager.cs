@@ -9,6 +9,16 @@ public class GameManager : MonoBehaviour
     public GameObject score_text;
     private Text UIText;
     private float score = 0;
+    //coin
+    public GameObject coin_text;
+    private Text UI_coin_text;
+    private float coin = 0;
+    //special
+    public GameObject special_text;
+    public GameObject special_child;
+    private Text UI_special_text;
+    private float special = 0;
+    private float max_special = 0;
     //life
     private int life = 3;
     private int max_life = 3;
@@ -35,6 +45,10 @@ public class GameManager : MonoBehaviour
         playerDead = false;
         manager_instance = this;
         UIText = score_text.GetComponent<Text>();
+        UI_coin_text = coin_text.GetComponent<Text>();
+        UI_special_text = special_text.GetComponent<Text>();
+        get_max_special();
+        set_special(special);
     }
 
     //score
@@ -44,6 +58,24 @@ public class GameManager : MonoBehaviour
     }
     public float getScore(){
         return this.score;
+    }
+    public void set_coin(float coin_obj){
+        this.coin = coin_obj;
+        UI_coin_text.text = this.coin.ToString();
+    }
+    public float get_coin(){
+        return this.coin;
+    }
+    public void set_special(float special_obj){
+        this.special = special_obj;
+        UI_special_text.text = this.special.ToString() + "/" + this.max_special.ToString();
+    }
+    public float get_special(){
+        return this.special;
+    }
+    public float get_max_special(){
+        max_special = special_child.transform.childCount;
+        return max_special;
     }
 
     // life
