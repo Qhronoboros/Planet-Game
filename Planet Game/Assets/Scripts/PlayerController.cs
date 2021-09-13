@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
     private int jumpCounter = 0;
     private Gravity gravity;
 
+    public float horizontalMovement = 0.0f;
+    public float walkspeed = 10.0f;
+    public float maxVelocityChange = 1.0f;
+    public float multiplyDownward = 2;
+    public Vector2 lastJoystickVector;
+
     static MovementOptions currentMovement = MovementOptions.Default;
     static bool isGrounded = false;
 
@@ -141,16 +147,41 @@ public class PlayerController : MonoBehaviour
 
         if (joystickMovement < 0)
         {
-            currentMovement = MovementOptions.Left;
+            horizontalMovement = -1;
+            //currentMovement = MovementOptions.Left;
 
         }
         else if (joystickMovement > 0)
         {
-            currentMovement = MovementOptions.Right;
+            horizontalMovement = 1;
+            //currentMovement = MovementOptions.Right;
         }
         else
         {
-            currentMovement = MovementOptions.Default;
+            horizontalMovement = 0;
+            //currentMovement = MovementOptions.Default;
+        }
+    }
+
+    public void OnJumping(InputAction.CallbackContext value)
+    {
+        Vector2 joystickMovement = value.ReadValue<Vector2>();
+        if (value.started)
+        {
+            lastJoystickVector = new Vector2(0, 0);
+            Debug.Log("start");
+        }
+
+        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) < 0.5f && value.canceled)
+        {
+            GetComponent<Rigidbody2D>().AddForce(-(GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight, ForceMode2D.Impulse);
+            Debug.Log(lastJoystickVector);
+            Debug.Log("cancel");
+        }
+
+        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) > 0.5f)
+        {
+            lastJoystickVector = joystickMovement;
         }
     }
 
@@ -188,8 +219,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        float distance = mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject);
+        float randomCalc = (Mathf.Sqrt(Mathf.Pow(distance, 2.0f) - Mathf.Pow(Mathf.Abs(horizontalMovement), 2.0f)) - distance)
+            * multiplyDownward * (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)) / walkspeed * 2;
+
+        Debug.Log(randomCalc);
+
+        //Debug.Log(distance.ToString() + " " + Mathf.Sqrt(Mathf.Pow(distance, 2.0f) - Mathf.Pow(Mathf.Abs(horizontalMovement), 2.0f)).ToString() + " " + randomCalc.ToString());
+
+        // Calculate how fast we should be moving
+        var targetVelocity = new Vector2(horizontalMovement, randomCalc);
+        targetVelocity = transform.TransformDirection(targetVelocity);
+        targetVelocity *= walkspeed;
+
+        //Debug.Log(targetVelocity);
+
+        // Apply a force that attempts to reach our target velocity
+        var velocity = GetComponent<Rigidbody2D>().velocity;
+        var velocityChange = (targetVelocity - velocity);
+        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        //velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+        velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
+        GetComponent<Rigidbody2D>().AddForce(velocityChange, ForceMode2D.Force);
+
         // Keeps the player's rotation consistent
         transform.up = -(mainPlanetObj.transform.position - transform.position);
 
@@ -210,45 +264,45 @@ public class PlayerController : MonoBehaviour
         //        ForceMode2D.Impulse);
         //}
 
-        if (currentMovement == MovementOptions.Left && movementSpeed > -maxMovementSpeed)
-        {
-            movementSpeed -= accMovementSpeed * Time.deltaTime;
-        }
-        else if (currentMovement == MovementOptions.Right && movementSpeed < maxMovementSpeed)
-        {
-            movementSpeed += accMovementSpeed * Time.deltaTime;
-        }
-        else
-        {
-            if (movementSpeed > 0.1)
-            {
-                if (isGrounded)
-                {
-                    movementSpeed -= decMovementSpeed * 4 * Time.deltaTime;
-                }
-                else
-                {
-                    movementSpeed -= decMovementSpeed * Time.deltaTime;
-                }
-            }
-            else if (movementSpeed < -0.1f)
-            {
-                if (isGrounded)
-                {
-                    movementSpeed += decMovementSpeed * 4 * Time.deltaTime;
-                }
-                else
-                {
-                    movementSpeed += decMovementSpeed * Time.deltaTime;
-                }
-            }
-            else
-            {
-                movementSpeed = 0;
-            }
-        }
+        //if (currentMovement == MovementOptions.Left && movementSpeed > -maxMovementSpeed)
+        //{
+        //    movementSpeed -= accMovementSpeed * Time.deltaTime;
+        //}
+        //else if (currentMovement == MovementOptions.Right && movementSpeed < maxMovementSpeed)
+        //{
+        //    movementSpeed += accMovementSpeed * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    if (movementSpeed > 0.1)
+        //    {
+        //        if (isGrounded)
+        //        {
+        //            movementSpeed -= decMovementSpeed * 4 * Time.deltaTime;
+        //        }
+        //        else
+        //        {
+        //            movementSpeed -= decMovementSpeed * Time.deltaTime;
+        //        }
+        //    }
+        //    else if (movementSpeed < -0.1f)
+        //    {
+        //        if (isGrounded)
+        //        {
+        //            movementSpeed += decMovementSpeed * 4 * Time.deltaTime;
+        //        }
+        //        else
+        //        {
+        //            movementSpeed += decMovementSpeed * Time.deltaTime;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        movementSpeed = 0;
+        //    }
+        //}
 
-        // Move the player (Uses the planet to move around), the further the player is from the planet, the slower the player moves around
-        transform.RotateAround(mainPlanetObj.transform.position, Vector3.back, movementSpeed / (mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject) * 0.2f) * Time.deltaTime);
+        //// Move the player (Uses the planet to move around), the further the player is from the planet, the slower the player moves around
+        //transform.RotateAround(mainPlanetObj.transform.position, Vector3.back, movementSpeed / (mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject) * 0.2f) * Time.deltaTime);
     }
 }

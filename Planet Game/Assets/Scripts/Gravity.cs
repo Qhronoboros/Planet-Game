@@ -32,7 +32,7 @@ public class Gravity : MonoBehaviour
         gravity = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (gravity)
         {
