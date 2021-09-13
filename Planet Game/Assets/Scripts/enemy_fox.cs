@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemy_fox : MonoBehaviour
 {   
+    public Transform player;
     private float speed = 0.4f;
 
     // Start is called before the first frame update
@@ -14,11 +15,11 @@ public class enemy_fox : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
-        if(transform.position.z <= -10){
-            float RNG = Random.Range(-30f , 30f);
-            transform.position = new Vector3(RNG , 0 , 0);
-        }
+    {   transform.up = -(player.position - transform.position);
+        // transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+        // if(transform.position.z <= -10){
+        //     float RNG = Random.Range(-30f , 30f);
+        //     transform.position = new Vector3(RNG , 0 , 0);
+        // }
     }
 }
