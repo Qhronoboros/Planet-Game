@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float shootDelay = 0.2f;
     private int jumpCounter = 0;
     private Gravity gravity;
+    public float spinRotation = 20.0f;
 
     public float horizontalMovement = 0.0f;
     public float walkspeed = 10.0f;
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
             foreach (GameObject planet in GameManager.Instance.planets)
             {
-                float distance = planet.GetComponent<PlanetScript>().calcDistance(gameObject);
+                float distance = planet.GetComponent<PlanetScript>().calcDistance(gameObject, false);
                 if (distance < smallestDistance)
                 {
                     closestPlanet = planet;
@@ -115,7 +116,12 @@ public class PlayerController : MonoBehaviour
     public void RemovePlanet(GameObject planet)
     {
         gravity.planetsOrbiting.Remove(planet);
-        
+
+        if (planet == mainPlanetObj && gravity.planetsOrbiting.Count != 0)
+        {
+            ChangePlanet(gravity.planetsOrbiting[gravity.planetsOrbiting.Count - 1]);
+        }
+
         if (gravity.planetsOrbiting.Count == 0)
         {
             // Kill player
@@ -174,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
         if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) < 0.5f && value.canceled)
         {
-            GetComponent<Rigidbody2D>().AddForce(-(GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight, ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(-(GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
             Debug.Log(lastJoystickVector);
             Debug.Log("cancel");
         }
@@ -221,91 +227,41 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float distance = mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject);
+        // Calculate vertical velocity
+        float distance = mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject, false);
         float randomCalc = (Mathf.Sqrt(Mathf.Pow(distance, 2.0f) - Mathf.Pow(Mathf.Abs(horizontalMovement), 2.0f)) - distance)
-            * multiplyDownward * (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)) / walkspeed * 2;
+            * multiplyDownward * (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)) * (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)) / 20;
 
-        Debug.Log(randomCalc);
+        // Decrease vertical velocity when grounded
+        if (isGrounded)
+        {
+            randomCalc /= maxVelocityChange;
+        }
 
-        //Debug.Log(distance.ToString() + " " + Mathf.Sqrt(Mathf.Pow(distance, 2.0f) - Mathf.Pow(Mathf.Abs(horizontalMovement), 2.0f)).ToString() + " " + randomCalc.ToString());
-
-        // Calculate how fast we should be moving
+        // Calculate speed
         var targetVelocity = new Vector2(horizontalMovement, randomCalc);
         targetVelocity = transform.TransformDirection(targetVelocity);
         targetVelocity *= walkspeed;
-
-        //Debug.Log(targetVelocity);
 
         // Apply a force that attempts to reach our target velocity
         var velocity = GetComponent<Rigidbody2D>().velocity;
         var velocityChange = (targetVelocity - velocity);
         velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        //velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
         velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
         GetComponent<Rigidbody2D>().AddForce(velocityChange, ForceMode2D.Force);
 
         // Keeps the player's rotation consistent
-        transform.up = -(mainPlanetObj.transform.position - transform.position);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(mainPlanetObj.transform.position - transform.position), 2.0f * Time.deltaTime);
-        //Debug.Log(Quaternion.LookRotation(mainPlanetObj.transform.position - transform.position));
-
+        Vector3 relativePos = mainPlanetObj.transform.position - transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, -relativePos);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, spinRotation * 2 / mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject, true) * Time.deltaTime);
 
         // Shoot
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
         {
-            GameObject laser = Instantiate(projectilePrefab, transform.position, transform.rotation);
-            laser.GetComponent<ProjectileController>().planetObj = mainPlanetObj;
+            GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
+            laser.GetComponent<ProjectileController>().owner = gameObject;
 
             timeLastProjectile = Time.time;
         }
-
-        //// Makes the player fly, hold spacebar to fly higher
-        //if (holdFly && distance < 17.5f)
-        //{
-        //    GetComponent<Rigidbody2D>().AddForce(
-        //        Vector2.MoveTowards(transform.position, planet.transform.position, Time.deltaTime) * flySpeed / Mathf.Max((distance - 7.0f) / 2.0f, 1.0f) * Time.deltaTime,
-        //        ForceMode2D.Impulse);
-        //}
-
-        //if (currentMovement == MovementOptions.Left && movementSpeed > -maxMovementSpeed)
-        //{
-        //    movementSpeed -= accMovementSpeed * Time.deltaTime;
-        //}
-        //else if (currentMovement == MovementOptions.Right && movementSpeed < maxMovementSpeed)
-        //{
-        //    movementSpeed += accMovementSpeed * Time.deltaTime;
-        //}
-        //else
-        //{
-        //    if (movementSpeed > 0.1)
-        //    {
-        //        if (isGrounded)
-        //        {
-        //            movementSpeed -= decMovementSpeed * 4 * Time.deltaTime;
-        //        }
-        //        else
-        //        {
-        //            movementSpeed -= decMovementSpeed * Time.deltaTime;
-        //        }
-        //    }
-        //    else if (movementSpeed < -0.1f)
-        //    {
-        //        if (isGrounded)
-        //        {
-        //            movementSpeed += decMovementSpeed * 4 * Time.deltaTime;
-        //        }
-        //        else
-        //        {
-        //            movementSpeed += decMovementSpeed * Time.deltaTime;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        movementSpeed = 0;
-        //    }
-        //}
-
-        //// Move the player (Uses the planet to move around), the further the player is from the planet, the slower the player moves around
-        //transform.RotateAround(mainPlanetObj.transform.position, Vector3.back, movementSpeed / (mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject) * 0.2f) * Time.deltaTime);
     }
 }

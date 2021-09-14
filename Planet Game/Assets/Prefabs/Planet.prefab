@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3911482738302836391}
   - component: {fileID: 3911482738302836384}
   - component: {fileID: 3911482738302836388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Planet
   m_TagString: Planet
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 3
+  m_Constraints: 7
 --- !u!114 &3911482738302836388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 3e+14
+  warningBorder: {fileID: 0}
+  killBorder: {fileID: 0}
   warningBorderDistance: 120
   killBorderDistance: 40
   fullKillBorderDistance: 0
@@ -153,7 +155,7 @@ GameObject:
   - component: {fileID: 3911482738975503301}
   - component: {fileID: 3911482738975503306}
   - component: {fileID: 3911482738975503307}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Kill Border
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -266,7 +268,7 @@ GameObject:
   - component: {fileID: 3911482739372732362}
   - component: {fileID: 3911482739372732363}
   - component: {fileID: 3911482739372732360}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Warning Border
   m_TagString: Border
   m_Icon: {fileID: 0}

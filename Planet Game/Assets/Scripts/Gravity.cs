@@ -48,12 +48,12 @@ public class Gravity : MonoBehaviour
         }
         else
         {
-            float acceleration = (planetScript.fullKillBorderDistance - planetScript.calcDistance(gameObject));
-            // Pull object to planet
-            Vector3 pos = Vector2.MoveTowards(transform.position, planetObj.transform.position, Time.deltaTime) * acceleration * Time.deltaTime;
+            //float acceleration = (planetScript.fullKillBorderDistance - planetScript.calcDistance(gameObject, false));
+            //// Pull object to planet
+            //Vector3 pos = Vector2.MoveTowards(transform.position, planetObj.transform.position, Time.deltaTime) * acceleration * Time.deltaTime;
 
-            // Applies reverse gravity
-            GetComponent<Rigidbody2D>().AddForce(pos, ForceMode2D.Force);
+            //// Applies reverse gravity
+            //GetComponent<Rigidbody2D>().AddForce(pos, ForceMode2D.Force);
         }
     }
 }

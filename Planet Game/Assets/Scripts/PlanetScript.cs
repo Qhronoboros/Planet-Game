@@ -39,8 +39,15 @@ public class PlanetScript : MonoBehaviour
     }
 
     // Calculate distance between planet and obj
-    public float calcDistance(GameObject obj)
+    public float calcDistance(GameObject obj, bool surface)
     {
-        return Vector2.Distance(obj.transform.position, transform.position);
+        if (surface)
+        {
+            return Vector2.Distance(obj.transform.position, transform.position) - planetRadius;
+        }
+        else
+        {
+            return Vector2.Distance(obj.transform.position, transform.position);
+        }
     }
 }

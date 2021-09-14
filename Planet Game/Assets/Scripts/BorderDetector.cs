@@ -15,14 +15,13 @@ public class BorderDetector : MonoBehaviour
     public GameObject tempGameOver;
     Vignette vignette;
     public float maxIntensity = 0.45f;
-    public float intensity = 0.0f;
+    public static float intensity = 0.0f;
     public static List<GameObject> borders = new List<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            GameManager.Instance.player.GetComponent<PlayerController>().ChangePlanet(parentInstance.gameObject);
             borders.Add(gameObject);
             Debug.Log("Player in border " + borders.Count);
         }
@@ -53,12 +52,13 @@ public class BorderDetector : MonoBehaviour
     private void Update()
     {
         if (borders.Count == 0 && !GameManager.playerDead && parentInstance.gameObject == GameManager.Instance.getPlayerPlanet())
-        {
-            Debug.Log("Here");
-            intensity = Mathf.Max((parentInstance.calcDistance(GameManager.Instance.player) - transform.localScale.x * 2) / parentInstance.killBorderDistance * maxIntensity, 0.1f);
-            Debug.Log((parentInstance.calcDistance(GameManager.Instance.player) - transform.localScale.x * 2) / parentInstance.killBorderDistance * maxIntensity);
+        {   // ((playerDistance - warningBorderDistance) / fullKillBorderDistance) * maxIntensity
+            Debug.Log(parentInstance.calcDistance(GameManager.Instance.player, false).ToString() + " " + (parentInstance.warningBorderDistance / 2).ToString() + " " + (parentInstance.killBorderDistance / 2).ToString() + " " + maxIntensity.ToString());
+            intensity = Mathf.Min(Mathf.Max((parentInstance.calcDistance(GameManager.Instance.player, false) - (parentInstance.warningBorderDistance/2)) / (parentInstance.killBorderDistance/2) * maxIntensity, 0.1f), maxIntensity);
+            //Debug.Log(Mathf.Min(Mathf.Max((parentInstance.calcDistance(GameManager.Instance.player, false) - (parentInstance.warningBorderDistance/2)) / (parentInstance.killBorderDistance/2) * maxIntensity, 0.1f), maxIntensity));
+            //Debug.Log((parentInstance.calcDistance(GameManager.Instance.player, false) - (parentInstance.warningBorderDistance/2))/ (parentInstance.killBorderDistance / 2));
         }
-        else if (borders.Count != 0 && !GameManager.playerDead)
+        else if (borders.Count != 0 && !GameManager.playerDead && parentInstance.gameObject == GameManager.Instance.getPlayerPlanet())
         {
             intensity = 0;
         }

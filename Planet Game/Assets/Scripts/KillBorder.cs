@@ -10,6 +10,7 @@ public class KillBorder : MonoBehaviour
         if (collision.tag == "Player")
         {
             GameManager.Instance.player.GetComponent<PlayerController>().AddPlanet(parentInstance.gameObject);
+            GameManager.Instance.player.GetComponent<PlayerController>().ChangePlanet(parentInstance.gameObject);
         }
     }
 

@@ -42,11 +42,16 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (planetScript.calcDistance(GameManager.Instance.player) - planetScript.planetRadius >= playerCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlayerView)
+        if (cameraState == CameraStates.PlanetView)
+        {
+            VCamPlayer.transform.rotation = transform.rotation;
+        }
+
+        if (planetScript.calcDistance(GameManager.Instance.player, true) >= playerCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlayerView)
         {
             TransitionPlayer();
         }
-        else if (planetScript.calcDistance(GameManager.Instance.player) - planetScript.planetRadius < planetCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlanetView)
+        else if (planetScript.calcDistance(GameManager.Instance.player, true) < planetCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlanetView)
         {
             TransitionPlanet();
         }
@@ -68,7 +73,6 @@ public class CameraController : MonoBehaviour
 
     public void TransitionPlayer()
     {
-        VCamPlayer.transform.rotation = VCamPlanet.transform.rotation;
         VCamPlanet.Priority = 0;
         VCamPlayer.Priority = 1;
         VCamBorder.Priority = 0;
