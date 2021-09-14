@@ -21,7 +21,17 @@ public class enemy_fox : MonoBehaviour
     void Update()
     {   
         transform.up = -(player.position - transform.position);
-        target = new Vector2(player.position.x, player.position.y + 10);
+        float x_distance = Mathf.Tan(player.rotation.eulerAngles.z) * 10 ;
+        Debug.Log(player.rotation.eulerAngles.z);
+        if( player.rotation.eulerAngles.z >= 180 && player.rotation.eulerAngles.z < 360){
+            target = new Vector2((player.position.x + x_distance), player.position.y + 10);
+        }else if( player.rotation.eulerAngles.z >= 0 && player.rotation.eulerAngles.z < 180 ){
+            // float x_distance = Mathf.Tan(half) * 10 ;
+            // Debug.Log(x_distance+"saddasdasdasdasdasdasd");
+            target = new Vector2((player.position.x - x_distance), player.position.y + 10);
+        }
+
+
         // if (Vector2.Distance(player.position,transform.position)< 10){
         //     Vector3 up = new Vector3(player.position.x,1.0f,player.position.z);
         //     this.transform.Translate( up * speed * Time.deltaTime);
@@ -33,6 +43,8 @@ public class enemy_fox : MonoBehaviour
 
         // move sprite towards the target location
         transform.position = Vector2.MoveTowards(transform.position, target, step);
+        
+
         // float d = Vector2.Distance(player.position,transform.position);
         // transform.RotateAround(player.position, Vector3.back, speed / (d * 0.2f) * Time.deltaTime);
 
