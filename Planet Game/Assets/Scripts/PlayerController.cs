@@ -246,6 +246,9 @@ public class PlayerController : MonoBehaviour
 
         // Keeps the player's rotation consistent
         transform.up = -(mainPlanetObj.transform.position - transform.position);
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(mainPlanetObj.transform.position - transform.position), 2.0f * Time.deltaTime);
+        //Debug.Log(Quaternion.LookRotation(mainPlanetObj.transform.position - transform.position));
+
 
         // Shoot
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
