@@ -18,15 +18,22 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision){
-        
-        float temp_score = GameManager.Instance.getScore();
-        temp_score+=100;
-        GameManager.Instance.setScore(temp_score);
-        if(collision.gameObject.tag == "Asteroid"){
+    private void OnTriggerEnter2D(Collider2D other){
+        if (other.gameObject.tag == "Asteroid")
+        {
+            float temp_score = GameManager.Instance.getScore();
+            temp_score += 100;
+            GameManager.Instance.setScore(temp_score);
             Destroy(this.gameObject);
         }
-
+        else if (other.gameObject.tag == "Planet")
+        {
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void Update()
     {
