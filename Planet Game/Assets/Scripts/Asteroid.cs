@@ -42,23 +42,21 @@ public class Asteroid : MonoBehaviour
         Destroy(this.gameObject, this.max_lifetime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnHit()
     {
-        if (other.gameObject.tag == "Bullet")
+        //if can split in 2 then split
+        if ((this.a_size * 0.5) > this.a_min_size)
         {
-            //if can split in 2 then split
-            if ((this.a_size * 0.5) > this.a_min_size)
-            {
-                create_split();
-                create_split();
-            }
-            Destroy(this.gameObject);
+            create_split();
+            create_split();
         }
+        Destroy(this.gameObject);
     }
 
     //collision with objects
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Player"){
+            collision.gameObject.GetComponent<PlayerController>().OnHit();
             Destroy(this.gameObject);
         }
         else if(collision.gameObject.tag == "Planet"){

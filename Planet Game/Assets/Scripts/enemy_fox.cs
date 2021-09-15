@@ -12,16 +12,25 @@ public class enemy_fox : MonoBehaviour
     private Vector2 initial_position;
     public int life = 6;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Shooting
+    public GameObject projectilePrefab;
+    public float timeLastProjectile = 0.0f;
+    public float shootDelay = 3.0f;
+    public float shootDelayBurst = 0.4f;
+
+    // On hit bullet
+    public void OnHit()
     {
-        if (collision.tag == "Bullet")
+        life -= 1;
+        if (life == 0)
         {
-            life-=1;
-            if(life == 0){
-                Destroy(this.gameObject);
-            }
+            float temp_score = GameManager.Instance.getScore();
+            temp_score += 500;
+            GameManager.Instance.setScore(temp_score);
+            Destroy(this.gameObject);
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,16 +55,34 @@ public class enemy_fox : MonoBehaviour
             // move sprite towards the target location
             transform.position = Vector2.MoveTowards(transform.position, target, step);
             if(player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03){
-                // ####todo = shoot 
+                if (Time.time - timeLastProjectile > shootDelay)
+                {
+                    timeLastProjectile = Time.time;
+                    StartCoroutine(Shooting());
+                }
                 // Debug.Log("shooooooooooooooooooot");
                 int x = 1;
             }else{
                 // Debug.Log("not shooooooting");
                 int x = 1;
             }
-        }else{
+        }
+        else{
             float step = speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
+        }
+    }
+
+
+    IEnumerator Shooting()
+    {
+        for (int i=0; i < 3; i++)
+        {
+            GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
+            laser.GetComponent<ProjectileController>().owner = gameObject;
+            laser.GetComponent<ProjectileController>().aimDirection = Vector2.down;
+
+            yield return new WaitForSeconds(shootDelayBurst);
         }
     }
 }

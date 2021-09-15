@@ -216,13 +216,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             UpdateJumpCounter(0);
         }
-        else if (collision.gameObject.tag == "Asteroid")
-        {
-            int temp_life = GameManager.Instance.get_life();
-            temp_life-=1;
-            GameManager.Instance.set_life(temp_life);
-        }
-
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -231,6 +224,14 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    // On hit bullet/asteroid
+    public void OnHit()
+    {
+        int temp_life = GameManager.Instance.get_life();
+        temp_life -= 1;
+        GameManager.Instance.set_life(temp_life);
     }
 
 
@@ -275,6 +276,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
             laser.GetComponent<ProjectileController>().owner = gameObject;
+            laser.GetComponent<ProjectileController>().aimDirection = Vector2.up;
 
             timeLastProjectile = Time.time;
         }
