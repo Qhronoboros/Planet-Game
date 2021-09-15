@@ -26,6 +26,7 @@ public class enemy_fox : MonoBehaviour
     void Start()
     {
         initial_position = transform.position;
+        player = GameManager.Instance.player.transform;
     }
 
     // Update is called once per frame

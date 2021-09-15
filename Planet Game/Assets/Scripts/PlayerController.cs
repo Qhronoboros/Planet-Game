@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject mainPlanetObj;
     public GameObject projectilePrefab;
+    public Text jumpCounterText;
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
     public float accMovementSpeed = 10.0f;
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Reset Static Variables
-    private void Awake()
+    private void Start()
     {
         currentMovement = MovementOptions.Default;
         isGrounded = false;
@@ -84,6 +86,8 @@ public class PlayerController : MonoBehaviour
         // Give gravity script to self
         gravity = gameObject.AddComponent<Gravity>();
         gravity.assignPlanet(mainPlanetObj);
+
+        UpdateJumpCounter(0);
     }
 
     //public void OnFly(InputAction.CallbackContext value)
@@ -145,7 +149,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Jump");
                 GetComponent<Rigidbody2D>().AddForce(-(mainPlanetObj.transform.position - transform.position) * doubleJumpHeight, ForceMode2D.Impulse);
             }
-            jumpCounter += 1;
+            UpdateJumpCounter(jumpCounter + 1);
         }
     }
 
@@ -181,10 +185,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // joystick release
-        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) < 0.5f && value.canceled)
+        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) < 0.5f && value.canceled && lastJoystickVector != new Vector2(0, 0))
         {
             GetComponent<Rigidbody2D>().AddForce(-(GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
-            jumpCounter += 1;
+            UpdateJumpCounter(jumpCounter+1);
         }
 
         // joysting moving
@@ -210,7 +214,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Planet")
         {
             isGrounded = true;
-            jumpCounter = 0;
+            UpdateJumpCounter(0);
         }
         else if (collision.gameObject.tag == "Asteroid")
         {
@@ -227,6 +231,13 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+
+    public void UpdateJumpCounter(int value)
+    {
+        jumpCounter = value;
+        jumpCounterText.text = (jumpLimit - value).ToString();
     }
 
     private void FixedUpdate()
