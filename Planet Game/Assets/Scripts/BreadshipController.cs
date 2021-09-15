@@ -66,7 +66,7 @@ public class BreadshipController : MonoBehaviour
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position, transform.rotation);
-            laser.GetComponent<ProjectileController>().owner = planetObj;
+            laser.GetComponent<ProjectileController>().owner = planetObj.tag;
 
             timeLastProjectile = Time.time;
         }

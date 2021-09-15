@@ -275,7 +275,7 @@ public class PlayerController : MonoBehaviour
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
-            laser.GetComponent<ProjectileController>().owner = gameObject;
+            laser.GetComponent<ProjectileController>().owner = gameObject.tag;
             laser.GetComponent<ProjectileController>().aimDirection = Vector2.up;
 
             timeLastProjectile = Time.time;

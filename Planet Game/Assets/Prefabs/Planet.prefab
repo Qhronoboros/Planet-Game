@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3911482738302836391}
   - component: {fileID: 3911482738302836384}
   - component: {fileID: 3911482738302836388}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Planet
   m_TagString: Planet
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a563d1c08d436184f9afc8013ea66df8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb860b38153cf5b4e93150bf1f8dd745, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 3911482738975503301}
   - component: {fileID: 3911482738975503306}
   - component: {fileID: 3911482738975503307}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Kill Border
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 3911482739372732362}
   - component: {fileID: 3911482739372732363}
   - component: {fileID: 3911482739372732360}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Warning Border
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -373,5 +373,3 @@ MonoBehaviour:
   gameControls: {fileID: 0}
   warning: {fileID: 0}
   tempGameOver: {fileID: 0}
-  maxIntensity: 0.45
-  intensity: 0

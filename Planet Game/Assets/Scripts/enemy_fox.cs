@@ -24,13 +24,9 @@ public class enemy_fox : MonoBehaviour
     // On hit bullet
     public void OnHit()
     {
-        life -= 1;
-        if (life == 0)
-        {
-            life-=1;
-            if(life == 0){
-                destroy_self();
-            }
+        life-=1;
+        if(life == 0){
+            destroy_self();
         }
     }
 
@@ -93,7 +89,7 @@ public class enemy_fox : MonoBehaviour
         for (int i=0; i < 3; i++)
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
-            laser.GetComponent<ProjectileController>().owner = gameObject;
+            laser.GetComponent<ProjectileController>().owner = gameObject.tag;
             laser.GetComponent<ProjectileController>().aimDirection = Vector2.down;
 
             yield return new WaitForSeconds(shootDelayBurst);

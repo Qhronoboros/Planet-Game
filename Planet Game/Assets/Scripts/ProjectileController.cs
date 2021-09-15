@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    public GameObject owner;
+    public string owner;
     public Vector2 aimDirection = new Vector2(0, 0);
     public float lifeTime = 30.0f;
     public float speed = 0.3f;
@@ -20,6 +20,7 @@ public class ProjectileController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
+        Debug.Log(other);
         if (other.tag == "Asteroid")
         {
             float temp_score = GameManager.Instance.getScore();
@@ -33,12 +34,12 @@ public class ProjectileController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Enemy" && owner.tag != "Enemy")
+        else if (other.tag == "Enemy" && owner != "Enemy")
         {
             other.GetComponent<enemy_fox>().OnHit();
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Player" && owner.tag != "Player")
+        else if (other.tag == "Player" && owner != "Player")
         {
             other.GetComponent<PlayerController>().OnHit();
             Destroy(this.gameObject);

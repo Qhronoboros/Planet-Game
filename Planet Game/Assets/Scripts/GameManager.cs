@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
     public GameObject tempGameOver;
     public GameObject temp_stage_clear;
     public static bool playerDead = false;
+    // Stage Clear
+    public bool stageClear = false;
+    public string nextStage = "stage2 Testing";
     // Vignette
     public float maxIntensity = 0.45f;
 
@@ -112,7 +115,7 @@ public class GameManager : MonoBehaviour
     }
     //stage clear
     public void stage_clear(){
-
+        stageClear = true;
         playerInput.SwitchCurrentActionMap("EmptyMap");
         gameControls.SetActive(false);
         temp_stage_clear.SetActive(true);
@@ -144,13 +147,15 @@ public class GameManager : MonoBehaviour
     }
     //
     public void game_over(){
-        //freeze_game();
-        playerDead = true;
-        Debug.Log("Death");
-        player.GetComponent<Gravity>().gravity = false;
-        playerInput.SwitchCurrentActionMap("EmptyMap");
-        gameControls.SetActive(false);
-        tempGameOver.SetActive(true);
+        if (!stageClear)
+        {
+            playerDead = true;
+            Debug.Log("Death");
+            player.GetComponent<Gravity>().gravity = false;
+            playerInput.SwitchCurrentActionMap("EmptyMap");
+            gameControls.SetActive(false);
+            tempGameOver.SetActive(true);
+        }
     }
     //public void freeze_game(){
     //    Time.timeScale = 0f;

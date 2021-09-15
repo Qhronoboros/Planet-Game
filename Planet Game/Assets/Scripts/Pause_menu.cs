@@ -20,4 +20,8 @@ public class Pause_menu : MonoBehaviour
     public void Quit(){
         Application.Quit(); 
     }
+    public void GoToNextStage()
+    {
+        SceneManager.LoadSceneAsync(GameManager.Instance.nextStage, LoadSceneMode.Single);
+    }
 }

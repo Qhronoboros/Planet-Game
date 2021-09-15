@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3088420086769907036}
   - component: {fileID: 3088420086769907039}
   m_Layer: 12
-  m_Name: Enemy
+  m_Name: Enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3088420086769907038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.2, y: 24.6, z: 0}
+  m_LocalPosition: {x: -81.3, y: 36.8, z: 46.825386}
   m_LocalScale: {x: 2.5, y: 2.5, z: 0}
   m_Children:
   - {fileID: 3088420087983358791}
@@ -456,12 +456,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  item_prefab: {fileID: 534356341109993635, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
   follow: 0
   life: 5
+  item_id: 0
   projectilePrefab: {fileID: 3996525464930748556, guid: 6373457e824149b4aa2cb97ac5c825a2, type: 3}
   timeLastProjectile: 0
-  shootDelay: 1.5
-  shootDelayBurst: 0.2
+  shootDelay: 3
+  shootDelayBurst: 0.5
 --- !u!1 &3088420087983358790
 GameObject:
   m_ObjectHideFlags: 0
