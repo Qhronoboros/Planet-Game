@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameControls;
     public GameObject tempGameOver;
     public static bool playerDead = false;
+    // Vignette
+    public float maxIntensity = 0.45f;
 
 
     private void Awake(){

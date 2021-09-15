@@ -33,11 +33,6 @@ public class CameraController : MonoBehaviour
 
         planetCamDistance = planetScript.planetRadius;
         playerCamDistance = planetScript.planetRadius + 1.0f;
-
-        VCamPlanet.gameObject.GetComponent<CinemachineCameraOffset>().m_Offset = new Vector3(0, planetScript.planetRadius + 5, -10);
-        VCamPlanet.gameObject.GetComponent<CinemachineTargetGroup>().m_Targets[0].target = planetScript.gameObject.transform;
-
-        VCamPlanet.m_Lens.OrthographicSize = planetScript.planetRadius + 5;
     }
 
     private void Update()
@@ -65,6 +60,11 @@ public class CameraController : MonoBehaviour
 
     public void TransitionPlanet()
     {
+        VCamPlanet.gameObject.GetComponent<CinemachineCameraOffset>().m_Offset = new Vector3(0, planetScript.planetRadius + 5, -10);
+        VCamPlanet.gameObject.GetComponent<CinemachineTargetGroup>().m_Targets[0].target = planetScript.gameObject.transform;
+
+        VCamPlanet.m_Lens.OrthographicSize = planetScript.planetRadius + 5;
+
         VCamPlanet.Priority = 1;
         VCamPlayer.Priority = 0;
         VCamBorder.Priority = 0;

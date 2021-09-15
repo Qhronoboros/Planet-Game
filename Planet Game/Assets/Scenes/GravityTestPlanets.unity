@@ -736,6 +736,7 @@ MonoBehaviour:
   playerInput: {fileID: 1982491146}
   gameControls: {fileID: 799246881}
   tempGameOver: {fileID: 919708164}
+  maxIntensity: 0.45
 --- !u!4 &442248889
 Transform:
   m_ObjectHideFlags: 0
@@ -1432,6 +1433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 744723655}
   - component: {fileID: 744723654}
+  - component: {fileID: 744723656}
   m_Layer: 0
   m_Name: Warning
   m_TagString: Untagged
@@ -1470,6 +1472,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &744723656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744723653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b9b1880d9b7a04a8adea060a2f5348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &758118935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,7 +2114,7 @@ GameObject:
   - component: {fileID: 1090560783}
   - component: {fileID: 1090560782}
   m_Layer: 5
-  m_Name: Joystick
+  m_Name: Joystick Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2122,7 +2136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -810, y: -315}
+  m_AnchoredPosition: {x: -750, y: -250}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090560782
@@ -2480,7 +2494,7 @@ GameObject:
   - component: {fileID: 1257798071}
   - component: {fileID: 1257798070}
   m_Layer: 5
-  m_Name: Circle
+  m_Name: Joystick Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2502,7 +2516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: -160}
+  m_AnchoredPosition: {x: 610, y: -200}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1257798070
@@ -3198,7 +3212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 510, y: -365}
+  m_AnchoredPosition: {x: 530, y: -365}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564353008
@@ -4042,6 +4056,8 @@ MonoBehaviour:
   doubleJumpHeight: 1.5
   flySpeed: 5
   shootDelay: 0.2
+  jumpLimit: 3
+  gravity: {fileID: 0}
   spinRotation: 20
   horizontalMovement: 0
   walkspeed: 100
@@ -4179,7 +4195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2033327636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4629,7 +4645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 685, y: -340}
+  m_AnchoredPosition: {x: 720, y: -340}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2096690791

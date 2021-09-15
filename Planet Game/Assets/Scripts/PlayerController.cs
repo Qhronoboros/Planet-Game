@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public float flySpeed = 5.0f;
     public float shootDelay = 0.2f;
     private int jumpCounter = 0;
-    private Gravity gravity;
+    public int jumpLimit = 3;
+    public Gravity gravity;
     public float spinRotation = 20.0f;
 
     public float horizontalMovement = 0.0f;
@@ -105,11 +106,12 @@ public class PlayerController : MonoBehaviour
         gravity.assignPlanet(planet);
         GameManager.Instance.setPlayerPlanet(planet);
         GameManager.Instance.cameraController.UpdateCameraSettings(planet);
-        Debug.Log("Done changing planet");
+        Debug.Log("Changed mainPlanet");
     }
 
     public void AddPlanet(GameObject planet)
     {
+
         gravity.planetsOrbiting.Add(planet);
     }
 
@@ -172,20 +174,21 @@ public class PlayerController : MonoBehaviour
     public void OnJumping(InputAction.CallbackContext value)
     {
         Vector2 joystickMovement = value.ReadValue<Vector2>();
+        // joystick start moving
         if (value.started)
         {
             lastJoystickVector = new Vector2(0, 0);
-            Debug.Log("start");
         }
 
+        // joystick release
         if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) < 0.5f && value.canceled)
         {
             GetComponent<Rigidbody2D>().AddForce(-(GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
-            Debug.Log(lastJoystickVector);
-            Debug.Log("cancel");
+            jumpCounter += 1;
         }
 
-        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) > 0.5f)
+        // joysting moving
+        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) > 0.5f && jumpCounter < jumpLimit)
         {
             lastJoystickVector = joystickMovement;
         }
