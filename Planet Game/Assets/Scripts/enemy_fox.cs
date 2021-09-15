@@ -5,12 +5,15 @@ using UnityEngine;
 public class enemy_fox : MonoBehaviour
 {   
     public Transform player;
-    private float speed = 6;
+    public GameObject item_prefab;
+    private float speed = 8;
     private Vector2 target;
     private Vector2 position;
     public bool follow = false;
     private Vector2 initial_position;
     public int life = 6;
+    public int item_id = 1;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,9 +21,15 @@ public class enemy_fox : MonoBehaviour
         {
             life-=1;
             if(life == 0){
-                Destroy(this.gameObject);
+                destroy_self();
             }
         }
+    }
+    public void destroy_self(){
+        if(item_id == 1){
+            Instantiate(item_prefab,this.transform.position,this.transform.rotation);
+        }
+        Destroy(this.gameObject);
     }
     // Start is called before the first frame update
     void Start()

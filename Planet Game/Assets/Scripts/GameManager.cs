@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public GameObject special_child;
     private Text UI_special_text;
     private float special = 0;
-    private float max_special = 0;
+    public float max_special = 5;
     //life
     private int life = 3;
     private int max_life = 3;
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     public PlayerInput playerInput;
     public GameObject gameControls;
     public GameObject tempGameOver;
+    public GameObject temp_stage_clear;
     public static bool playerDead = false;
     // Vignette
     public float maxIntensity = 0.45f;
@@ -98,13 +99,23 @@ public class GameManager : MonoBehaviour
     public void set_special(float special_obj){
         this.special = special_obj;
         UI_special_text.text = this.special.ToString() + "/" + this.max_special.ToString();
+        if(this.special == this.max_special){
+            stage_clear();
+        }
     }
     public float get_special(){
         return this.special;
     }
     public float get_max_special(){
-        max_special = special_child.transform.childCount;
+        // max_special = special_child.transform.childCount;
         return max_special;
+    }
+    //stage clear
+    public void stage_clear(){
+
+        playerInput.SwitchCurrentActionMap("EmptyMap");
+        gameControls.SetActive(false);
+        temp_stage_clear.SetActive(true);
     }
 
     // life
