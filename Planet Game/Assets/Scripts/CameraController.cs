@@ -5,12 +5,13 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
+    private PlanetScript planetScript;
     public CameraStates cameraState = CameraStates.PlanetView;
     public Cinemachine.CinemachineVirtualCamera VCamPlanet;
     public Cinemachine.CinemachineVirtualCamera VCamPlayer;
     public Cinemachine.CinemachineVirtualCamera VCamBorder;
-    public float planetCamDistance = 20.0f;
-    public float playerCamDistance = 22.5f;
+    public float planetCamDistance;
+    public float playerCamDistance;
 
     // Enums for the 2 camera states
     public enum CameraStates
@@ -20,13 +21,32 @@ public class CameraController : MonoBehaviour
         BorderView
     }
 
+    private void Start()
+    {
+        UpdateCameraSettings(GameManager.Instance.getPlayerPlanet());
+    }
+
+    // Update camera settings according to planet
+    public void UpdateCameraSettings(GameObject planetObj)
+    {
+        planetScript = planetObj.GetComponent<PlanetScript>();
+
+        planetCamDistance = planetScript.planetRadius;
+        playerCamDistance = planetScript.planetRadius + 1.0f;
+    }
+
     private void Update()
     {
-        if (PlayerController.distance >= playerCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlayerView)
+        if (cameraState == CameraStates.PlanetView)
+        {
+            VCamPlayer.transform.rotation = transform.rotation;
+        }
+
+        if (planetScript.calcDistance(GameManager.Instance.player, true) >= playerCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlayerView)
         {
             TransitionPlayer();
         }
-        else if (PlayerController.distance < planetCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlanetView)
+        else if (planetScript.calcDistance(GameManager.Instance.player, true) < planetCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlanetView)
         {
             TransitionPlanet();
         }
@@ -40,6 +60,11 @@ public class CameraController : MonoBehaviour
 
     public void TransitionPlanet()
     {
+        VCamPlanet.gameObject.GetComponent<CinemachineCameraOffset>().m_Offset = new Vector3(0, planetScript.planetRadius + 5, -10);
+        VCamPlanet.gameObject.GetComponent<CinemachineTargetGroup>().m_Targets[0].target = planetScript.gameObject.transform;
+
+        VCamPlanet.m_Lens.OrthographicSize = planetScript.planetRadius + 5;
+
         VCamPlanet.Priority = 1;
         VCamPlayer.Priority = 0;
         VCamBorder.Priority = 0;

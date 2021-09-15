@@ -7,24 +7,21 @@ using UnityEngine.InputSystem;
 
 public class BorderDetector : MonoBehaviour
 {
-    public GameManager gameManager;
+    public PlanetScript parentInstance;
+
     public PlayerInput playerInput;
     public GameObject gameControls;
     public GameObject warning;
     public GameObject tempGameOver;
     Vignette vignette;
-    public float maxIntensity = 0.45f;
-    public float intensity = 0.0f;
-    public float killBorderDistance = 20.0f;
-    public static float fullKillBorderDistance;
-    public static bool playerInBorder = true;
+    public static float intensity = 0.0f;
+    public static List<GameObject> borders = new List<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            playerInBorder = true;
-            Debug.Log("Player in border");
+            borders.Add(gameObject);
         }
     }
 
@@ -32,20 +29,15 @@ public class BorderDetector : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            playerInBorder = false;
-            Debug.Log("Player outside border");
+            borders.Remove(gameObject);
         }
     }
 
     // Reset Static Variables
     private void Awake()
     {
-        fullKillBorderDistance = transform.localScale.x + killBorderDistance;
-        playerInBorder = true;
-    }
+        warning = GameManager.Instance.warning;
 
-    private void Start()
-    {
         Vignette tmp;
         if (warning.GetComponent<Volume>().profile.TryGet(out tmp))
         {
@@ -53,17 +45,23 @@ public class BorderDetector : MonoBehaviour
         }
     }
 
+    // Gives the vignette effect
     private void Update()
     {
-        if (!playerInBorder && !GameManager.playerDead)
+        if (borders.Count == 0 && !GameManager.playerDead && parentInstance.gameObject == GameManager.Instance.getPlayerPlanet())
         {
-            intensity = Mathf.Max((PlayerController.distance - transform.localScale.x/2) / killBorderDistance * maxIntensity, 0.1f);
-            vignette.intensity.value = intensity;
-            if (PlayerController.distance > transform.localScale.x/2 + killBorderDistance)
-            {
-                //Kill player
-                gameManager.set_life(0);
-            }
+            intensity = VignetteWarning.calcIntensity(GameManager.Instance.player.GetComponent<PlayerController>().gravity.planetsOrbiting);
         }
+        else if (borders.Count != 0 && !GameManager.playerDead && parentInstance.gameObject == GameManager.Instance.getPlayerPlanet())
+        {
+            intensity = 0;
+        }
+        vignette.intensity.value = intensity;
+    }
+
+    public float calcIntensityPlanet()
+    {
+        return Mathf.Min(Mathf.Max((parentInstance.calcDistance(GameManager.Instance.player, false) - (parentInstance.warningBorderDistance / 2)) 
+            / (parentInstance.killBorderDistance / 2) * GameManager.Instance.maxIntensity, 0.1f), GameManager.Instance.maxIntensity);
     }
 }
