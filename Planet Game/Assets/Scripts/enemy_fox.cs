@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class enemy_fox : MonoBehaviour
 {   
+    //healthbar
+    public GameObject health_bar;
     public Transform player;
     public GameObject item_prefab;
     private float speed = 8;
@@ -11,7 +13,8 @@ public class enemy_fox : MonoBehaviour
     private Vector2 position;
     public bool follow = false;
     private Vector2 initial_position;
-    public int life = 6;
+    public int health ;
+    public int max_health = 6;
     public int item_id = 1;
 
 
@@ -21,14 +24,18 @@ public class enemy_fox : MonoBehaviour
     public float shootDelay = 3.0f;
     public float shootDelayBurst = 0.4f;
 
+
     // On hit bullet
     public void OnHit()
     {
-        life-=1;
-        if(life == 0){
+        health-=1;
+        health_bar.GetComponent<enemy_healthbar>().set_health_text( health.ToString() + "/" + max_health.ToString());
+        health_bar.GetComponent<enemy_healthbar>().set_health(health);
+        if(health == 0){
             destroy_self();
         }
     }
+
 
     public void destroy_self(){
         float temp_score = GameManager.Instance.getScore();
@@ -46,6 +53,9 @@ public class enemy_fox : MonoBehaviour
     {
         initial_position = transform.position;
         player = GameManager.Instance.player.transform;
+        health = max_health;
+        health_bar.GetComponent<enemy_healthbar>().set_max_health(max_health);
+        health_bar.GetComponent<enemy_healthbar>().set_health_text( health.ToString() + "/" + max_health.ToString());
     }
 
     // Update is called once per frame
