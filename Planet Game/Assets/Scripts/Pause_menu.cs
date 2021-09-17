@@ -12,6 +12,7 @@ public class Pause_menu : MonoBehaviour
         //pause_ui.SetActive(true);
         Time.timeScale = 0f;
     }
+    // Also restart after Game Over
     public void Reload(){
         Resume();
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
@@ -23,5 +24,19 @@ public class Pause_menu : MonoBehaviour
     public void GoToNextStage()
     {
         SceneManager.LoadSceneAsync(GameManager.Instance.nextStage, LoadSceneMode.Single);
+    }
+
+    public void RestartNormal()
+    {
+        GameManager.playerDead = false;
+        GameManager.Instance.player.GetComponent<Gravity>().gravity = true;
+        GameManager.Instance.playerInput.SwitchCurrentActionMap("PlayerControls");
+        GameManager.Instance.gameControls.SetActive(true);
+        GameManager.Instance.deadObj.SetActive(false);
+
+        BorderDetector.borders = new List<GameObject>();
+
+        Destroy(GameManager.Instance.player);
+        GameManager.Instance.player = Instantiate(GameManager.Instance.playerPref);
     }
 }

@@ -51,35 +51,43 @@ public class enemy_fox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        transform.up = -(player.position - transform.position);
-        if (follow){
-            
-            float degree_to_radians = player.rotation.eulerAngles.z * (Mathf.PI / 180);
-            float y_distance = Mathf.Cos(degree_to_radians)* 10 ;
-            float x_distance = Mathf.Sin(degree_to_radians)* 10 ;
-            // Debug.Log("rot " + player.rotation.eulerAngles.z + " xdistance :" + x_distance + " ydistance :" + y_distance);
+        if (!GameManager.playerDead)
+        {
+            transform.up = -(player.position - transform.position);
+            if (follow)
+            {
 
-            target = new Vector2((player.position.x - x_distance), (player.position.y + y_distance));
-            float step = speed * Time.deltaTime;
+                float degree_to_radians = player.rotation.eulerAngles.z * (Mathf.PI / 180);
+                float y_distance = Mathf.Cos(degree_to_radians) * 10;
+                float x_distance = Mathf.Sin(degree_to_radians) * 10;
+                // Debug.Log("rot " + player.rotation.eulerAngles.z + " xdistance :" + x_distance + " ydistance :" + y_distance);
 
-            // move sprite towards the target location
-            transform.position = Vector2.MoveTowards(transform.position, target, step);
-            if(player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03){
-                if (Time.time - timeLastProjectile > shootDelay)
+                target = new Vector2((player.position.x - x_distance), (player.position.y + y_distance));
+                float step = speed * Time.deltaTime;
+
+                // move sprite towards the target location
+                transform.position = Vector2.MoveTowards(transform.position, target, step);
+                if (player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
                 {
-                    timeLastProjectile = Time.time;
-                    StartCoroutine(Shooting());
+                    if (Time.time - timeLastProjectile > shootDelay)
+                    {
+                        timeLastProjectile = Time.time;
+                        StartCoroutine(Shooting());
+                    }
+                    // Debug.Log("shooooooooooooooooooot");
+                    int x = 1;
                 }
-                // Debug.Log("shooooooooooooooooooot");
-                int x = 1;
-            }else{
-                // Debug.Log("not shooooooting");
-                int x = 1;
+                else
+                {
+                    // Debug.Log("not shooooooting");
+                    int x = 1;
+                }
             }
-        }
-        else{
-            float step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
+            else
+            {
+                float step = speed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
+            }
         }
     }
 

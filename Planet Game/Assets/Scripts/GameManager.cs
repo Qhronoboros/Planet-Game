@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     // Important GameObjects
     public GameObject player;
+    public GameObject playerPref;
     public GameObject playerPlanet;
     public List<GameObject> planets;
     public CameraController cameraController;
@@ -40,8 +41,9 @@ public class GameManager : MonoBehaviour
     private float special = 0;
     public float max_special = 5;
     // Lifes
-    private int lifes = 2;
+    public GameObject deadObj;
     public Text lifeText;
+    private int lifes = 2;
     // Health Points
     private int health = 3;
     private int maxHealth = 3;
@@ -142,7 +144,8 @@ public class GameManager : MonoBehaviour
         }
 
         if(health == 0){
-            game_over();
+            SetLifes(lifes - 1);
+            //game_over();
         }
     }
     public int get_life(){
@@ -152,11 +155,7 @@ public class GameManager : MonoBehaviour
     // Lifes
     public void SetLifes(int value)
     {
-        bool loseLife = false;
-        if (value < lifes)
-        {
-            loseLife = true;
-        }
+        bool loseLife = value < lifes;
 
         lifes = value;
         lifeText.text = value.ToString();
@@ -164,9 +163,21 @@ public class GameManager : MonoBehaviour
         if (lifes <= 0)
         {
             // Completely die
+            playerDead = true;
+            Debug.Log("Game Over");
+            player.GetComponent<Gravity>().gravity = false;
+            playerInput.SwitchCurrentActionMap("EmptyMap");
+            gameControls.SetActive(false);
+            tempGameOver.SetActive(true);
         }
         else if (loseLife)
         {
+            playerDead = true;
+            Debug.Log("Death");
+            player.GetComponent<Gravity>().gravity = false;
+            playerInput.SwitchCurrentActionMap("EmptyMap");
+            gameControls.SetActive(false);
+            deadObj.SetActive(true);
             // Restart
             // player receives invincibility after + invincibility animation
         }
@@ -177,15 +188,15 @@ public class GameManager : MonoBehaviour
         if (!stageClear)
         {
             SetLifes(lifes - 1);
-            playerDead = true;
-            Debug.Log("Death");
-            player.GetComponent<Gravity>().gravity = false;
-            playerInput.SwitchCurrentActionMap("EmptyMap");
-            gameControls.SetActive(false);
-            tempGameOver.SetActive(true);
+
         }
     }
     //public void freeze_game(){
     //    Time.timeScale = 0f;
     //}
+
+    public void restartLevel()
+    {
+        // Restart when not game over
+    }
 }
