@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.InputSystem;
 
 public class BorderDetector : MonoBehaviour
@@ -13,7 +11,6 @@ public class BorderDetector : MonoBehaviour
     public GameObject gameControls;
     public GameObject warning;
     public GameObject tempGameOver;
-    Vignette vignette;
     public static float intensity = 0.0f;
     public static List<GameObject> borders = new List<GameObject>();
 
@@ -38,11 +35,11 @@ public class BorderDetector : MonoBehaviour
     {
         warning = GameManager.Instance.warning;
 
-        Vignette tmp;
-        if (warning.GetComponent<Volume>().profile.TryGet(out tmp))
-        {
-            vignette = tmp;
-        }
+        //Vignette tmp;
+        //if (warning.GetComponent<Volume>().profile.TryGet(out tmp))
+        //{
+        //    vignette = tmp;
+        //}
     }
 
     // Gives the vignette effect
@@ -56,7 +53,7 @@ public class BorderDetector : MonoBehaviour
         {
             intensity = 0;
         }
-        vignette.intensity.value = intensity;
+        //vignette.intensity.value = intensity;
     }
 
     public float calcIntensityPlanet()

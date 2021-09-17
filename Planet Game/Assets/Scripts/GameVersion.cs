@@ -8,6 +8,6 @@ public class GameVersion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Text>().text =  "v" + Application.version;
+        GetComponent<Text>().text = Application.version + " Version";
     }
 }

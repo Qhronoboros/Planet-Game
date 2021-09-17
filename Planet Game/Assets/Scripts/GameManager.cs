@@ -39,9 +39,12 @@ public class GameManager : MonoBehaviour
     private Text UI_special_text;
     private float special = 0;
     public float max_special = 5;
-    //life
-    private int life = 3;
-    private int max_life = 3;
+    // Lifes
+    private int lifes = 2;
+    public Text lifeText;
+    // Health Points
+    private int health = 3;
+    private int maxHealth = 3;
     public Image[] hearts;
     public Sprite full_heart;
     public Sprite empty_heart;
@@ -121,16 +124,16 @@ public class GameManager : MonoBehaviour
         temp_stage_clear.SetActive(true);
     }
 
-    // life
-    public void set_life(int game_life){
-        this.life = game_life;
+    // Health
+    public void set_health(int game_health){
+        health = game_health;
 
-        if(this.life > max_life){
-            this.life = max_life;
+        if(health > maxHealth){
+            health = maxHealth;
         }
-        if(this.life >= 0){
+        if(health >= 0){
             for(int i = 0; i < hearts.Length; i++){
-                if(i<this.life){
+                if(i<health){
                     hearts[i].sprite = full_heart;
                 }else{
                     hearts[i].sprite = empty_heart;
@@ -138,17 +141,42 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(this.life == 0){
+        if(health == 0){
             game_over();
         }
     }
     public int get_life(){
-        return this.life;
+        return health;
     }
-    //
+
+    // Lifes
+    public void SetLifes(int value)
+    {
+        bool loseLife = false;
+        if (value < lifes)
+        {
+            loseLife = true;
+        }
+
+        lifes = value;
+        lifeText.text = value.ToString();
+
+        if (lifes <= 0)
+        {
+            // Completely die
+        }
+        else if (loseLife)
+        {
+            // Restart
+            // player receives invincibility after + invincibility animation
+        }
+    }
+
+    // Game Over
     public void game_over(){
         if (!stageClear)
         {
+            SetLifes(lifes - 1);
             playerDead = true;
             Debug.Log("Death");
             player.GetComponent<Gravity>().gravity = false;

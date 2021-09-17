@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject mainPlanetObj;
     public GameObject projectilePrefab;
+    public GameObject jumpArrow;
     public Text jumpCounterText;
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
@@ -63,6 +64,8 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
         //holdFly = false;
         holdShoot = false;
+
+        jumpArrow = transform.GetChild(0).gameObject;
 
         // If planet not assigned, check for closest planet
         if (!mainPlanetObj)
@@ -131,7 +134,7 @@ public class PlayerController : MonoBehaviour
         if (gravity.planetsOrbiting.Count == 0)
         {
             // Kill player
-            GameManager.Instance.set_life(0);
+            GameManager.Instance.set_health(0);
         }
     }
 
@@ -181,20 +184,55 @@ public class PlayerController : MonoBehaviour
         // joystick start moving
         if (value.started)
         {
-            lastJoystickVector = new Vector2(0, 0);
+            jumpArrow.SetActive(true);
+            lastJoystickVector = Vector2.zero;
+        }
+
+        // joysting drag
+        if (value.performed)
+        {
+            if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
+            {
+                if (!jumpArrow.activeSelf)
+                {
+                    jumpArrow.SetActive(true);
+                }
+                jumpArrow.transform.position = Vector3.MoveTowards(gameObject.transform.position + GameManager.Instance.cameraController.transform.TransformDirection(joystickMovement) * 3, gameObject.transform.position, Time.deltaTime);
+                jumpArrow.transform.up = -(transform.position - jumpArrow.transform.position);
+            }
+            else
+            {
+                jumpArrow.SetActive(false);
+            }
+
+            if (jumpCounter < jumpLimit)
+            {
+                if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
+                {
+                    lastJoystickVector = joystickMovement;
+                }
+                else
+                {
+                    lastJoystickVector = Vector2.zero;
+                }
+            }
+        }
+
+        if (value.canceled)
+        {
+            Debug.Log("Canceled");
         }
 
         // joystick release
-        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) < 0.5f && value.canceled && lastJoystickVector != new Vector2(0, 0))
+        if (value.canceled)
         {
-            GetComponent<Rigidbody2D>().AddForce(-(GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
-            UpdateJumpCounter(jumpCounter+1);
-        }
+            jumpArrow.SetActive(false);
 
-        // joysting moving
-        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) > 0.5f && jumpCounter < jumpLimit)
-        {
-            lastJoystickVector = joystickMovement;
+            if (lastJoystickVector != Vector2.zero)
+            {
+                GetComponent<Rigidbody2D>().AddForce((GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
+                UpdateJumpCounter(jumpCounter + 1);
+            }
         }
     }
 
@@ -231,9 +269,8 @@ public class PlayerController : MonoBehaviour
     {
         int temp_life = GameManager.Instance.get_life();
         temp_life -= 1;
-        GameManager.Instance.set_life(temp_life);
+        GameManager.Instance.set_health(temp_life);
     }
-
 
     public void UpdateJumpCounter(int value)
     {

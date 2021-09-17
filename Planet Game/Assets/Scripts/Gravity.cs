@@ -36,15 +36,31 @@ public class Gravity : MonoBehaviour
     {
         if (gravity)
         {
+            float highestG = 0;
+            GameObject planetHighestG = planetObj;
             foreach (GameObject planet in planetsOrbiting)
             {
                 // Calc Gravitational Constant
                 G = (planet.GetComponent<PlanetScript>().mass * GetComponent<Rigidbody2D>().mass / Mathf.Pow(Vector2.Distance(transform.position, planet.transform.position), 2)) * 6.67384e-11f;
                 //Debug.Log("Gravitational Constant: " + G.ToString());
 
+                // Find the planet with the highest G
+                if (G > highestG)
+                {
+                    highestG = G;
+                    planetHighestG = planet;
+                }
+
                 // Applies gravity
                 GetComponent<Rigidbody2D>().AddForce((planet.transform.position - transform.position) * G * Time.deltaTime, ForceMode2D.Force);
             }
+
+            // Assign planet with highest G as mainPlanetObj
+            if (planetHighestG != planetObj && tag == "Player")
+            {
+                GameManager.Instance.player.GetComponent<PlayerController>().ChangePlanet(planetHighestG);
+            }
+
         }
         else
         {
