@@ -12050,6 +12050,7 @@ MonoBehaviour:
   - {fileID: 1836154851}
   cameraController: {fileID: 619503106}
   warning: {fileID: 1119620884}
+  stage: {fileID: 1846386962}
   score_text: {fileID: 640715358}
   coin_text: {fileID: 1243802280}
   special_text: {fileID: 463682460}

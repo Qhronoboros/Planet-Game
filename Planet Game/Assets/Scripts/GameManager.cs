@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> planets;
     public CameraController cameraController;
     public GameObject warning;
+    public GameObject stage;
 
     //score
     public GameObject score_text;
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
     // Lifes
     public GameObject deadObj;
     public Text lifeText;
-    private int lifes = 2;
+    private int lifes = 5;
     // Health Points
     private int health = 3;
     private int maxHealth = 3;
@@ -178,6 +179,9 @@ public class GameManager : MonoBehaviour
             playerInput.SwitchCurrentActionMap("EmptyMap");
             gameControls.SetActive(false);
             deadObj.SetActive(true);
+            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(stage);
+
             // Restart
             // player receives invincibility after + invincibility animation
         }

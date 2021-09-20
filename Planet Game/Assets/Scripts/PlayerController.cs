@@ -135,6 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             // Kill player
             GameManager.Instance.set_health(0);
+            Debug.Log("Remove Planet");
         }
     }
 
