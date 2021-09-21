@@ -1,6 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.InputSystem.Layouts;
+using UnityEngine.UI;
 
 namespace UnityEngine.InputSystem.OnScreen
 {
@@ -8,18 +9,26 @@ namespace UnityEngine.InputSystem.OnScreen
     public class OnScreenStickLaunch : OnScreenControl, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         public GameObject joystick;
+        public GameObject darkBlob;
         public Vector3 joystickPos = Vector3.zero;
+        public Vector3 originalPos = Vector3.zero;
+        public float transparencyDrag = 0.6f;
+        public float transparencyRelease = 0.3f;
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            joystick.SetActive(true);
+            changeTransparency(transparencyDrag);
+
+            darkBlob.SetActive(true);
+
+            //joystick.SetActive(true);
 
             if (eventData == null)
                 throw new System.ArgumentNullException(nameof(eventData));
 
             joystickPos = eventData.position;
-            Debug.Log(joystickPos/2);
             joystick.transform.position = joystickPos + Vector3.zero;
+            darkBlob.transform.position = joystick.transform.position;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponentInParent<RectTransform>(), eventData.position, eventData.pressEventCamera, out m_PointerDownPos);
         }
@@ -41,14 +50,33 @@ namespace UnityEngine.InputSystem.OnScreen
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            joystick.SetActive(false);
-            joystick.GetComponent<RectTransform>().anchoredPosition = joystickPos / 2;
+            changeTransparency(transparencyRelease);
+
+            //joystick.SetActive(false);
+            joystick.transform.position = originalPos;
+            darkBlob.transform.position = joystick.transform.position;
+            darkBlob.SetActive(false);
             SendValueToControl(Vector2.zero);
         }
 
         private void Start()
         {
+            originalPos = joystick.transform.position;
+            darkBlob.transform.position = joystick.transform.position;
+            darkBlob.SetActive(false);
+            changeTransparency(transparencyRelease);
             //m_StartPos = ((RectTransform)transform).anchoredPosition;
+        }
+
+        public void changeTransparency(float transparency)
+        {
+            Color color = joystick.GetComponent<Image>().color;
+            color.a = transparency;
+            joystick.GetComponent<Image>().color = color;
+
+            Color colorText = joystick.transform.GetChild(0).GetComponent<Text>().color;
+            colorText.a = transparency*1.5f;
+            joystick.transform.GetChild(0).GetComponent<Text>().color = colorText;
         }
 
         public float movementRange

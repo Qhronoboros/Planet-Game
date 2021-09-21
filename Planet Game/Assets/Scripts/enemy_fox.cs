@@ -36,7 +36,11 @@ public class enemy_fox : MonoBehaviour
         GameManager.Instance.setScore(temp_score);
 
         if(item_id == 1){
-            Instantiate(item_prefab,this.transform.position,this.transform.rotation);
+            GameObject item = Instantiate(item_prefab,this.transform.position,this.transform.rotation);
+            if (item.tag == "Special_obj")
+            {
+                item.transform.parent = GameManager.Instance.special_child.transform;
+            }
         }
         Destroy(this.gameObject);
     }
