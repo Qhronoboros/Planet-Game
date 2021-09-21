@@ -4,30 +4,17 @@ using UnityEngine;
 
 public class object_collision : MonoBehaviour
 {
-    //public bool rotating = false;
+    public bool rotating = false;
 
-    //void OnBecameVisible()
-    //{
-    //    Debug.Log(gameObject.name);
-    //    rotating = true;
-    //    StartCoroutine(RotateToCam());
+    void OnBecameVisible()
+    {
+        GameManager.Instance.collectablesOnScreen.Add(gameObject);
+    }
 
-    //}
-
-    //void OnBecameInvisible()
-    //{
-    //    Debug.Log(gameObject.name);
-    //    rotating = false;
-    //    //StopCoroutine(RotateToCam());
-
-    //}
-
-    //IEnumerator RotateToCam()
-    //{
-    //    Debug.Log("Rotating " + gameObject.name);
-    //    transform.up = -(GameManager.Instance.cameraController.gameObject.transform.);
-    //    yield return null;
-    //}
+    void OnBecameInvisible()
+    {
+        GameManager.Instance.collectablesOnScreen.Remove(gameObject);
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     public float maxIntensity = 0.45f;
     // Player start position
     public Vector3 startPos = new Vector3(0, 16, 0);
+    // Visible collectables on screen
+    public List<GameObject> collectablesOnScreen = new List<GameObject>();
 
     public enum PlayerDeaths
     {

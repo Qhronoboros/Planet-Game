@@ -92,7 +92,10 @@ public class PlayerController : MonoBehaviour
                 smallestDistance = distance;
             }
         }
+
         mainPlanetObj = closestPlanet;
+
+        GameManager.Instance.cameraController.UpdateCameraSettings(closestPlanet);
 
         UpdateJumpCounter(0);
     }
