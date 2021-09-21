@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject mainPlanetObj;
     public GameObject projectilePrefab;
+    public GameObject jumpArrow;
     public Text jumpCounterText;
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
@@ -59,33 +60,42 @@ public class PlayerController : MonoBehaviour
     // Reset Static Variables
     private void Start()
     {
-        currentMovement = MovementOptions.Default;
-        isGrounded = false;
-        //holdFly = false;
-        holdShoot = false;
+        resetPlayer();
 
-        // If planet not assigned, check for closest planet
-        if (!mainPlanetObj)
-        {
-            GameObject closestPlanet = null;
-            float smallestDistance = Mathf.Infinity;
+        GameManager.Instance.SetLifes(GameManager.Instance.lifes);
 
-            foreach (GameObject planet in GameManager.Instance.planets)
-            {
-                float distance = planet.GetComponent<PlanetScript>().calcDistance(gameObject, false);
-                if (distance < smallestDistance)
-                {
-                    closestPlanet = planet;
-                    smallestDistance = distance;
-                }
-            }
-
-            mainPlanetObj = closestPlanet;
-        }
+        // Get arrow gameObject
+        jumpArrow = transform.GetChild(0).gameObject;
 
         // Give gravity script to self
         gravity = gameObject.AddComponent<Gravity>();
         gravity.assignPlanet(mainPlanetObj);
+    }
+
+    public void resetPlayer()
+    {
+        transform.position = GameManager.Instance.startPos;
+        currentMovement = MovementOptions.Default;
+        isGrounded = false;
+        holdShoot = false;
+
+        // Check for closest planet
+        GameObject closestPlanet = null;
+        float smallestDistance = Mathf.Infinity;
+
+        foreach (GameObject planet in GameManager.Instance.planets)
+        {
+            float distance = planet.GetComponent<PlanetScript>().calcDistance(gameObject, false);
+            if (distance < smallestDistance)
+            {
+                closestPlanet = planet;
+                smallestDistance = distance;
+            }
+        }
+
+        mainPlanetObj = closestPlanet;
+
+        GameManager.Instance.cameraController.UpdateCameraSettings(closestPlanet);
 
         UpdateJumpCounter(0);
     }
@@ -131,7 +141,9 @@ public class PlayerController : MonoBehaviour
         if (gravity.planetsOrbiting.Count == 0)
         {
             // Kill player
-            GameManager.Instance.set_life(0);
+            GameManager.playerDeaths = GameManager.PlayerDeaths.Border;
+            GameManager.Instance.set_health(0);
+            Debug.Log("Remove Planet");
         }
     }
 
@@ -181,20 +193,55 @@ public class PlayerController : MonoBehaviour
         // joystick start moving
         if (value.started)
         {
-            lastJoystickVector = new Vector2(0, 0);
+            jumpArrow.SetActive(true);
+            lastJoystickVector = Vector2.zero;
+        }
+
+        // joysting drag
+        if (value.performed)
+        {
+            if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
+            {
+                if (!jumpArrow.activeSelf)
+                {
+                    jumpArrow.SetActive(true);
+                }
+                jumpArrow.transform.position = Vector3.MoveTowards(gameObject.transform.position + GameManager.Instance.cameraController.transform.TransformDirection(joystickMovement) * 3, gameObject.transform.position, Time.deltaTime);
+                jumpArrow.transform.up = -(transform.position - jumpArrow.transform.position);
+            }
+            else
+            {
+                jumpArrow.SetActive(false);
+            }
+
+            if (jumpCounter < jumpLimit)
+            {
+                if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
+                {
+                    lastJoystickVector = joystickMovement;
+                }
+                else
+                {
+                    lastJoystickVector = Vector2.zero;
+                }
+            }
+        }
+
+        if (value.canceled)
+        {
+            Debug.Log("Canceled");
         }
 
         // joystick release
-        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) < 0.5f && value.canceled && lastJoystickVector != new Vector2(0, 0))
+        if (value.canceled)
         {
-            GetComponent<Rigidbody2D>().AddForce(-(GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
-            UpdateJumpCounter(jumpCounter+1);
-        }
+            jumpArrow.SetActive(false);
 
-        // joysting moving
-        if (Vector2.Distance(joystickMovement, new Vector2(0, 0)) > 0.5f && jumpCounter < jumpLimit)
-        {
-            lastJoystickVector = joystickMovement;
+            if (lastJoystickVector != Vector2.zero)
+            {
+                GetComponent<Rigidbody2D>().AddForce((GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
+                UpdateJumpCounter(jumpCounter + 1);
+            }
         }
     }
 
@@ -231,9 +278,8 @@ public class PlayerController : MonoBehaviour
     {
         int temp_life = GameManager.Instance.get_life();
         temp_life -= 1;
-        GameManager.Instance.set_life(temp_life);
+        GameManager.Instance.set_health(temp_life, "projectile");
     }
-
 
     public void UpdateJumpCounter(int value)
     {

@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
 
     // Important GameObjects
     public GameObject player;
+    public GameObject playerPref;
     public GameObject playerPlanet;
     public List<GameObject> planets;
     public CameraController cameraController;
     public GameObject warning;
+    public GameObject stage;
 
     //score
     public GameObject score_text;
@@ -39,9 +41,13 @@ public class GameManager : MonoBehaviour
     private Text UI_special_text;
     private float special = 0;
     public float max_special = 5;
-    //life
-    private int life = 3;
-    private int max_life = 3;
+    // Lifes
+    public GameObject deadObj;
+    public Text lifeText;
+    public int lifes = 5;
+    // Health Points
+    private int health = 3;
+    private int maxHealth = 3;
     public Image[] hearts;
     public Sprite full_heart;
     public Sprite empty_heart;
@@ -51,11 +57,23 @@ public class GameManager : MonoBehaviour
     public GameObject tempGameOver;
     public GameObject temp_stage_clear;
     public static bool playerDead = false;
+    public static PlayerDeaths playerDeaths = PlayerDeaths.Alive;
     // Stage Clear
     public bool stageClear = false;
     public string nextStage = "stage2 Testing";
     // Vignette
     public float maxIntensity = 0.45f;
+    // Player start position
+    public Vector3 startPos = new Vector3(0, 16, 0);
+    // Visible collectables on screen
+    public List<GameObject> collectablesOnScreen = new List<GameObject>();
+
+    public enum PlayerDeaths
+    {
+        Alive,
+        Projectile,
+        Border
+    }
 
 
     private void Awake(){
@@ -121,16 +139,16 @@ public class GameManager : MonoBehaviour
         temp_stage_clear.SetActive(true);
     }
 
-    // life
-    public void set_life(int game_life){
-        this.life = game_life;
+    // Health
+    public void set_health(int game_health, string cause=""){
+        health = game_health;
 
-        if(this.life > max_life){
-            this.life = max_life;
+        if(health > maxHealth){
+            health = maxHealth;
         }
-        if(this.life >= 0){
+        if(health >= 0){
             for(int i = 0; i < hearts.Length; i++){
-                if(i<this.life){
+                if(i<health){
                     hearts[i].sprite = full_heart;
                 }else{
                     hearts[i].sprite = empty_heart;
@@ -138,26 +156,65 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(this.life == 0){
-            game_over();
+        if(health == 0){
+            if (cause == "projectile")
+            {
+                GameManager.playerDeaths = GameManager.PlayerDeaths.Projectile;
+            }
+            SetLifes(lifes - 1);
+            //game_over();
         }
     }
     public int get_life(){
-        return this.life;
+        return health;
     }
-    //
-    public void game_over(){
-        if (!stageClear)
+
+    // Lifes
+    public void SetLifes(int value)
+    {
+        bool loseLife = value < lifes;
+
+        lifes = value;
+        lifeText.text = value.ToString();
+
+        if (lifes <= 0)
+        {
+            // Completely die
+            playerDead = true;
+            Debug.Log("Game Over");
+            player.GetComponent<Gravity>().gravity = false;
+            playerInput.SwitchCurrentActionMap("EmptyMap");
+            gameControls.SetActive(false);
+            tempGameOver.SetActive(true);
+        }
+        else if (loseLife)
         {
             playerDead = true;
             Debug.Log("Death");
             player.GetComponent<Gravity>().gravity = false;
             playerInput.SwitchCurrentActionMap("EmptyMap");
             gameControls.SetActive(false);
-            tempGameOver.SetActive(true);
+            deadObj.SetActive(true);
+
+            // Restart
+            // player receives invincibility after + invincibility animation
+        }
+    }
+
+    // Game Over
+    public void game_over(){
+        if (!stageClear)
+        {
+            SetLifes(lifes - 1);
+
         }
     }
     //public void freeze_game(){
     //    Time.timeScale = 0f;
     //}
+
+    public void restartLevel()
+    {
+        // Restart when not game over
+    }
 }

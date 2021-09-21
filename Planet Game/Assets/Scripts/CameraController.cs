@@ -21,11 +21,6 @@ public class CameraController : MonoBehaviour
         BorderView
     }
 
-    private void Start()
-    {
-        UpdateCameraSettings(GameManager.Instance.getPlayerPlanet());
-    }
-
     // Update camera settings according to planet
     public void UpdateCameraSettings(GameObject planetObj)
     {
@@ -37,6 +32,12 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        foreach (GameObject collectable in GameManager.Instance.collectablesOnScreen)
+        {
+            collectable.transform.eulerAngles = transform.rotation.eulerAngles;
+        }
+
+
         if (cameraState == CameraStates.PlanetView)
         {
             VCamPlayer.transform.rotation = transform.rotation;
@@ -50,7 +51,7 @@ public class CameraController : MonoBehaviour
         {
             TransitionPlanet();
         }
-        else if (GameManager.playerDead && cameraState != CameraStates.BorderView)
+        else if (GameManager.playerDeaths == GameManager.PlayerDeaths.Border && GameManager.playerDead && cameraState != CameraStates.BorderView)
         {
             VCamBorder.Follow = null;
             VCamBorder.LookAt = null;

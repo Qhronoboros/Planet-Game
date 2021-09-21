@@ -23,26 +23,30 @@ public class Asteroid_spawner : MonoBehaviour
     }
 
     private void spawn(){
-        for (int i = 0; i < this.spawn_amount; i++){
-            //random direction. 
-            //insideUnitcirkel which is the radius inside of the spawner
-            // normalized will set magnitude to one which makes it be the edge of the circle
-            Vector3 spawn_direction = Random.insideUnitCircle.normalized * this.spawn_distance;
-            //spawn point of the asteroid (position of spawner object and spawn direction)
-            Vector3 spawn_point = this.transform.position + spawn_direction;
-            // randomize the variance
-            float variance = Random.Range(-this.trajectory_variance, this.trajectory_variance);
-            //rotate asteroid for visuals
-            //vector3.forward means xyz = 001
-            Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
+        if (!GameManager.playerDead)
+        {
+            for (int i = 0; i < this.spawn_amount; i++)
+            {
+                //random direction. 
+                //insideUnitcirkel which is the radius inside of the spawner
+                // normalized will set magnitude to one which makes it be the edge of the circle
+                Vector3 spawn_direction = Random.insideUnitCircle.normalized * this.spawn_distance;
+                //spawn point of the asteroid (position of spawner object and spawn direction)
+                Vector3 spawn_point = this.transform.position + spawn_direction;
+                // randomize the variance
+                float variance = Random.Range(-this.trajectory_variance, this.trajectory_variance);
+                //rotate asteroid for visuals
+                //vector3.forward means xyz = 001
+                Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
-            //create the asteriod
-            Asteroid asteroid = Instantiate(this.asteroid_prefab,spawn_point,rotation);
-            // set the asteroid size by randomizing it
-            asteroid.a_size = Random.Range(asteroid.a_min_size, asteroid.a_max_size);
-            // set the asteroid trajectory
-            //multiplied by negative spawn direction so the asteroid direction is going towards the spawnpoint
-            asteroid.set_trajectory(rotation * -spawn_direction);
+                //create the asteriod
+                Asteroid asteroid = Instantiate(this.asteroid_prefab, spawn_point, rotation);
+                // set the asteroid size by randomizing it
+                asteroid.a_size = Random.Range(asteroid.a_min_size, asteroid.a_max_size);
+                // set the asteroid trajectory
+                //multiplied by negative spawn direction so the asteroid direction is going towards the spawnpoint
+                asteroid.set_trajectory(rotation * -spawn_direction);
+            }
         }
     }
 
