@@ -60,35 +60,39 @@ public class PlayerController : MonoBehaviour
     // Reset Static Variables
     private void Start()
     {
-        currentMovement = MovementOptions.Default;
-        isGrounded = false;
-        //holdFly = false;
-        holdShoot = false;
+        resetPlayer();
 
+        GameManager.Instance.SetLifes(GameManager.Instance.lifes);
+
+        // Get arrow gameObject
         jumpArrow = transform.GetChild(0).gameObject;
-
-        // If planet not assigned, check for closest planet
-        if (!mainPlanetObj)
-        {
-            GameObject closestPlanet = null;
-            float smallestDistance = Mathf.Infinity;
-
-            foreach (GameObject planet in GameManager.Instance.planets)
-            {
-                float distance = planet.GetComponent<PlanetScript>().calcDistance(gameObject, false);
-                if (distance < smallestDistance)
-                {
-                    closestPlanet = planet;
-                    smallestDistance = distance;
-                }
-            }
-
-            mainPlanetObj = closestPlanet;
-        }
 
         // Give gravity script to self
         gravity = gameObject.AddComponent<Gravity>();
         gravity.assignPlanet(mainPlanetObj);
+    }
+
+    public void resetPlayer()
+    {
+        transform.position = GameManager.Instance.startPos;
+        currentMovement = MovementOptions.Default;
+        isGrounded = false;
+        holdShoot = false;
+
+        // Check for closest planet
+        GameObject closestPlanet = null;
+        float smallestDistance = Mathf.Infinity;
+
+        foreach (GameObject planet in GameManager.Instance.planets)
+        {
+            float distance = planet.GetComponent<PlanetScript>().calcDistance(gameObject, false);
+            if (distance < smallestDistance)
+            {
+                closestPlanet = planet;
+                smallestDistance = distance;
+            }
+        }
+        mainPlanetObj = closestPlanet;
 
         UpdateJumpCounter(0);
     }
@@ -134,6 +138,7 @@ public class PlayerController : MonoBehaviour
         if (gravity.planetsOrbiting.Count == 0)
         {
             // Kill player
+            GameManager.playerDeaths = GameManager.PlayerDeaths.Border;
             GameManager.Instance.set_health(0);
             Debug.Log("Remove Planet");
         }
@@ -270,7 +275,7 @@ public class PlayerController : MonoBehaviour
     {
         int temp_life = GameManager.Instance.get_life();
         temp_life -= 1;
-        GameManager.Instance.set_health(temp_life);
+        GameManager.Instance.set_health(temp_life, "projectile");
     }
 
     public void UpdateJumpCounter(int value)

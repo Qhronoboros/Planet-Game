@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour
         {
             TransitionPlanet();
         }
-        else if (GameManager.playerDead && cameraState != CameraStates.BorderView)
+        else if (GameManager.playerDeaths == GameManager.PlayerDeaths.Border && GameManager.playerDead && cameraState != CameraStates.BorderView)
         {
             VCamBorder.Follow = null;
             VCamBorder.LookAt = null;

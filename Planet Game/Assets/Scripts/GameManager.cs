@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     // Lifes
     public GameObject deadObj;
     public Text lifeText;
-    private int lifes = 5;
+    public int lifes = 5;
     // Health Points
     private int health = 3;
     private int maxHealth = 3;
@@ -57,11 +57,21 @@ public class GameManager : MonoBehaviour
     public GameObject tempGameOver;
     public GameObject temp_stage_clear;
     public static bool playerDead = false;
+    public static PlayerDeaths playerDeaths = PlayerDeaths.Alive;
     // Stage Clear
     public bool stageClear = false;
     public string nextStage = "stage2 Testing";
     // Vignette
     public float maxIntensity = 0.45f;
+    // Player start position
+    public Vector3 startPos = new Vector3(0, 16, 0);
+
+    public enum PlayerDeaths
+    {
+        Alive,
+        Projectile,
+        Border
+    }
 
 
     private void Awake(){
@@ -128,7 +138,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Health
-    public void set_health(int game_health){
+    public void set_health(int game_health, string cause=""){
         health = game_health;
 
         if(health > maxHealth){
@@ -145,6 +155,10 @@ public class GameManager : MonoBehaviour
         }
 
         if(health == 0){
+            if (cause == "projectile")
+            {
+                GameManager.playerDeaths = GameManager.PlayerDeaths.Projectile;
+            }
             SetLifes(lifes - 1);
             //game_over();
         }
@@ -179,8 +193,6 @@ public class GameManager : MonoBehaviour
             playerInput.SwitchCurrentActionMap("EmptyMap");
             gameControls.SetActive(false);
             deadObj.SetActive(true);
-            DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(stage);
 
             // Restart
             // player receives invincibility after + invincibility animation

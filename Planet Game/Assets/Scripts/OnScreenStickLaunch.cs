@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.Layouts;
 namespace UnityEngine.InputSystem.OnScreen
 {
     [AddComponentMenu("Input/On-Screen Stick")]
-    public class OnScreenStickHorizontal : OnScreenControl, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public class OnScreenStickLaunch : OnScreenControl, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         public GameObject joystick;
         public Vector3 joystickPos = Vector3.zero;
@@ -18,6 +18,7 @@ namespace UnityEngine.InputSystem.OnScreen
                 throw new System.ArgumentNullException(nameof(eventData));
 
             joystickPos = eventData.position;
+            Debug.Log(joystickPos/2);
             joystick.transform.position = joystickPos + Vector3.zero;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponentInParent<RectTransform>(), eventData.position, eventData.pressEventCamera, out m_PointerDownPos);
@@ -32,16 +33,16 @@ namespace UnityEngine.InputSystem.OnScreen
             var delta = position - m_PointerDownPos;
 
             delta = Vector2.ClampMagnitude(delta, movementRange);
-            joystick.transform.position = joystickPos + new Vector3(delta.x, 0, 0);
+            joystick.transform.position = joystickPos + new Vector3(delta.x, delta.y, 0);
 
-            var newPos = new Vector2(delta.x / movementRange, 0);
+            var newPos = delta/movementRange;
             SendValueToControl(newPos);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             joystick.SetActive(false);
-            joystick.GetComponent<RectTransform>().anchoredPosition = joystickPos/2;
+            joystick.GetComponent<RectTransform>().anchoredPosition = joystickPos / 2;
             SendValueToControl(Vector2.zero);
         }
 
