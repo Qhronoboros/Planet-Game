@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
         bool loseLife = value < lifes;
 
         lifes = value;
-        lifeText.text = value.ToString();
+        lifeText.text = value.ToString() + "x";
 
         if (lifes <= 0)
         {
