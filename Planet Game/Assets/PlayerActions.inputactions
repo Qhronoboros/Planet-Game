@@ -214,8 +214,29 @@
         {
             "name": "EmptyMap",
             "id": "0e26c2a5-b1f9-456a-bb81-d8108b6f0ba0",
-            "actions": [],
-            "bindings": []
+            "actions": [
+                {
+                    "name": "Empty",
+                    "type": "Button",
+                    "id": "68b97c87-0549-4732-b8dc-7167a486f03f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7db86a22-fd50-4d40-9b22-24b7e3a0260f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Empty",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
