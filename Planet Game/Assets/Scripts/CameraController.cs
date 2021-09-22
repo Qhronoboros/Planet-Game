@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
 
         planetCamDistance = planetScript.planetRadius;
         playerCamDistance = planetScript.planetRadius + 1.0f;
+        Debug.Log(planetScript.planetRadius);
+        Debug.Log(playerCamDistance);
     }
 
     private void Update()
@@ -45,6 +47,9 @@ public class CameraController : MonoBehaviour
 
         if (planetScript.calcDistance(GameManager.Instance.player, true) >= playerCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlayerView)
         {
+            //Debug.Log(planetScript.calcDistance(GameManager.Instance.player, true));
+            //Debug.Log(playerCamDistance);
+            //Debug.Log("Transitioning player");
             TransitionPlayer();
         }
         else if (planetScript.calcDistance(GameManager.Instance.player, true) < planetCamDistance && !GameManager.playerDead && cameraState != CameraStates.PlanetView)

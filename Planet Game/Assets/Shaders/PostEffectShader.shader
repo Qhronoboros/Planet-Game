@@ -3,11 +3,15 @@ Shader "Custom/PostEffectShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Color ("Color", COLOR) = (1,1,1,1)
     }
     SubShader
     {
-        // No culling or depth
-        Cull Off ZWrite Off ZTest Always
+        Tags {"Queue"="Transparent" "RenderType"="Transparent"}
+        Cull Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
+        LOD 100
 
         Pass
         {
@@ -38,12 +42,12 @@ Shader "Custom/PostEffectShader"
             }
 
             sampler2D _MainTex;
+            float4 _Color;
 
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
-                //col.rgb = 1 - col.rgb;
-                col.a = 0;
+                fixed4 col = tex2D(_MainTex, i.uv) * _Color;
+                col = col * float4(1, sin(_Time[3]), sin(_Time[3]), 1);
                 return col;
             }
             ENDCG

@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject jumpArrow;
     public Text jumpCounterText;
+
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
+
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
     public float accMovementSpeed = 10.0f;
@@ -74,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
     public void resetPlayer()
     {
+        animator.SetBool("Dead", false);
         transform.position = GameManager.Instance.startPos;
         currentMovement = MovementOptions.Default;
         isGrounded = false;
@@ -95,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
         mainPlanetObj = closestPlanet;
 
+        Debug.Log("here");
         GameManager.Instance.cameraController.UpdateCameraSettings(closestPlanet);
 
         UpdateJumpCounter(0);
@@ -172,20 +178,33 @@ public class PlayerController : MonoBehaviour
         if (joystickMovement < 0)
         {
             horizontalMovement = -1;
+            spriteRenderer.flipX = true;
+            animator.SetBool("Moving", true);
             //currentMovement = MovementOptions.Left;
 
         }
         else if (joystickMovement > 0)
         {
             horizontalMovement = 1;
+            spriteRenderer.flipX = false;
+            animator.SetBool("Moving", true);
             //currentMovement = MovementOptions.Right;
         }
         else
         {
             horizontalMovement = 0;
+            animator.SetBool("Moving", false);
             //currentMovement = MovementOptions.Default;
         }
     }
+
+    IEnumerator FlappingAnim()
+    {
+        animator.SetBool("Jumping", true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("Jumping", false);
+    }
+
 
     public void OnJumping(InputAction.CallbackContext value)
     {
@@ -239,8 +258,20 @@ public class PlayerController : MonoBehaviour
 
             if (lastJoystickVector != Vector2.zero)
             {
+                if (lastJoystickVector.x < 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (lastJoystickVector.x > 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
+
                 GetComponent<Rigidbody2D>().AddForce((GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
                 UpdateJumpCounter(jumpCounter + 1);
+                GetComponent<AudioSource>().Play();
+                StopCoroutine(FlappingAnim());
+                StartCoroutine(FlappingAnim());
             }
         }
     }
@@ -260,6 +291,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Planet")
         {
+            animator.SetBool("IsGrounded", true);
             isGrounded = true;
             UpdateJumpCounter(0);
         }
@@ -269,6 +301,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Planet")
         {
+            animator.SetBool("IsGrounded", false);
             isGrounded = false;
         }
     }

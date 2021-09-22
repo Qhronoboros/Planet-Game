@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7994282415147464405}
   - component: {fileID: 7994282415147464406}
   - component: {fileID: 7994282415147464407}
-  - component: {fileID: 7994282415147464424}
+  - component: {fileID: 6248019477459585565}
   - component: {fileID: 7994282415147464425}
   m_Layer: 9
   m_Name: asteroid_randomizer
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1fb5c72ed74bfa142a68865e7881f43a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eedaa33dbc10c7743b1c0e22fbd02d2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,8 +106,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &7994282415147464424
-BoxCollider2D:
+--- !u!58 &6248019477459585565
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,18 +120,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.28, y: 1.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 1.28}
-  m_EdgeRadius: 0
+  m_Radius: 0.65
 --- !u!114 &7994282415147464425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,10 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 1fb5c72ed74bfa142a68865e7881f43a, type: 3}
-  - {fileID: 21300000, guid: 91eeeaadf32d2d34c8c0943f384272eb, type: 3}
+  - {fileID: 21300000, guid: eedaa33dbc10c7743b1c0e22fbd02d2e, type: 3}
   a_size: 1
   a_min_size: 1
   a_max_size: 3
   a_speed: 15
   max_lifetime: 15
+  a_half_speed_multiplier: 15

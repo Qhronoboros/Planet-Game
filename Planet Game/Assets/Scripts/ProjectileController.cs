@@ -20,7 +20,6 @@ public class ProjectileController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        Debug.Log(other);
         if (other.tag == "Asteroid")
         {
             float temp_score = GameManager.Instance.getScore();

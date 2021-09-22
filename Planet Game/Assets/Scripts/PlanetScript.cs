@@ -17,7 +17,8 @@ public class PlanetScript : MonoBehaviour
     public float planetRadius;
 
     // Setup warningBorder and killBorder
-    private void Start()
+
+    private void Awake()
     {
         planetRadius = transform.localScale.x * 3;
 

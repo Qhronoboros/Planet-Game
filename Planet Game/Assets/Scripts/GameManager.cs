@@ -177,27 +177,26 @@ public class GameManager : MonoBehaviour
         lifes = value;
         lifeText.text = value.ToString() + "x";
 
-        if (lifes <= 0)
+        if (loseLife)
         {
-            // Completely die
             playerDead = true;
-            Debug.Log("Game Over");
+            player.GetComponent<PlayerController>().animator.SetBool("Dead", true);
             player.GetComponent<Gravity>().gravity = false;
             playerInput.SwitchCurrentActionMap("EmptyMap");
             gameControls.SetActive(false);
-            tempGameOver.SetActive(true);
-        }
-        else if (loseLife)
-        {
-            playerDead = true;
-            Debug.Log("Death");
-            player.GetComponent<Gravity>().gravity = false;
-            playerInput.SwitchCurrentActionMap("EmptyMap");
-            gameControls.SetActive(false);
-            deadObj.SetActive(true);
 
-            // Restart
-            // player receives invincibility after + invincibility animation
+            if (lifes <= 0)
+            {
+                Debug.Log("Game Over");
+                tempGameOver.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Death");
+                deadObj.SetActive(true);
+                // Restart
+                // player receives invincibility after + invincibility animation
+            }
         }
     }
 

@@ -32,6 +32,7 @@ public class enemy_fox : MonoBehaviour
         health_bar.GetComponent<enemy_healthbar>().set_health_text( health.ToString() + "/" + max_health.ToString());
         health_bar.GetComponent<enemy_healthbar>().set_health(health);
         if(health == 0){
+            GetComponentInParent<AudioSource>().Play();
             destroy_self();
         }
     }
