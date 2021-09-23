@@ -75,7 +75,7 @@ namespace UnityEngine.InputSystem.OnScreen
             joystick.GetComponent<Image>().color = color;
 
             Color colorText = joystick.transform.GetChild(0).GetComponent<Text>().color;
-            colorText.a = transparency*1.5f;
+            colorText.a = transparency*10.0f;
             joystick.transform.GetChild(0).GetComponent<Text>().color = colorText;
         }
 

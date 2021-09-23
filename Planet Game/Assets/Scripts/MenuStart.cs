@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MenuStart : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public string firstStage;
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Down");
-
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Up");
-
+        SceneManager.LoadSceneAsync(firstStage, LoadSceneMode.Single);
     }
 }

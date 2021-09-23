@@ -56,6 +56,8 @@ public class enemy_fox : MonoBehaviour
     }
 
     public void destroy_self(){
+        GetComponentInParent<AudioSource>().Play();
+
         float temp_score = GameManager.Instance.getScore();
         temp_score += 500;
         GameManager.Instance.setScore(temp_score);
@@ -98,6 +100,8 @@ public class enemy_fox : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target, step);
             if(player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
             {
+                Debug.Log("Here");
+
                 if (!GameManager.playerDead && !GameManager.Instance.stageClear && Time.time - timeLastProjectile > shootDelay)
                 {
                     timeLastProjectile = Time.time;
@@ -106,7 +110,7 @@ public class enemy_fox : MonoBehaviour
             }
             else
             {
-                float step = speed * Time.deltaTime;
+                step = speed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
             }
         }
