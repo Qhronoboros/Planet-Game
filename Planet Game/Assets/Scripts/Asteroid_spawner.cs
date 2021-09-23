@@ -23,7 +23,7 @@ public class Asteroid_spawner : MonoBehaviour
     }
 
     private void spawn(){
-        if (!GameManager.playerDead)
+        if (!GameManager.playerDead && !GameManager.Instance.stageClear)
         {
             for (int i = 0; i < this.spawn_amount; i++)
             {
@@ -41,6 +41,9 @@ public class Asteroid_spawner : MonoBehaviour
 
                 //create the asteriod
                 Asteroid asteroid = Instantiate(this.asteroid_prefab, spawn_point, rotation);
+                //Set parent
+                asteroid.transform.parent = GameManager.Instance.asteroidParent.transform;
+
                 // set the asteroid size by randomizing it
                 asteroid.a_size = Random.Range(asteroid.a_min_size, asteroid.a_max_size);
                 // set the asteroid trajectory

@@ -44,6 +44,7 @@ public class Asteroid : MonoBehaviour
 
     public void OnHit()
     {
+        GetComponentInParent<AudioSource>().Play();
         //if can split in 2 then split
         if ((this.a_size * 0.5) > this.a_min_size)
         {
@@ -55,11 +56,14 @@ public class Asteroid : MonoBehaviour
 
     //collision with objects
     private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.tag == "Player"){
+        if(collision.gameObject.tag == "Player" && !GameManager.Instance.player.GetComponent<PlayerController>().invincibility)
+        {
             collision.gameObject.GetComponent<PlayerController>().OnHit();
             Destroy(this.gameObject);
         }
-        else if(collision.gameObject.tag == "Planet"){
+        else if(collision.gameObject.tag == "Planet")
+        {
+            collision.gameObject.GetComponent<PlanetScript>().OnHit();
             Destroy(this.gameObject);
         }
     }
@@ -71,6 +75,7 @@ public class Asteroid : MonoBehaviour
         new_a_pos += Random.insideUnitCircle * 0.5f;
         //create the asteroid 
         Asteroid a_half = Instantiate(this , new_a_pos , this.transform.rotation);
+        a_half.transform.parent = GameManager.Instance.asteroidParent.transform;
         a_half.a_size = this.a_size*0.5f;
         a_half.set_trajectory_a_half(Random.insideUnitCircle.normalized);
     }

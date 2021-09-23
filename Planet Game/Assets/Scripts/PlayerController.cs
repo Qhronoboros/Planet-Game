@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
 
+    public AudioClip jumpAudio;
+    public AudioClip hitAudio;
+
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
     public float accMovementSpeed = 10.0f;
@@ -49,6 +52,12 @@ public class PlayerController : MonoBehaviour
     static bool isGrounded = false;
 
     float timeLastProjectile = 0;
+
+    public bool flapping = false;
+    Coroutine flappingCoroutine;
+
+    public bool invincibility = false;
+    public float invincibilityTime = 1.0f;
 
     //static bool holdFly = false;
     static bool holdShoot = false;
@@ -100,10 +109,11 @@ public class PlayerController : MonoBehaviour
 
         mainPlanetObj = closestPlanet;
 
-        Debug.Log("here");
         GameManager.Instance.cameraController.UpdateCameraSettings(closestPlanet);
 
         UpdateJumpCounter(0);
+
+        StartCoroutine(Invincible(2.0f));
     }
 
     //public void OnFly(InputAction.CallbackContext value)
@@ -198,14 +208,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator FlappingAnim()
-    {
-        animator.SetBool("Jumping", true);
-        yield return new WaitForSeconds(0.5f);
-        animator.SetBool("Jumping", false);
-    }
-
-
     public void OnJumping(InputAction.CallbackContext value)
     {
         Vector2 joystickMovement = value.ReadValue<Vector2>();
@@ -269,11 +271,28 @@ public class PlayerController : MonoBehaviour
 
                 GetComponent<Rigidbody2D>().AddForce((GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
                 UpdateJumpCounter(jumpCounter + 1);
+                GetComponent<AudioSource>().clip = jumpAudio;
+                GetComponent<AudioSource>().pitch = 2.0f;
                 GetComponent<AudioSource>().Play();
-                StopCoroutine(FlappingAnim());
-                StartCoroutine(FlappingAnim());
+
+                if (flapping)
+                {
+                    StopCoroutine(flappingCoroutine);
+                    flapping = false;
+                }
+                flappingCoroutine = StartCoroutine(FlappingAnim());
             }
         }
+    }
+
+    // Animating the jump with the flapping animation
+    IEnumerator FlappingAnim()
+    {
+        flapping = true;
+        animator.SetBool("Jumping", true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("Jumping", false);
+        flapping = false;
     }
 
     public void OnShoot(InputAction.CallbackContext value)
@@ -309,9 +328,36 @@ public class PlayerController : MonoBehaviour
     // On hit bullet/asteroid
     public void OnHit()
     {
-        int temp_life = GameManager.Instance.get_life();
-        temp_life -= 1;
-        GameManager.Instance.set_health(temp_life, "projectile");
+        if (!GameManager.playerDead && !GameManager.Instance.stageClear)
+        {
+            if (!invincibility)
+            {
+                int temp_life = GameManager.Instance.get_life();
+                temp_life -= 1;
+
+                if (temp_life > 0)
+                {
+                    GetComponent<AudioSource>().clip = hitAudio;
+                    GetComponent<AudioSource>().pitch = 1.0f;
+                    GetComponent<AudioSource>().Play();
+
+                    StartCoroutine(Invincible(invincibilityTime));
+                }
+
+                GameManager.Instance.set_health(temp_life, "projectile");
+            }
+        }
+    }
+
+    // Using invincibility shader
+    IEnumerator Invincible(float invincibilityLength)
+    {
+        invincibility = true;
+        GetComponent<SpriteRenderer>().material = GameManager.Instance.invincibleMat;
+        yield return new WaitForSeconds(invincibilityLength);
+        GetComponent<SpriteRenderer>().material = GameManager.Instance.defaultMat;
+        yield return new WaitForSeconds(0.1f);
+        invincibility = false;
     }
 
     public void UpdateJumpCounter(int value)

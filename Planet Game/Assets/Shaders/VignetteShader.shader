@@ -1,17 +1,16 @@
-Shader "Custom/PostEffectShader"
+Shader "Custom/VignetteShader"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color ("Color", COLOR) = (1,1,1,1)
+        _VColor ("Vignette Color", COLOR) = (1, 1, 1, 1)
+        _VRadius ("Vignette Radius", Range(0.0, 1.0)) = 1.0
+        _VSoft ("Vignette Softness", Range(0.0, 1.0)) = 0.5
     }
     SubShader
     {
-        Tags {"Queue"="Transparent" "RenderType"="Transparent"}
-        Cull Off
-        Blend SrcAlpha OneMinusSrcAlpha
-        ZWrite Off
-        LOD 100
+        // No culling or depth
+        Cull Off ZWrite Off ZTest Always
 
         Pass
         {
@@ -42,12 +41,19 @@ Shader "Custom/PostEffectShader"
             }
 
             sampler2D _MainTex;
-            float4 _Color;
+            float4 _VColor;
+            float _VRadius;
+            float _VSoft;
 
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv) * _Color;
-                col = col * float4(1, sin(_Time[3]), sin(_Time[3]), 1);
+                fixed4 col = tex2D(_MainTex, i.uv);
+
+                float distFromCenter = distance(i.uv.xy, float2(0.5, 0.5));
+                float vignette = smoothstep(_VRadius, _VRadius - _VSoft, distFromCenter).r;
+
+                col = saturate(col * (vignette * _VColor));
+                
                 return col;
             }
             ENDCG
