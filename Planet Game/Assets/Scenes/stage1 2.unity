@@ -2086,8 +2086,8 @@ MonoBehaviour:
   item_prefab: {fileID: 534356341109993635, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
   distance_above: 15
   follow: 0
-  health: 24
-  max_health: 24
+  health: 14
+  max_health: 14
   item_id: 1
   projectilePrefab: {fileID: 7699403180724888161, guid: f267fdaabc5de504eaad50aaf1eb46ab, type: 3}
   timeLastProjectile: 0
@@ -7178,8 +7178,8 @@ MonoBehaviour:
   playerPlanet: {fileID: 0}
   planets:
   - {fileID: 2001605463}
-  - {fileID: 942312981}
   - {fileID: 1884009590}
+  - {fileID: 942312981}
   cameraController: {fileID: 893192681}
   stage: {fileID: 470630483}
   asteroidParent: {fileID: 100411786}

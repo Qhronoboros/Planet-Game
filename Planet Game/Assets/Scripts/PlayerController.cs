@@ -405,5 +405,20 @@ public class PlayerController : MonoBehaviour
 
             timeLastProjectile = Time.time;
         }
+
+
+        // Vignette
+        if (BorderDetector.borders.Count == 0 && !GameManager.playerDead)
+        {
+            BorderDetector.intensity = VignetteWarning.calcIntensity(GameManager.Instance.player.GetComponent<PlayerController>().gravity.planetsOrbiting);
+        }
+        else if (BorderDetector.borders.Count != 0 && !GameManager.playerDead)
+        {
+            BorderDetector.intensity = 0;
+        }
+
+        GameManager.Instance.vignetteMat.SetColor("_VColor", new Color(1, Mathf.Max(1 - BorderDetector.intensity, 0.0f), Mathf.Max(1 - BorderDetector.intensity, 0.0f), 1));
+        GameManager.Instance.vignetteMat.SetFloat("_VRadius", Mathf.Max(1.0f - BorderDetector.intensity * 0.8f, 0.0f));
+        GameManager.Instance.vignetteMat.SetFloat("_VSoft", Mathf.Min(BorderDetector.intensity * 2, 1.0f));
     }
 }
