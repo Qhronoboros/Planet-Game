@@ -108,11 +108,9 @@ public class enemy_fox : MonoBehaviour
                     StartCoroutine(Shooting());
                 }
             }
-            else
-            {
-                step = speed * Time.deltaTime;
-                transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
-            }
+        }else{
+            float step = speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
         }
     }
 

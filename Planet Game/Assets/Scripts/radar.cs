@@ -22,15 +22,5 @@ public class radar : MonoBehaviour
             radar_user.GetComponent<enemy_fox>().follow = false;
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        // parent_follow = radar_user.GetComponent<enemy_fox>().follow;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
