@@ -24,8 +24,14 @@ public class GameManager : MonoBehaviour
     public GameObject playerPlanet;
     public List<GameObject> planets;
     public CameraController cameraController;
-    public GameObject warning;
     public GameObject stage;
+    public GameObject asteroidParent;
+
+    // Materials
+    public Material defaultMat;
+    public Material damagedMat;
+    public Material invincibleMat;
+    public Material vignetteMat;
 
     //score
     public GameObject score_text;
@@ -134,6 +140,7 @@ public class GameManager : MonoBehaviour
     //stage clear
     public void stage_clear(){
         stageClear = true;
+        planets[0].GetComponent<Animator>().SetBool("IsRepaired", true);
         playerInput.SwitchCurrentActionMap("EmptyMap");
         gameControls.SetActive(false);
         temp_stage_clear.SetActive(true);

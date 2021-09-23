@@ -38,7 +38,7 @@ public class ProjectileController : MonoBehaviour
             other.GetComponent<enemy_fox>().OnHit();
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Player" && owner != "Player")
+        else if (other.tag == "Player" && owner != "Player" && !GameManager.Instance.player.GetComponent<PlayerController>().invincibility)
         {
             other.GetComponent<PlayerController>().OnHit();
             Destroy(this.gameObject);

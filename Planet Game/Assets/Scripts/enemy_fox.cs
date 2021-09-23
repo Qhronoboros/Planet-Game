@@ -17,18 +17,26 @@ public class enemy_fox : MonoBehaviour
     public int max_health = 6;
     public int item_id = 1;
 
-
     // Shooting
     public GameObject projectilePrefab;
     public float timeLastProjectile = 0.0f;
     public float shootDelay = 3.0f;
     public float shootDelayBurst = 0.4f;
 
+    public bool damaged = false;
+    public Coroutine lastCoroutine;
 
     // On hit bullet
     public void OnHit()
     {
-        health-=1;
+        if (damaged)
+        {
+            StopCoroutine(lastCoroutine);
+            damaged = false;
+        }
+        lastCoroutine = StartCoroutine(Damaged());
+
+        health -= 1;
         health_bar.GetComponent<enemy_healthbar>().set_health_text( health.ToString() + "/" + max_health.ToString());
         health_bar.GetComponent<enemy_healthbar>().set_health(health);
         if(health == 0){
@@ -37,6 +45,15 @@ public class enemy_fox : MonoBehaviour
         }
     }
 
+    // Using damaged shader
+    IEnumerator Damaged()
+    {
+        damaged = true;
+        GetComponent<SpriteRenderer>().material = GameManager.Instance.damagedMat;
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<SpriteRenderer>().material = GameManager.Instance.defaultMat;
+        damaged = false;
+    }
 
     public void destroy_self(){
         float temp_score = GameManager.Instance.getScore();
@@ -84,7 +101,7 @@ public class enemy_fox : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, target, step);
                 if (player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
                 {
-                    if (!GameManager.playerDead && Time.time - timeLastProjectile > shootDelay)
+                    if (!GameManager.playerDead && !GameManager.Instance.stageClear && Time.time - timeLastProjectile > shootDelay)
                     {
                         timeLastProjectile = Time.time;
                         StartCoroutine(Shooting());

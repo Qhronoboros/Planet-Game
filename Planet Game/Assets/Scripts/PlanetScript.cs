@@ -49,4 +49,13 @@ public class PlanetScript : MonoBehaviour
             return Vector2.Distance(obj.transform.position, transform.position);
         }
     }
+
+    public void OnHit()
+    {
+        if (gameObject == GameManager.Instance.getPlayerPlanet() && GameManager.Instance.cameraController.cameraState == CameraController.CameraStates.PlanetView)
+        {
+            // Camera Shake
+            StartCoroutine(GameManager.Instance.cameraController.CameraShake());
+        }
+    }
 }

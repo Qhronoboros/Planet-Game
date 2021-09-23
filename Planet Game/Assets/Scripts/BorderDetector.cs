@@ -33,8 +33,6 @@ public class BorderDetector : MonoBehaviour
     // Reset Static Variables
     private void Awake()
     {
-        warning = GameManager.Instance.warning;
-
         //Vignette tmp;
         //if (warning.GetComponent<Volume>().profile.TryGet(out tmp))
         //{
@@ -53,7 +51,10 @@ public class BorderDetector : MonoBehaviour
         {
             intensity = 0;
         }
-        //vignette.intensity.value = intensity;
+
+        GameManager.Instance.vignetteMat.SetColor("_VColor", new Color(1, Mathf.Max(1-intensity, 0.0f), Mathf.Max(1-intensity, 0.0f), 1));
+        GameManager.Instance.vignetteMat.SetFloat("_VRadius", Mathf.Max(1.0f - intensity*0.8f, 0.0f));
+        GameManager.Instance.vignetteMat.SetFloat("_VSoft", Mathf.Min(intensity * 2, 1.0f));
     }
 
     public float calcIntensityPlanet()
