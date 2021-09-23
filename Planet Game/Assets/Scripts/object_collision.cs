@@ -28,6 +28,9 @@ public class object_collision : MonoBehaviour
                 float temp = GameManager.Instance.get_coin();
                 temp += 1;
                 GameManager.Instance.set_coin(temp);
+                float temp_score = GameManager.Instance.getScore();
+                temp_score += 100;
+                GameManager.Instance.setScore(temp_score);
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Special_obj")
@@ -42,7 +45,7 @@ public class object_collision : MonoBehaviour
         
     IEnumerator go_in_zone()
     {   
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         // float d_world_border = mainPlanetObj.GetComponent<PlanetScript>().fullKillBorderDistance;
         float half_d_world_border = mainPlanetObj.GetComponent<PlanetScript>().fullKillBorderDistance * 0.5f;
         float d_world_thisObj = Vector2.Distance(mainPlanetObj.transform.position , this.transform.position);

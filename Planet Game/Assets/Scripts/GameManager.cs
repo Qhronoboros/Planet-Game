@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
     }
     public void set_special(float special_obj){
         this.special = special_obj;
-        UI_special_text.text = this.special.ToString() + "/" + this.max_special.ToString();
+        UI_special_text.text = this.special.ToString() + "/ " + this.max_special.ToString();
         if(this.special == this.max_special){
             stage_clear();
         }

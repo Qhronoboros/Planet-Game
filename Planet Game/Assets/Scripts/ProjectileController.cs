@@ -23,7 +23,7 @@ public class ProjectileController : MonoBehaviour
         if (other.tag == "Asteroid")
         {
             float temp_score = GameManager.Instance.getScore();
-            temp_score += 100;
+            temp_score += 250;
             GameManager.Instance.setScore(temp_score);
 
             other.GetComponent<Asteroid>().OnHit();
