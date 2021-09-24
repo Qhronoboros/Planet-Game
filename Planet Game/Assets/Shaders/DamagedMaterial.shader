@@ -7,7 +7,7 @@ Shader "Custom/Damaged"
     }
     SubShader
     {
-        Tags {"Queue"="Overlay"}
+        Tags {"Queue"="Transparent"}
         Cull Off
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite Off

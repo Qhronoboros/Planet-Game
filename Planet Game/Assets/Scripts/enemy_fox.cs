@@ -100,8 +100,6 @@ public class enemy_fox : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target, step);
             if(player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
             {
-                Debug.Log("Here");
-
                 if (!GameManager.playerDead && !GameManager.Instance.stageClear && Time.time - timeLastProjectile > shootDelay)
                 {
                     timeLastProjectile = Time.time;
