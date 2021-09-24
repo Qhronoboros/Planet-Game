@@ -21,7 +21,7 @@ public class BorderDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !borders.Contains(gameObject))
         {
             borders.Add(gameObject);
         }
