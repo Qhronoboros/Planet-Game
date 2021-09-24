@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UIBlinkingMaterial
-  m_Shader: {fileID: 4800000, guid: 36b4a1cd8098c6e47858e900c4c4f7e5, type: 3}
+  m_Name: DistortedMaterial
+  m_Shader: {fileID: 4800000, guid: 14870f44c1e3205418d2da025e4415cf, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -69,7 +69,6 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1

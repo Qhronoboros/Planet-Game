@@ -47,14 +47,18 @@ Shader "Custom/VignetteShader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 mainCol = tex2D(_MainTex, i.uv);
 
-                float distFromCenter = distance(i.uv.xy, float2(0.5, 0.5));
-                float vignette = smoothstep(_VRadius, _VRadius - _VSoft, distFromCenter).r;
+                // Find how far pixel is from center
+                float distanceCenter = distance(i.uv.xy, float2(0.5, 0.5));
 
-                col = saturate(col * (vignette * _VColor));
+                // Apply the radius and softness of the vignette
+                float vignette = smoothstep(_VRadius, _VRadius - _VSoft, distanceCenter).r;
+
+                // Clamp between 0 and 1 and apply color
+                fixed4 result = saturate(mainCol * (vignette * _VColor));
                 
-                return col;
+                return result;
             }
             ENDCG
         }
