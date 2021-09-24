@@ -14,6 +14,11 @@ public class BorderDetector : MonoBehaviour
     public static float intensity = 0.0f;
     public static List<GameObject> borders = new List<GameObject>();
 
+    private void Awake()
+    {
+        borders = new List<GameObject>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")

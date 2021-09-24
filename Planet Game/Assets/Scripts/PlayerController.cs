@@ -417,6 +417,8 @@ public class PlayerController : MonoBehaviour
             BorderDetector.intensity = 0;
         }
 
+        //Debug.Log(BorderDetector.intensity.ToString() + " " + BorderDetector.borders.Count.ToString() + " " + GameManager.playerDead.ToString());
+
         GameManager.Instance.vignetteMat.SetColor("_VColor", new Color(1, Mathf.Max(1 - BorderDetector.intensity, 0.0f), Mathf.Max(1 - BorderDetector.intensity, 0.0f), 1));
         GameManager.Instance.vignetteMat.SetFloat("_VRadius", Mathf.Max(1.0f - BorderDetector.intensity * 0.8f, 0.0f));
         GameManager.Instance.vignetteMat.SetFloat("_VSoft", Mathf.Min(BorderDetector.intensity * 2, 1.0f));

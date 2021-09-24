@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     private void Awake(){
         _instance = this;
         playerDead = false;
+        playerDeaths = PlayerDeaths.Alive;
         UIText = score_text.GetComponent<Text>();
         UI_coin_text = coin_text.GetComponent<Text>();
         UI_special_text = special_text.GetComponent<Text>();
