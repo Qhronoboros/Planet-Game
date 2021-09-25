@@ -7,11 +7,12 @@ public class BreadshipController : MonoBehaviour
 {
     // public GameObject planetObj;
     public GameObject projectilePrefab;
+    public Transform main_camera;
 
     public float movementSpeed = 5.5f;
-    // public float maxMovementSpeed = 1.0f;
-    // public float accMovementSpeed = 1.0f;
-    // public float decMovementSpeed = 1.0f;
+    public float x_clamp = 9;
+    public float y_clamp = 4;
+
     Vector2 direction;
     public float shootDelay = 0.2f;
     public int laser_layer = 4;
@@ -61,5 +62,6 @@ public class BreadshipController : MonoBehaviour
         }
         //movement
         transform.Translate((direction+ new Vector2(0.5f,0f)) * movementSpeed * Time.deltaTime);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, main_camera.position.x - x_clamp, main_camera.position.x +x_clamp), Mathf.Clamp(transform.position.y, main_camera.position.y - y_clamp, main_camera.position.y + y_clamp), transform.position.z);
     }
 }
