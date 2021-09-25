@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 5903cdb6e98883e45b73100d51567326
+guid: 12ec02a60db0562498fb6bd87a8269e8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6497468883778768649
-    second: Projectileofduck_0
+      213: -1339254371908805644
+    second: Projectileofduck Emission_0
   - first:
-      213: 4471537572603893569
-    second: Projectileofduck_1
+      213: -3537927453213210671
+    second: Projectileofduck Emission_1
   - first:
-      213: -2732443503714389237
-    second: Projectileofduck_2
+      213: 3883711087462796231
+    second: Projectileofduck Emission_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,64 +112,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Projectileofduck_0
+      name: Projectileofduck Emission_0
       rect:
         serializedVersion: 2
-        x: 60
-        y: 32
-        width: 12
-        height: 60
+        x: 64
+        y: 68
+        width: 4
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90f89c45685ab2a50800000000000000
-      internalID: 6497468883778768649
+      spriteID: 4fb9c729e330a6de0800000000000000
+      internalID: -1339254371908805644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectileofduck_1
+      name: Projectileofduck Emission_1
       rect:
         serializedVersion: 2
-        x: 188
-        y: 28
-        width: 12
-        height: 64
+        x: 192
+        y: 68
+        width: 4
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1471ed62bb71e0e30800000000000000
-      internalID: 4471537572603893569
+      spriteID: 1d7cf1ed9b1c6eec0800000000000000
+      internalID: -3537927453213210671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectileofduck_2
+      name: Projectileofduck Emission_2
       rect:
         serializedVersion: 2
-        x: 316
-        y: 24
-        width: 12
-        height: 68
+        x: 320
+        y: 68
+        width: 4
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b03b7484c19641ad0800000000000000
-      internalID: -2732443503714389237
+      spriteID: 7cb477248a6b5e530800000000000000
+      internalID: 3883711087462796231
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 12ec02a60db0562498fb6bd87a8269e8, type: 3}
-      name: _Emission
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
