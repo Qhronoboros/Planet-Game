@@ -46,7 +46,7 @@ public class Breadship_asteroid : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Player")
         {
-            // collision.gameObject.GetComponent<PlayerController>().OnHit();
+            collision.gameObject.GetComponentInParent<BreadshipController>().OnHit();
             GetComponentInParent<AudioSource>().Play();
             Destroy(this.gameObject);
         }

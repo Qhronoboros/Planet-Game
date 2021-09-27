@@ -40,4 +40,8 @@ public class Pause_menu : MonoBehaviour
 
         GameManager.Instance.player.GetComponent<PlayerController>().resetPlayer();
     }
+    public void GoToNextStageBread()
+    {
+        SceneManager.LoadSceneAsync(Game_Manager.Instance.nextStage, LoadSceneMode.Single);
+    }
 }

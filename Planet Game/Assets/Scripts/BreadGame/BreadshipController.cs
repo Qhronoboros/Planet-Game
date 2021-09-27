@@ -8,19 +8,23 @@ public class BreadshipController : MonoBehaviour
     // public GameObject planetObj;
     public GameObject projectilePrefab;
     public Transform main_camera;
-
+    public AudioClip jumpAudio;
+    public AudioClip hitAudio;
     public float movementSpeed = 5.5f;
     public float x_clamp = 9;
     public float y_clamp = 4;
+    public Vector2 idle_movespeed = new Vector2(0.5f,0);
 
     Vector2 direction;
     public float shootDelay = 0.2f;
     public int laser_layer = 4;
-    static PlayerController.MovementOptions currentMovement = PlayerController.MovementOptions.Default;
+    // static PlayerController.MovementOptions currentMovement = PlayerController.MovementOptions.Default;
 
     float timeLastProjectile = 0;
 
     static bool holdShoot = false;
+    public bool invincibility = false;
+    public float invincibilityTime = 1.0f;
 
     public void OnMovement(InputAction.CallbackContext value)
     {
@@ -28,7 +32,28 @@ public class BreadshipController : MonoBehaviour
         direction = joystickMovement;
 
     }
+    public void OnHit()
+    {
+        if (!Game_Manager.playerDead && !Game_Manager.Instance.stageClear)
+        {
+            if (!invincibility)
+            {
+                int temp_life = Game_Manager.Instance.get_life();
+                temp_life -= 1;
 
+                if (temp_life > 0)
+                {
+                    GetComponent<AudioSource>().clip = hitAudio;
+                    GetComponent<AudioSource>().pitch = 1.0f;
+                    GetComponent<AudioSource>().Play();
+
+                    StartCoroutine(Invincible(invincibilityTime));
+                }
+
+                Game_Manager.Instance.set_health(temp_life, "projectile");
+            }
+        }
+    }
     public void OnShoot(InputAction.CallbackContext value)
     {
         if (value.started)
@@ -50,18 +75,34 @@ public class BreadshipController : MonoBehaviour
 
     void Update()
     {   
+        if(main_camera.position.x > 299.5){
+            idle_movespeed = new Vector2(0f,0f);
+        }
         //shoot
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position, transform.GetChild(0).rotation);
             laser.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
             laser.GetComponent<SpriteRenderer>().sortingOrder = laser_layer;
-            laser.GetComponent<ProjectileController>().owner = this.tag;
-            laser.GetComponent<ProjectileController>().aimDirection = Vector2.up;
+            laser.GetComponent<Projectile_controller>().owner = this.tag;
+            laser.GetComponent<Projectile_controller>().aimDirection = Vector2.up;
             timeLastProjectile = Time.time;
         }
         //movement
-        transform.Translate((direction+ new Vector2(0.5f,0f)) * movementSpeed * Time.deltaTime);
+        transform.Translate((direction+ idle_movespeed) * movementSpeed * Time.deltaTime);
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, main_camera.position.x - x_clamp, main_camera.position.x +x_clamp), Mathf.Clamp(transform.position.y, main_camera.position.y - y_clamp, main_camera.position.y + y_clamp), transform.position.z);
+    }
+
+    IEnumerator Invincible(float invincibilityLength)
+    {
+        invincibility = true;
+        // GetComponent<SpriteRenderer>().material = Game_Manager.Instance.invincibleMat;
+        SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite.material = Game_Manager.Instance.invincibleMat;
+        yield return new WaitForSeconds(invincibilityLength);
+        // GetComponent<SpriteRenderer>().material = Game_Manager.Instance.defaultMat;
+        sprite.material = Game_Manager.Instance.defaultMat;
+        yield return new WaitForSeconds(0.1f);
+        invincibility = false;
     }
 }

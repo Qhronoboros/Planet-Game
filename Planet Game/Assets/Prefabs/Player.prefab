@@ -219,9 +219,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainPlanetObj: {fileID: 0}
-  projectilePrefab: {fileID: 3996525464930748556, guid: 6373457e824149b4aa2cb97ac5c825a2, type: 3}
+  projectilePrefab: {fileID: 3996525464930748556, guid: b8158704de61d8d478225e45d7b7d02a, type: 3}
   jumpArrow: {fileID: 0}
   jumpCounterText: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
+  jumpAudio: {fileID: 0}
+  hitAudio: {fileID: 0}
   movementSpeed: 0
   maxMovementSpeed: 500
   accMovementSpeed: 200
@@ -238,6 +242,9 @@ MonoBehaviour:
   maxVelocityChange: 20
   multiplyDownward: 1
   lastJoystickVector: {x: 0, y: 0}
+  flapping: 0
+  invincibility: 0
+  invincibilityTime: 1
 --- !u!114 &2279174798412516071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +366,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 90211eb8-0a8b-4504-b577-9c06fee76fba
     m_ActionName: PlayerControls/Jumping
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 68b97c87-0549-4732-b8dc-7167a486f03f
+    m_ActionName: EmptyMap/Empty
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2227875a-2c17-4d28-9579-1f5796c9746f
+    m_ActionName: BreadshipControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e374e1ae-f5e2-4359-85fd-ed9bc24f31d7
+    m_ActionName: BreadshipControls/Shoot[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
