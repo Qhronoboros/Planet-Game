@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstStage: stage1 1
+  stage: 
 --- !u!114 &222645518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +581,7 @@ GameObject:
   - component: {fileID: 295488759}
   - component: {fileID: 295488758}
   m_Layer: 5
-  m_Name: Button
+  m_Name: inter_stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +781,7 @@ GameObject:
   - component: {fileID: 340020007}
   - component: {fileID: 340020006}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: stage1 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -849,7 +850,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 340020007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 222645517}
+        m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
+        m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &340020007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,7 +1137,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1867079825}
+      - m_Target: {fileID: 951071820}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1726,6 +1739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26201e97e1ea6184eaac75906e125c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage_selection_obj: {fileID: 1234813526}
+  setting_obj: {fileID: 951071820}
 --- !u!1 &978670275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,7 +1754,7 @@ GameObject:
   - component: {fileID: 978670278}
   - component: {fileID: 978670277}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: stage1 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,13 +1824,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 951071822}
+        m_TargetAssemblyTypeName: Temp_map_select, Assembly-CSharp
+        m_MethodName: pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1947,7 +1962,7 @@ GameObject:
   - component: {fileID: 1109990989}
   - component: {fileID: 1109990988}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: stage1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2016,7 +2031,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1109990989}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 222645517}
+        m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
+        m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1109990989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,7 +2997,7 @@ GameObject:
   - component: {fileID: 1975502331}
   - component: {fileID: 1975502330}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: stage1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3166,7 +3193,7 @@ GameObject:
   - component: {fileID: 2104670019}
   - component: {fileID: 2104670018}
   m_Layer: 5
-  m_Name: Button
+  m_Name: inter_stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3235,7 +3262,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2104670019}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 222645517}
+        m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
+        m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2104670019
 MonoBehaviour:
   m_ObjectHideFlags: 0
