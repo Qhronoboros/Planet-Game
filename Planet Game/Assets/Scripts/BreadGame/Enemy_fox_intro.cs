@@ -10,7 +10,7 @@ public class Enemy_fox_intro : MonoBehaviour
     private float second_speed = 2f;
     private Vector2 target;
     private Vector2 position;
-    public bool follow = false;
+    // public bool follow = false;
     private Vector2 initial_position = new Vector2(306.0f,0f);
     public int health ;
     public int max_health = 6;
@@ -67,22 +67,6 @@ public class Enemy_fox_intro : MonoBehaviour
         damaged = false;
     }
 
-    // public void destroy_self(){
-    //     GetComponentInParent<AudioSource>().Play();
-
-    //     float temp_score = GameManager.Instance.getScore();
-    //     temp_score += 500;
-    //     GameManager.Instance.setScore(temp_score);
-
-    //     if(item_id == 1){
-    //         GameObject item = Instantiate(item_prefab,this.transform.position,this.transform.rotation);
-    //         if (item.tag == "Special_obj")
-    //         {
-    //             item.transform.parent = GameManager.Instance.special_child.transform;
-    //         }
-    //     }
-    //     Destroy(this.gameObject);
-    // }
 
     // Start is called before the first frame update
     void Start()

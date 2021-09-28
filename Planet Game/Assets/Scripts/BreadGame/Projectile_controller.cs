@@ -20,7 +20,9 @@ public class Projectile_controller : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        if (other.tag == "Asteroid")
+
+        //bullet from player hit asteroid
+        if (other.tag == "Asteroid" && owner == "Player")
         {
             float temp_score = Game_Manager.Instance.getScore();
             temp_score += 250;
@@ -29,20 +31,22 @@ public class Projectile_controller : MonoBehaviour
             other.GetComponent<Breadship_asteroid>().OnHit();
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Planet")
-        {
-            Destroy(this.gameObject);
-        }
-        else if (other.tag == "Enemy" && owner != "Enemy")
+        //bullet from player hit enemy
+        else if (other.tag == "Enemy" && owner == "Player")
         {
             other.GetComponent<Enemy_fox_intro>().OnHit();
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Player" && owner != "Player" && !Game_Manager.Instance.player.GetComponent<BreadshipController>().invincibility)
+        //bullet from
+        else if (other.tag == "Player" && owner == "Enemy" && !Game_Manager.Instance.player.GetComponent<BreadshipController>().invincibility)
         {
-            other.transform.parent.GetComponent<BreadshipController>().OnHit();
+            other.GetComponent<BreadshipController>().OnHit();
             Destroy(this.gameObject);
         }
+        else if (other.tag == "Planet" && owner == "Enemy"){
+            Destroy(this.gameObject);
+        }
+
     }
     private void Update()
     {

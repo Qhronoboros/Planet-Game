@@ -435,9 +435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_bar: {fileID: 3957690318492732187}
-  follow: 0
   health: 0
-  max_health: 125
+  max_health: 75
   in_action: 0
   planet_destroyed: 0
   action: 0

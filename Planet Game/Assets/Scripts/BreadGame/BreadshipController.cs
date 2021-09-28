@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class BreadshipController : MonoBehaviour
 {
-    // public GameObject planetObj;
+    //jumps
+    public GameObject jumpArrow;
+    public Text jumpCounterText;
+    private int jumpCounter = 0;
+    public int jumpLimit = 3;
+    public float jumpHeight = 1.0f;
+    public float doubleJumpHeight = 1.0f;
+    public Vector2 lastJoystickVector;
+    //
     public GameObject projectilePrefab;
     public Transform main_camera;
     public AudioClip jumpAudio;
@@ -67,10 +76,71 @@ public class BreadshipController : MonoBehaviour
             holdShoot = false;
         }
     }
+    public void OnJumping(InputAction.CallbackContext value)
+    {
+        Vector2 joystickMovement = value.ReadValue<Vector2>();
+        // joystick start moving
+        if (value.started)
+        {
+            jumpArrow.SetActive(true);
+            lastJoystickVector = Vector2.zero;
+        }
+
+        // joysting drag
+        if (value.performed)
+        {
+            if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
+            {
+                if (!jumpArrow.activeSelf)
+                {
+                    jumpArrow.SetActive(true);
+                }
+                jumpArrow.transform.position = Vector3.MoveTowards(gameObject.transform.position + new Vector3 (joystickMovement.x,joystickMovement.y,0f) * 3, gameObject.transform.position, Time.deltaTime);
+                jumpArrow.transform.up = -(transform.position - jumpArrow.transform.position);
+            }
+            else
+            {
+                jumpArrow.SetActive(false);
+            }
+
+            if (jumpCounter < jumpLimit)
+            {
+                if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
+                {
+                    lastJoystickVector = joystickMovement;
+                }
+                else
+                {
+                    lastJoystickVector = Vector2.zero;
+                }
+            }
+        }
+
+        if (value.canceled)
+        {
+            Debug.Log("Canceled");
+        }
+
+        // joystick release
+        if (value.canceled)
+        {
+            jumpArrow.SetActive(false);
+
+            if (lastJoystickVector != Vector2.zero)
+            {
+
+                GetComponent<Rigidbody2D>().AddForce(lastJoystickVector * jumpHeight * movementSpeed, ForceMode2D.Impulse);
+                GetComponent<AudioSource>().clip = jumpAudio;
+                GetComponent<AudioSource>().pitch = 2.0f;
+                GetComponent<AudioSource>().Play();
+
+            }
+        }
+    }
 
     void Start()
     {
-        
+        jumpArrow = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -81,7 +151,8 @@ public class BreadshipController : MonoBehaviour
         //shoot
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)
         {
-            GameObject laser = Instantiate(projectilePrefab, transform.position, transform.GetChild(0).rotation);
+            GameObject laser = Instantiate(projectilePrefab, transform.position, transform.rotation);
+            laser.transform.Rotate(0, 0, -90);
             laser.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
             laser.GetComponent<SpriteRenderer>().sortingOrder = laser_layer;
             laser.GetComponent<Projectile_controller>().owner = this.tag;
