@@ -15,7 +15,9 @@ public class Stage_controller : MonoBehaviour
     public GameObject fox_prefab;
     public GameObject planet_prefab;
     public GameObject Planet;
-
+    public GameObject JoyStick_obj;
+    public GameObject jumpStick_obj;
+    public GameObject shoot_obj;
     public bool movement_popup = false;
     public bool coin_popup = false;
     public bool shoot_popup = false;
@@ -30,7 +32,7 @@ public class Stage_controller : MonoBehaviour
     }
     public void Pause(){
         //pause_ui.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0.0f;
     }
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,7 @@ public class Stage_controller : MonoBehaviour
             popup_text.text = "Use the left JoyStick to move";
             popup.SetActive(true);
         }
+
         if(camera.position.x >= 35.0f && !coin_popup ){
             coin_popup = true;
             Pause();
@@ -66,7 +69,7 @@ public class Stage_controller : MonoBehaviour
         if(camera.position.x >= 120.0f && !jump_popup ){
             jump_popup = true;
             Pause();
-            popup_text.text = "Drag and release the Jump button on the right to boost";
+            popup_text.text = "Drag and release the right joystick to launch";
             popup.SetActive(true);
         }
         if(camera.position.x >= 275.5f && !spawn_planet ){
@@ -107,5 +110,26 @@ public class Stage_controller : MonoBehaviour
             GameObject asteroid = Instantiate(this.asteroid_prefab,new Vector2(camera.position.x + asteroid_spawn_distance, pos_y) , this.transform.rotation);
             asteroid.transform.SetParent(Asteroids.transform);
         }
+    }
+
+    public void blink_image(){
+        if(movement_popup && !coin_popup && !shoot_popup && !jump_popup){
+            StartCoroutine(blink(JoyStick_obj));
+        }
+        if(movement_popup && shoot_popup && !jump_popup){
+            StartCoroutine(blink(shoot_obj));
+        }
+        if(movement_popup && shoot_popup && jump_popup){
+            StartCoroutine(blink(jumpStick_obj));
+        }
+    }
+
+
+
+    IEnumerator blink(GameObject blink_obj)
+    {   
+        blink_obj.GetComponent<Image>().material = Game_Manager.Instance.ui_blinking_mat;
+        yield return new WaitForSeconds(5f);
+        blink_obj.GetComponent<Image>().material = null;
     }
 }

@@ -33,6 +33,7 @@ public class Game_Manager : MonoBehaviour
     public Material damagedMat;
     public Material invincibleMat;
     public Material vignetteMat;
+    public Material ui_blinking_mat;
 
     //score
     public GameObject score_text;

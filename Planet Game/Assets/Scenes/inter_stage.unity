@@ -2962,6 +2962,9 @@ MonoBehaviour:
   fox_prefab: {fileID: 73780902423221497, guid: e865b0319db6f0247aed6f61f76baa48, type: 3}
   planet_prefab: {fileID: 1324270194433278804, guid: 2e008bb9fd30aae43aa6384750eac7c6, type: 3}
   Planet: {fileID: 1099689385}
+  JoyStick_obj: {fileID: 289598776}
+  jumpStick_obj: {fileID: 1440396393}
+  shoot_obj: {fileID: 764508107}
   movement_popup: 0
   coin_popup: 0
   shoot_popup: 0
@@ -10987,7 +10990,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -400}
-  m_SizeDelta: {x: 3040, y: 202.01}
+  m_SizeDelta: {x: 1500, y: 202.01}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1291165189
 MonoBehaviour:
@@ -11011,9 +11014,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b4f9948afda753d41867b5bcad565861, type: 3}
-    m_FontSize: 60
+    m_FontSize: 50
     m_FontStyle: 3
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 80
     m_Alignment: 4
@@ -12603,6 +12606,7 @@ MonoBehaviour:
   damagedMat: {fileID: 2100000, guid: 7b8fbf0505ce5f04d807df62161bffc4, type: 2}
   invincibleMat: {fileID: 2100000, guid: c7c9acfb7da82a140a149dc3e012267b, type: 2}
   vignetteMat: {fileID: 2100000, guid: 70da52c6094b37a4eb98c397418c604c, type: 2}
+  ui_blinking_mat: {fileID: 2100000, guid: ca44b6122909ad348a18bbf1968e1296, type: 2}
   score_text: {fileID: 1493431057}
   coin_text: {fileID: 134434166}
   deadObj: {fileID: 880425837}
@@ -15553,6 +15557,18 @@ MonoBehaviour:
       - m_Target: {fileID: 403084295}
         m_TargetAssemblyTypeName: Stage_controller, Assembly-CSharp
         m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 403084295}
+        m_TargetAssemblyTypeName: Stage_controller, Assembly-CSharp
+        m_MethodName: blink_image
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
