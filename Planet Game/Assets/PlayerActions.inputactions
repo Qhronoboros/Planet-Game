@@ -237,6 +237,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TestingMap",
+            "id": "6f20b80c-e365-4feb-8ada-bf3f2b4b1e55",
+            "actions": [
+                {
+                    "name": "Red Button",
+                    "type": "Button",
+                    "id": "8875dc18-aaae-4474-a6af-c431bbba2f87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Blue Button",
+                    "type": "Button",
+                    "id": "e9e6b274-1e8b-4d08-b270-4d9ec05d175c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b3bf61f6-77c6-4d0f-9233-c65f6a868fea",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Blue Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9c0dbb6-1b46-4d01-88fe-987bf464c808",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Red Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
