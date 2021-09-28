@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: eb860b38153cf5b4e93150bf1f8dd745, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d780ce3b935e5438386da1d9b8e989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemy_parent: {fileID: 0}
 --- !u!95 &8749858227017588856
 Animator:
   serializedVersion: 3

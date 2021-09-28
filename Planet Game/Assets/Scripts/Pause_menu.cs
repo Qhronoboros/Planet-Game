@@ -19,7 +19,8 @@ public class Pause_menu : MonoBehaviour
 
     }
     public void Quit(){
-        Application.Quit(); 
+        Resume();
+        SceneManager.LoadSceneAsync("main_menu", LoadSceneMode.Single);
     }
     public void GoToNextStage()
     {

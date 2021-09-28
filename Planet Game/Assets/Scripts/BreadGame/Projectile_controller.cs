@@ -44,6 +44,7 @@ public class Projectile_controller : MonoBehaviour
             Destroy(this.gameObject);
         }
         else if (other.tag == "Planet" && owner == "Enemy"){
+            other.GetComponent<planet_breadgame>().OnHit();
             Destroy(this.gameObject);
         }
 
