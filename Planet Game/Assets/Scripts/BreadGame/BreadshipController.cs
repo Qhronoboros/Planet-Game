@@ -153,7 +153,7 @@ public class BreadshipController : MonoBehaviour
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position, transform.rotation);
             laser.transform.Rotate(0, 0, -90);
-            laser.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+            laser.transform.localScale = new Vector3(0.5f,0.3f,0.3f);
             laser.GetComponent<SpriteRenderer>().sortingOrder = laser_layer;
             laser.GetComponent<Projectile_controller>().owner = this.tag;
             laser.GetComponent<Projectile_controller>().aimDirection = Vector2.up;
