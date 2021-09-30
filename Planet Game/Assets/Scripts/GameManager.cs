@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public Material damagedMat;
     public Material invincibleMat;
     public Material vignetteMat;
+    public Material GrayscaleMat;
 
     //score
     public GameObject score_text;
@@ -193,10 +194,13 @@ public class GameManager : MonoBehaviour
         if (loseLife)
         {
             playerDead = true;
+            player.GetComponent<SpriteRenderer>().material = GrayscaleMat;
             player.GetComponent<PlayerController>().animator.SetBool("Dead", true);
             player.GetComponent<Gravity>().gravity = false;
             playerInput.SwitchCurrentActionMap("EmptyMap");
             gameControls.SetActive(false);
+
+            Debug.Log(playerDeaths);
 
             if (lifes <= 0)
             {

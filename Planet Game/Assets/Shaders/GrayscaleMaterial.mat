@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VignetteMaterial
-  m_Shader: {fileID: 4800000, guid: e357a0b9487f24a44a9f68a0f8a63020, type: 3}
+  m_Name: GrayscaleMaterial
+  m_Shader: {fileID: 4800000, guid: 89facf07072f5f7438cf7ad9420414a8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -71,11 +71,9 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _VRadius: 0.64
-    - _VSoft: 0.9
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _VColor: {r: 1, g: 0.55, b: 0.55, a: 1}
+    - _Luminance: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -29,7 +29,7 @@ public class Pause_menu : MonoBehaviour
 
     public void RestartNormal()
     {
-        GameManager.playerDead = false;
+        GameManager.Instance.player.GetComponent<SpriteRenderer>().material = GameManager.Instance.defaultMat;
         GameManager.playerDeaths = GameManager.PlayerDeaths.Alive;
         GameManager.Instance.set_health(3);
         GameManager.Instance.player.GetComponent<Gravity>().gravity = true;

@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
     public void resetPlayer()
     {
         animator.SetBool("Dead", false);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         transform.position = GameManager.Instance.startPos;
         currentMovement = MovementOptions.Default;
         isGrounded = false;
@@ -109,11 +110,22 @@ public class PlayerController : MonoBehaviour
 
         mainPlanetObj = closestPlanet;
 
+        if (GameManager.playerDead)
+        {
+            Debug.Log("restart");
+            Debug.Log(BorderDetector.borders.Count);
+            Debug.Log(gravity.planetsOrbiting.Count);
+            Debug.Log(gravity.planetsOrbiting[0].name);
+        }
+
         GameManager.Instance.cameraController.UpdateCameraSettings(closestPlanet);
+        GameManager.Instance.cameraController.ResetPlanetCam();
 
         UpdateJumpCounter(0);
 
         StartCoroutine(Invincible(2.0f));
+
+        GameManager.playerDead = false;
     }
 
     //public void OnFly(InputAction.CallbackContext value)
@@ -141,7 +153,6 @@ public class PlayerController : MonoBehaviour
 
     public void AddPlanet(GameObject planet)
     {
-
         gravity.planetsOrbiting.Add(planet);
     }
 
@@ -154,9 +165,12 @@ public class PlayerController : MonoBehaviour
             ChangePlanet(gravity.planetsOrbiting[gravity.planetsOrbiting.Count - 1]);
         }
 
-        if (gravity.planetsOrbiting.Count == 0)
+        if (gravity.planetsOrbiting.Count == 0 && !GameManager.playerDead)
         {
             // Kill player
+
+            Debug.Log(planet.name);
+
             GameManager.playerDeaths = GameManager.PlayerDeaths.Border;
             GameManager.Instance.set_health(0);
             Debug.Log("Remove Planet");
@@ -399,10 +413,13 @@ public class PlayerController : MonoBehaviour
         velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
         GetComponent<Rigidbody2D>().AddForce(velocityChange, ForceMode2D.Force);
 
-        // Keeps the player's rotation consistent
-        Vector3 relativePos = mainPlanetObj.transform.position - transform.position;
-        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, -relativePos);
-        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, spinRotation * 2 / mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject, true) * Time.deltaTime);
+        // Keeps the player's rotation consistent if the mainPlanetObj is a planet
+        if (mainPlanetObj.GetComponent<PlanetScript>().isPlanet)
+        {
+            Vector3 relativePos = mainPlanetObj.transform.position - transform.position;
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, -relativePos);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, spinRotation * 2 / mainPlanetObj.GetComponent<PlanetScript>().calcDistance(gameObject, true) * Time.deltaTime);
+        }
 
         // Shoot
         if (holdShoot && Time.time - timeLastProjectile > shootDelay)

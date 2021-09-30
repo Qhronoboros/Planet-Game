@@ -38,6 +38,14 @@ public class CameraController : MonoBehaviour
         playerCamDistance = planetScript.planetRadius + 1.0f;
     }
 
+    public void ResetPlanetCam()
+    {
+        VCamPlanet.gameObject.GetComponent<CinemachineCameraOffset>().m_Offset = new Vector3(0, planetScript.planetRadius + 5, -10);
+        VCamPlanet.gameObject.GetComponent<CinemachineTargetGroup>().m_Targets[0].target = planetScript.gameObject.transform;
+
+        VCamPlanet.m_Lens.OrthographicSize = planetScript.planetRadius + 5;
+    }
+
     private void Update()
     {
         foreach (GameObject collectable in GameManager.Instance.collectablesOnScreen)
@@ -56,14 +64,14 @@ public class CameraController : MonoBehaviour
         {
             TransitionWin();
         }
-        else if (planetScript.calcDistance(GameManager.Instance.player, true) >= playerCamDistance && !GameManager.playerDead && !GameManager.Instance.stageClear && cameraState != CameraStates.PlayerView)
+        else if (!planetScript.isPlanet || planetScript.calcDistance(GameManager.Instance.player, true) >= playerCamDistance && !GameManager.playerDead && !GameManager.Instance.stageClear && cameraState != CameraStates.PlayerView)
         {
             //Debug.Log(planetScript.calcDistance(GameManager.Instance.player, true));
             //Debug.Log(playerCamDistance);
             //Debug.Log("Transitioning player");
             TransitionPlayer();
         }
-        else if (planetScript.calcDistance(GameManager.Instance.player, true) < planetCamDistance && !GameManager.playerDead && !GameManager.Instance.stageClear && cameraState != CameraStates.PlanetView)
+        else if (planetScript.isPlanet && planetScript.calcDistance(GameManager.Instance.player, true) < planetCamDistance && !GameManager.playerDead && !GameManager.Instance.stageClear && cameraState != CameraStates.PlanetView)
         {
             TransitionPlanet();
         }
@@ -76,10 +84,7 @@ public class CameraController : MonoBehaviour
 
     public void TransitionPlanet()
     {
-        VCamPlanet.gameObject.GetComponent<CinemachineCameraOffset>().m_Offset = new Vector3(0, planetScript.planetRadius + 5, -10);
-        VCamPlanet.gameObject.GetComponent<CinemachineTargetGroup>().m_Targets[0].target = planetScript.gameObject.transform;
-
-        VCamPlanet.m_Lens.OrthographicSize = planetScript.planetRadius + 5;
+        ResetPlanetCam();
 
         VCamPlanet.Priority = 1;
         VCamPlayer.Priority = 0;

@@ -377,6 +377,10 @@ PrefabInstance:
       propertyPath: jumpCounterText
       value: 
       objectReference: {fileID: 1677304353}
+    - target: {fileID: 2279174798412516065, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2279174798412516070, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7201,6 +7205,7 @@ MonoBehaviour:
   damagedMat: {fileID: 2100000, guid: 7b8fbf0505ce5f04d807df62161bffc4, type: 2}
   invincibleMat: {fileID: 2100000, guid: c7c9acfb7da82a140a149dc3e012267b, type: 2}
   vignetteMat: {fileID: 2100000, guid: 70da52c6094b37a4eb98c397418c604c, type: 2}
+  GrayscaleMat: {fileID: 2100000, guid: 992fe4c3596f87846a2ea29bf77c81ac, type: 2}
   score_text: {fileID: 1014257120}
   coin_text: {fileID: 1758643559}
   special_text: {fileID: 1632407512}
@@ -9177,6 +9182,7 @@ MonoBehaviour:
   fullKillBorderDistance: 240
   planetRadius: 12
   ringLaunch: 40
+  isPlanet: 1
 --- !u!50 &942312984
 Rigidbody2D:
   serializedVersion: 4
@@ -20232,6 +20238,7 @@ MonoBehaviour:
   fullKillBorderDistance: 120
   planetRadius: 12
   ringLaunch: 40
+  isPlanet: 1
 --- !u!50 &1884009593
 Rigidbody2D:
   serializedVersion: 4
@@ -23929,3 +23936,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fc6d297aa0965444a19f28341abf210, type: 3}
+--- !u!1001 &5414473975922509589
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789792, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414473975404789798, guid: 597b510ff6be8074b9e11e8538932751, type: 3}
+      propertyPath: m_Name
+      value: Black Hole
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 597b510ff6be8074b9e11e8538932751, type: 3}

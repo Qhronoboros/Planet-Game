@@ -18,6 +18,8 @@ public class PlanetScript : MonoBehaviour
 
     public float ringLaunch = 40.0f;
 
+    public bool isPlanet = true;
+
     // Setup warningBorder and killBorder
 
     private void Awake()
