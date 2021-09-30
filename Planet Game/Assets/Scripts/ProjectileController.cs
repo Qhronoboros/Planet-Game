@@ -40,7 +40,7 @@ public class ProjectileController : MonoBehaviour
         }
         else if (other.tag == "Player" && owner != "Player" && !GameManager.Instance.player.GetComponent<PlayerController>().invincibility)
         {
-            other.GetComponent<PlayerController>().OnHit();
+            other.GetComponent<PlayerController>().OnHit("projectile");
             Destroy(this.gameObject);
         }
     }

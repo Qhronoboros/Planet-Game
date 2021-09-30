@@ -12,6 +12,7 @@ TagManager:
   - Special_obj
   - Enemy
   - Background
+  - Ring
   layers:
   - Default
   - TransparentFX

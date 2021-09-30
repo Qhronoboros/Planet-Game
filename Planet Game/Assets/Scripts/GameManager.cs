@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour
     {
         Alive,
         Projectile,
-        Border
+        Border,
+        Ring
     }
 
 
@@ -167,7 +168,11 @@ public class GameManager : MonoBehaviour
         if(health == 0){
             if (cause == "projectile")
             {
-                GameManager.playerDeaths = GameManager.PlayerDeaths.Projectile;
+                playerDeaths = PlayerDeaths.Projectile;
+            }
+            else if (cause == "ring")
+            {
+                playerDeaths = PlayerDeaths.Ring;
             }
             SetLifes(lifes - 1);
             //game_over();

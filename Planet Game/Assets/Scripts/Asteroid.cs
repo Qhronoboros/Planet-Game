@@ -58,7 +58,7 @@ public class Asteroid : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Player" && !GameManager.Instance.player.GetComponent<PlayerController>().invincibility)
         {
-            collision.gameObject.GetComponent<PlayerController>().OnHit();
+            collision.gameObject.GetComponent<PlayerController>().OnHit("projectile");
             Destroy(this.gameObject);
         }
         else if(collision.gameObject.tag == "Planet")

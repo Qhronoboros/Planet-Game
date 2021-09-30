@@ -308,12 +308,20 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Planet")
+        if (collision.collider.gameObject.tag == "Ring")
+        {
+            Vector2 point = collision.GetContact(0).point;
+            GetComponent<Rigidbody2D>().AddForce((new Vector2(transform.position.x, transform.position.y) - point) * collision.gameObject.GetComponentInParent<PlanetScript>().ringLaunch, ForceMode2D.Impulse);
+
+            OnHit("ring");
+        }
+        else if (collision.gameObject.tag == "Planet")
         {
             animator.SetBool("IsGrounded", true);
             isGrounded = true;
             UpdateJumpCounter(0);
         }
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -325,8 +333,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // On hit bullet/asteroid
-    public void OnHit()
+    // Player got hit
+    public void OnHit(string cause="")
     {
         if (!GameManager.playerDead && !GameManager.Instance.stageClear)
         {
@@ -344,7 +352,7 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(Invincible(invincibilityTime));
                 }
 
-                GameManager.Instance.set_health(temp_life, "projectile");
+                GameManager.Instance.set_health(temp_life, cause);
             }
         }
     }

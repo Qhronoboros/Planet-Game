@@ -16,6 +16,8 @@ public class PlanetScript : MonoBehaviour
 
     public float planetRadius;
 
+    public float ringLaunch = 40.0f;
+
     // Setup warningBorder and killBorder
 
     private void Awake()
