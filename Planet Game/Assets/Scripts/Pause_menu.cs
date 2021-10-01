@@ -29,6 +29,7 @@ public class Pause_menu : MonoBehaviour
 
     public void RestartNormal()
     {
+        StopCoroutine(GameManager.Instance.grayscaleCoroutine);
         GameManager.Instance.player.GetComponent<SpriteRenderer>().material = GameManager.Instance.defaultMat;
         GameManager.playerDeaths = GameManager.PlayerDeaths.Alive;
         GameManager.Instance.set_health(3);
@@ -43,6 +44,7 @@ public class Pause_menu : MonoBehaviour
     }
     public void GoToNextStageBread()
     {
+        StopCoroutine(GameManager.Instance.grayscaleCoroutine);
         SceneManager.LoadSceneAsync(Game_Manager.Instance.nextStage, LoadSceneMode.Single);
     }
 }

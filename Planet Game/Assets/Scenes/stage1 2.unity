@@ -370,6 +370,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2279174798412516064, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
+      propertyPath: jumpHeight
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279174798412516064, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 41254757}
@@ -377,10 +381,18 @@ PrefabInstance:
       propertyPath: jumpCounterText
       value: 
       objectReference: {fileID: 1677304353}
+    - target: {fileID: 2279174798412516064, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
+      propertyPath: maxVelocityChange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2279174798412516065, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2279174798412516067, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2279174798412516070, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1592,7 +1604,7 @@ MonoBehaviour:
   joystickPos: {x: 0, y: 0, z: 0}
   originalPos: {x: 0, y: 0, z: 0}
   transparencyDrag: 0.8
-  transparencyRelease: 0.4
+  transparencyRelease: 0.6
   m_MovementRange: 100
   m_ControlPath: <Gamepad>/leftStick
 --- !u!114 &112465854
@@ -9175,6 +9187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 3e+14
+  powerOfDistance: 2
   warningBorder: {fileID: 811068734}
   killBorder: {fileID: 559426271}
   warningBorderDistance: 50
@@ -15703,6 +15716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saturn
       objectReference: {fileID: 0}
+    - target: {fileID: 3911482738302836388, guid: 6ddf745bdeaf42c438b9c069b493a9e4, type: 3}
+      propertyPath: powerOfDistance
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3911482738302836389, guid: 6ddf745bdeaf42c438b9c069b493a9e4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -17178,7 +17195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: 130}
   m_SizeDelta: {x: 190, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677304353
@@ -17194,7 +17211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3529412, g: 0.33333334, b: 0.33333334, a: 0.7882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17203,7 +17220,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b4f9948afda753d41867b5bcad565861, type: 3}
-    m_FontSize: 35
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -19461,7 +19478,7 @@ MonoBehaviour:
   joystickPos: {x: 0, y: 0, z: 0}
   originalPos: {x: 0, y: 0, z: 0}
   transparencyDrag: 0.8
-  transparencyRelease: 0.4
+  transparencyRelease: 0.6
   m_MovementRange: 100
   m_ControlPath: <Gamepad>/rightStick
 --- !u!114 &1852967819
@@ -20231,6 +20248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 3e+14
+  powerOfDistance: 2
   warningBorder: {fileID: 1349747438}
   killBorder: {fileID: 1113955486}
   warningBorderDistance: 60

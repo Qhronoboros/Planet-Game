@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlanetScript : MonoBehaviour
 {
     public float mass = 7e+14f;
+    public float powerOfDistance = 2.0f;
 
     public GameObject warningBorder;
     public GameObject killBorder;

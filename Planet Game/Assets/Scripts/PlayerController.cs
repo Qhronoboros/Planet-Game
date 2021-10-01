@@ -112,10 +112,14 @@ public class PlayerController : MonoBehaviour
 
         if (GameManager.playerDead)
         {
-            Debug.Log("restart");
-            Debug.Log(BorderDetector.borders.Count);
-            Debug.Log(gravity.planetsOrbiting.Count);
-            Debug.Log(gravity.planetsOrbiting[0].name);
+            if (!gravity.planetsOrbiting.Contains(mainPlanetObj))
+            {
+                AddPlanet(mainPlanetObj);
+            }
+            if (!BorderDetector.borders.Contains(mainPlanetObj.GetComponent<PlanetScript>().warningBorder))
+            {
+                BorderDetector.borders.Add(mainPlanetObj.GetComponent<PlanetScript>().warningBorder);
+            }
         }
 
         GameManager.Instance.cameraController.UpdateCameraSettings(closestPlanet);
