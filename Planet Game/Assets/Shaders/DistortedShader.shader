@@ -1,4 +1,4 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Custom/Distorted"
 {
@@ -11,15 +11,10 @@ Shader "Custom/Distorted"
     {
         Tags {"Queue"="Transparent"}
 
-        Pass 
-        {
-            ZWrite On
-            ColorMask 0
-        }
+        GrabPass {"_GrabTexture"}
 
-
-        Blend OneMinusDstColor OneMinusSrcAlpha
-        BlendOp Add
+        ZWrite Off
+        Blend Off
 
         LOD 100
 
@@ -32,30 +27,36 @@ Shader "Custom/Distorted"
             #include "UnityCG.cginc"
 
             float4 _Color;
+            sampler2D _GrabTexture;
 
-            struct vertexInput
+            struct appdata
             {
-                float4 vertex: POSITION;
-                float4 color : COLOR;  
+                float4 pos : POSITION;
+                float4 uv : TEXCOORD0;
             };
  
-            struct fragmentInput
+            struct v2f
             {
                 float4 pos : SV_POSITION;
-                float4 color : COLOR0;
+                float4 grabPos : TEXCOORD0;
             };
  
-            fragmentInput vert( vertexInput i )
+            v2f vert( appdata v )
             {
-                fragmentInput o;
-                o.pos = UnityObjectToClipPos(i.vertex);
-                o.color = _Color;
+                v2f o;
+                o.pos = UnityObjectToClipPos(v.pos);
+                o.grabPos = ComputeGrabScreenPos(o.pos);
                 return o;
             }
  
-            half4 frag( fragmentInput i ) : COLOR
+            half4 frag( v2f i ) : SV_Target
             {
-                return i.color;
+                float3 baseWorldPos = mul( unity_ObjectToWorld, float4(0,0,0,0) ).xyz;
+                float distanceCenter = distance(i.grabPos.xy, baseWorldPos.xy);
+                float step = smoothstep(1.0, 0.0, distanceCenter);
+                float4 col = tex2Dproj(_GrabTexture, i.grabPos * distanceCenter);
+
+                return col * distanceCenter/1.5;
             }
             ENDCG
         }

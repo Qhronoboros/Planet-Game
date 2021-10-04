@@ -41,7 +41,7 @@ public class Gravity : MonoBehaviour
             foreach (GameObject planet in planetsOrbiting)
             {
                 // Calc Gravitational Constant
-                G = (planet.GetComponent<PlanetScript>().mass * GetComponent<Rigidbody2D>().mass / Mathf.Pow(Vector2.Distance(transform.position, planet.transform.position), 2)) * 6.67384e-11f;
+                G = (planet.GetComponent<PlanetScript>().mass * GetComponent<Rigidbody2D>().mass / Mathf.Pow(Vector2.Distance(transform.position, planet.transform.position), planet.GetComponent<PlanetScript>().powerOfDistance)) * 6.67384e-11f;
                 //Debug.Log("Gravitational Constant: " + G.ToString());
 
                 // Find the planet with the highest G

@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public Material damagedMat;
     public Material invincibleMat;
     public Material vignetteMat;
+    public Material GrayscaleMat;
 
     //score
     public GameObject score_text;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     public GameObject temp_stage_clear;
     public static bool playerDead = false;
     public static PlayerDeaths playerDeaths = PlayerDeaths.Alive;
+    public Coroutine grayscaleCoroutine;
     // Stage Clear
     public bool stageClear = false;
     public string nextStage = "stage2 Testing";
@@ -79,7 +81,8 @@ public class GameManager : MonoBehaviour
     {
         Alive,
         Projectile,
-        Border
+        Border,
+        Ring
     }
 
 
@@ -176,10 +179,13 @@ public class GameManager : MonoBehaviour
         if(health == 0){
             if (cause == "projectile")
             {
-                GameManager.playerDeaths = GameManager.PlayerDeaths.Projectile;
+                playerDeaths = PlayerDeaths.Projectile;
+            }
+            else if (cause == "ring")
+            {
+                playerDeaths = PlayerDeaths.Ring;
             }
             SetLifes(lifes - 1);
-            //game_over();
         }
     }
     public int get_life(){
@@ -197,10 +203,13 @@ public class GameManager : MonoBehaviour
         if (loseLife)
         {
             playerDead = true;
+            grayscaleCoroutine = StartCoroutine(grayscale());
             player.GetComponent<PlayerController>().animator.SetBool("Dead", true);
             player.GetComponent<Gravity>().gravity = false;
             playerInput.SwitchCurrentActionMap("EmptyMap");
             gameControls.SetActive(false);
+
+            Debug.Log(playerDeaths);
 
             if (lifes <= 0)
             {
@@ -217,20 +226,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Game Over
-    public void game_over(){
-        if (!stageClear)
-        {
-            SetLifes(lifes - 1);
-
-        }
-    }
-    //public void freeze_game(){
-    //    Time.timeScale = 0f;
-    //}
-
-    public void restartLevel()
+    IEnumerator grayscale()
     {
-        // Restart when not game over
+        Instance.GrayscaleMat.color = new Color(1, 1, 1, 1);
+        player.GetComponent<SpriteRenderer>().material = GrayscaleMat;
+
+        Debug.Log(GrayscaleMat.color.r);
+
+        while (GrayscaleMat.color.r > 0.4f)
+        {
+            Debug.Log("Here");
+            yield return new WaitForSeconds(0.05f);
+            GrayscaleMat.color -= new Color(0.02f, 0.02f, 0.02f, 0.0f);
+        }
     }
 }
