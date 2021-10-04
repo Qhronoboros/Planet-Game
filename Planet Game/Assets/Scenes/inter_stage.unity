@@ -12623,7 +12623,7 @@ MonoBehaviour:
   tempGameOver: {fileID: 102151963}
   temp_stage_clear: {fileID: 1036318653}
   stageClear: 0
-  nextStage: stage1 1
+  nextStage: stage 1
   maxIntensity: 0.45
   startPos: {x: 0, y: 16, z: 0}
   collectablesOnScreen: []

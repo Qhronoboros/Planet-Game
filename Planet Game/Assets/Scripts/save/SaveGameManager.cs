@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class SaveGameManager : MonoBehaviour
@@ -16,7 +15,7 @@ public class SaveGameManager : MonoBehaviour
         {   
             if(instance == null)
             {
-                instance= GameObject.FindObjectOfType<SaveGameManager>();
+                instance = FindObjectOfType<SaveGameManager>();
             }
             return instance;
         }
