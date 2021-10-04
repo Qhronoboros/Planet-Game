@@ -31,10 +31,11 @@ public class object_collision : MonoBehaviour
                 float temp_score = GameManager.Instance.getScore();
                 temp_score += 100;
                 GameManager.Instance.setScore(temp_score);
+                this.GetComponent<SpecificObject>().DestroySaveable();
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Special_obj")
-            {
+            {//
                 float temp = GameManager.Instance.get_special();
                 temp += 1;
                 GameManager.Instance.set_special(temp);

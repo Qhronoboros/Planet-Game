@@ -69,6 +69,7 @@ public class enemy_fox : MonoBehaviour
                 item.transform.parent = GameManager.Instance.special_child.transform;
             }
         }
+        this.GetComponent<SpecificObject>().DestroySaveable();
         Destroy(this.gameObject);
     }
 

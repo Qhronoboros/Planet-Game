@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -91,6 +92,10 @@ public class GameManager : MonoBehaviour
         UI_special_text = special_text.GetComponent<Text>();
         get_max_special();
         set_special(special);
+        set_coin(SaveGameManager.Instance.get_coin());
+        if(SaveGameManager.Instance.check_stage_saved()){
+            SaveGameManager.Instance.Load();
+        }
     }
 
     // Set the planet the player is orbiting
@@ -141,6 +146,10 @@ public class GameManager : MonoBehaviour
     //stage clear
     public void stage_clear(){
         stageClear = true;
+        
+        SaveGameManager.Instance.save_coin(SaveGameManager.Instance.get_coin() + get_coin());
+        SaveGameManager.Instance.unlock_level(SceneManager.GetActiveScene().buildIndex+1);
+        SaveGameManager.Instance.Save();
         planets[0].GetComponent<Animator>().SetBool("IsRepaired", true);
         playerInput.SwitchCurrentActionMap("EmptyMap");
         gameControls.SetActive(false);
