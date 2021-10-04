@@ -47,7 +47,7 @@ public class main_menu_planet : MonoBehaviour
         //update text and selected
         if(this.GetComponent<SpriteRenderer>().sortingOrder == 6 && planet_text.text !=  current){
             planet_text.text =  current;
-            transform.parent.parent.GetComponent<main_menu>().selected_stage_index = stage_index;
+            main_menu.selected_stage_index = stage_index;
         }
         //update color
         if(this.GetComponent<SpriteRenderer>().sortingOrder == 6){
