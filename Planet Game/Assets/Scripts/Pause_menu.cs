@@ -44,7 +44,6 @@ public class Pause_menu : MonoBehaviour
     }
     public void GoToNextStageBread()
     {
-        StopCoroutine(GameManager.Instance.grayscaleCoroutine);
         SceneManager.LoadSceneAsync(Game_Manager.Instance.nextStage, LoadSceneMode.Single);
     }
 }
