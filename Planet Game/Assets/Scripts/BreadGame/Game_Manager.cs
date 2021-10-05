@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -93,6 +94,7 @@ public class Game_Manager : MonoBehaviour
         // UI_special_text = special_text.GetComponent<Text>();
         // get_max_special();
         // set_special(special);
+        set_coin(SaveGameManager.Instance.get_coin());
         SetLifes(lifes);
     }
 
@@ -144,6 +146,9 @@ public class Game_Manager : MonoBehaviour
     //stage clear
     public void stage_clear(){
         stageClear = true;
+        SaveGameManager.Instance.save_coin(SaveGameManager.Instance.get_coin() + get_coin());
+        SaveGameManager.Instance.unlock_level(SceneManager.GetActiveScene().buildIndex+1);
+        SaveGameManager.Instance.Save();
         // planets[0].GetComponent<Animator>().SetBool("IsRepaired", true);
         // playerInput.SwitchCurrentActionMap("EmptyMap");
         gameControls.SetActive(false);

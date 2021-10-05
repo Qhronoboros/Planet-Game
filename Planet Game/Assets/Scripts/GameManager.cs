@@ -96,9 +96,7 @@ public class GameManager : MonoBehaviour
         get_max_special();
         set_special(special);
         set_coin(SaveGameManager.Instance.get_coin());
-        if(SaveGameManager.Instance.check_stage_saved()){
-            SaveGameManager.Instance.Load();
-        }
+
     }
 
     // Set the planet the player is orbiting
@@ -149,7 +147,7 @@ public class GameManager : MonoBehaviour
     //stage clear
     public void stage_clear(){
         stageClear = true;
-        
+        print("saveeeeed???????");
         SaveGameManager.Instance.save_coin(SaveGameManager.Instance.get_coin() + get_coin());
         SaveGameManager.Instance.unlock_level(SceneManager.GetActiveScene().buildIndex+1);
         SaveGameManager.Instance.Save();

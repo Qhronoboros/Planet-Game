@@ -53,7 +53,7 @@ public class Enemy_fox_intro : MonoBehaviour
         if(health == 0){
             Destroy(this.gameObject);
             Game_Manager.Instance.stage_clear();
-            Game_Manager.Instance.nextStage = "stage1 1";
+            Game_Manager.Instance.nextStage = "stage 1";
         }
     }
 

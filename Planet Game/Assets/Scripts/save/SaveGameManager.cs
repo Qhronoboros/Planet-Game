@@ -27,11 +27,21 @@ public class SaveGameManager : MonoBehaviour
         if (!check_save_exist()){
             create_new_save();
         }
+        // if(check_stage_saved()){
+        //     StartCoroutine(delayLoad());
+        // }
         
         // clear_data();
     }
 
+    void Start(){
+        if(check_stage_saved()){
+            Load();
+        }
+    }
+
     public void Save(){
+        print("saveddddd");
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name,1);
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex.ToString(), SaveableObjects.Count);
 
@@ -41,6 +51,7 @@ public class SaveGameManager : MonoBehaviour
     }
 
     public void Load(){
+        print("loaded");
 
         foreach ( SaveableObject obj in SaveableObjects)
         {
@@ -60,7 +71,6 @@ public class SaveGameManager : MonoBehaviour
             switch (value[0])
             {
                 case "Coins":
-                    print("yeaaaa here");
                     temp = Instantiate(Resources.Load("Prefabs/coin")) as GameObject;
                     parent_of_obj = GameObject.Find("Stage/stage_obj/coins");
                     temp.transform.SetParent(parent_of_obj.transform);
@@ -75,6 +85,12 @@ public class SaveGameManager : MonoBehaviour
                     break;
                 case "planet_piece":
                     temp = Instantiate(Resources.Load("Prefabs/special")) as GameObject;
+                    break;
+                case "CoinIntro":
+                    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    temp = Instantiate(Resources.Load("Prefabs/intro/coin_intro")) as GameObject;
+                    parent_of_obj = GameObject.Find("Stage/Coins");
+                    temp.transform.SetParent(parent_of_obj.transform);
                     break;
 
             }
@@ -95,6 +111,7 @@ public class SaveGameManager : MonoBehaviour
     // }
     public void clear_data (){
         PlayerPrefs.DeleteAll();
+        print("data cleared");
     }
 
     public void get_level_unlocks(){
@@ -152,6 +169,12 @@ public class SaveGameManager : MonoBehaviour
         //======coin=============
         save_coin(0f);
         print("save game created");
+    }
+
+    IEnumerator delayLoad()
+    {
+        yield return new WaitForSeconds(0.005f);
+        Load();
     }
 
 

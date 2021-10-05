@@ -15,6 +15,7 @@ public class Coin : MonoBehaviour
             float temp_score = Game_Manager.Instance.getScore();
             temp_score += 100;
             Game_Manager.Instance.setScore(temp_score);
+            this.GetComponent<SpecificObject>().DestroySaveable();
             Destroy(this.gameObject);
 
         }
