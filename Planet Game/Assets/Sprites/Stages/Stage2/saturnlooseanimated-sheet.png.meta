@@ -148,12 +148,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 173
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_1
       rect:
         serializedVersion: 2
-        x: 830
+        x: 1003
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_2
       rect:
         serializedVersion: 2
-        x: 1660
+        x: 1833
         y: 0
-        width: 830
+        width: 485
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,12 +211,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_3
       rect:
         serializedVersion: 2
-        x: 2490
+        x: 2662
         y: 0
-        width: 830
+        width: 486
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,12 +232,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_4
       rect:
         serializedVersion: 2
-        x: 3320
+        x: 3492
         y: 0
-        width: 830
+        width: 485
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_5
       rect:
         serializedVersion: 2
-        x: 4150
+        x: 4323
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -274,12 +274,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_6
       rect:
         serializedVersion: 2
-        x: 4980
+        x: 5153
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -295,12 +295,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_7
       rect:
         serializedVersion: 2
-        x: 5810
+        x: 5983
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,12 +316,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_8
       rect:
         serializedVersion: 2
-        x: 6640
+        x: 6813
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,12 +337,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_9
       rect:
         serializedVersion: 2
-        x: 7470
+        x: 7643
         y: 0
-        width: 830
+        width: 485
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -358,12 +358,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_10
       rect:
         serializedVersion: 2
-        x: 8300
+        x: 8472
         y: 0
-        width: 830
+        width: 486
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -379,12 +379,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_11
       rect:
         serializedVersion: 2
-        x: 9130
+        x: 9302
         y: 0
-        width: 830
+        width: 485
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -400,12 +400,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_12
       rect:
         serializedVersion: 2
-        x: 9960
+        x: 10133
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -421,12 +421,12 @@ TextureImporter:
       name: saturnlooseanimated-sheet_13
       rect:
         serializedVersion: 2
-        x: 10790
+        x: 10963
         y: 0
-        width: 830
+        width: 484
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

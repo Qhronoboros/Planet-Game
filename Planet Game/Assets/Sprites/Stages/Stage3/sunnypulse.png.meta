@@ -1,49 +1,43 @@
 fileFormatVersion: 2
-guid: 74420fb4786fe6743a54388909d1598d
+guid: 9bd0c927446153c4fabd3f1784160625
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8682065512709907033
-    second: saturnlooseanimated-sheet_0
+      213: 846222358836617516
+    second: sunnypulse_0
   - first:
-      213: 2823319874448444393
-    second: saturnlooseanimated-sheet_1
+      213: -5087375317483293840
+    second: sunnypulse_1
   - first:
-      213: 1693504323035687983
-    second: saturnlooseanimated-sheet_2
+      213: 1159146599418650845
+    second: sunnypulse_2
   - first:
-      213: -5744954824460259164
-    second: saturnlooseanimated-sheet_3
+      213: 4016150843956418172
+    second: sunnypulse_3
   - first:
-      213: -6634096497167909939
-    second: saturnlooseanimated-sheet_4
+      213: -2097905698455413598
+    second: sunnypulse_4
   - first:
-      213: 8952665670134126286
-    second: saturnlooseanimated-sheet_5
+      213: -538784342774161175
+    second: sunnypulse_5
   - first:
-      213: -7755753483240869485
-    second: saturnlooseanimated-sheet_6
+      213: -2657610263543771331
+    second: sunnypulse_6
   - first:
-      213: 7680051298379820285
-    second: saturnlooseanimated-sheet_7
+      213: 3024731290526353982
+    second: sunnypulse_7
   - first:
-      213: 8955862539554863571
-    second: saturnlooseanimated-sheet_8
+      213: 2343264207504140623
+    second: sunnypulse_8
   - first:
-      213: -6012468887682160124
-    second: saturnlooseanimated-sheet_9
+      213: 979375620750751196
+    second: sunnypulse_9
   - first:
-      213: 2013576968716119841
-    second: saturnlooseanimated-sheet_10
+      213: -7129594277846058931
+    second: sunnypulse_10
   - first:
-      213: 5092222632532826436
-    second: saturnlooseanimated-sheet_11
-  - first:
-      213: -5091413486037202663
-    second: saturnlooseanimated-sheet_12
-  - first:
-      213: -6976514109502030405
-    second: saturnlooseanimated-sheet_13
+      213: 1102826094216784698
+    second: sunnypulse_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -88,7 +82,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,7 +101,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -119,7 +113,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -131,7 +125,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -145,12 +139,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_0
+      name: sunnypulse_0
       rect:
         serializedVersion: 2
-        x: 170
+        x: 0
         y: 0
-        width: 488
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -159,19 +153,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9526eb19594ec7870800000000000000
-      internalID: 8682065512709907033
+      spriteID: c21237b70c26ebb00800000000000000
+      internalID: 846222358836617516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_1
+      name: sunnypulse_1
       rect:
         serializedVersion: 2
-        x: 999
+        x: 482
         y: 0
-        width: 493
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -180,19 +174,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ebcccb97727e2720800000000000000
-      internalID: 2823319874448444393
+      spriteID: 07371525a130669b0800000000000000
+      internalID: -5087375317483293840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_2
+      name: sunnypulse_2
       rect:
         serializedVersion: 2
-        x: 1827
+        x: 964
         y: 0
-        width: 494
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -201,19 +195,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2c61209539808710800000000000000
-      internalID: 1693504323035687983
+      spriteID: dd063f4d0bd161010800000000000000
+      internalID: 1159146599418650845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_3
+      name: sunnypulse_3
       rect:
         serializedVersion: 2
-        x: 2661
+        x: 1446
         y: 0
-        width: 488
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -222,19 +216,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a031657602d540b0800000000000000
-      internalID: -5744954824460259164
+      spriteID: c7658620aeb3cb730800000000000000
+      internalID: 4016150843956418172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_4
+      name: sunnypulse_4
       rect:
         serializedVersion: 2
-        x: 3489
+        x: 1928
         y: 0
-        width: 494
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -243,19 +237,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcbb4a08264fee3a0800000000000000
-      internalID: -6634096497167909939
+      spriteID: 2ac1c47e1edb2e2e0800000000000000
+      internalID: -2097905698455413598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_5
+      name: sunnypulse_5
       rect:
         serializedVersion: 2
-        x: 4318
+        x: 2410
         y: 0
-        width: 493
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -264,19 +258,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec6dd256ef14e3c70800000000000000
-      internalID: 8952665670134126286
+      spriteID: 9e0676eae7ad588f0800000000000000
+      internalID: -538784342774161175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_6
+      name: sunnypulse_6
       rect:
         serializedVersion: 2
-        x: 5152
+        x: 2892
         y: 0
-        width: 488
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -285,19 +279,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 391fde97c470e5490800000000000000
-      internalID: -7755753483240869485
+      spriteID: d3f8a02cb854e1bd0800000000000000
+      internalID: -2657610263543771331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_7
+      name: sunnypulse_7
       rect:
         serializedVersion: 2
-        x: 5980
+        x: 3374
         y: 0
-        width: 488
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -306,19 +300,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfce4b817f5059a60800000000000000
-      internalID: 7680051298379820285
+      spriteID: e3a05d045110af920800000000000000
+      internalID: 3024731290526353982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_8
+      name: sunnypulse_8
       rect:
         serializedVersion: 2
-        x: 6809
+        x: 3856
         y: 0
-        width: 493
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -327,19 +321,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d9356f878d994c70800000000000000
-      internalID: 8955862539554863571
+      spriteID: f49eb2fa162f48020800000000000000
+      internalID: 2343264207504140623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_9
+      name: sunnypulse_9
       rect:
         serializedVersion: 2
-        x: 7637
+        x: 4338
         y: 0
-        width: 494
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -348,19 +342,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40aed9ee66b6f8ca0800000000000000
-      internalID: -6012468887682160124
+      spriteID: cd5b68820f0779d00800000000000000
+      internalID: 979375620750751196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_10
+      name: sunnypulse_10
       rect:
         serializedVersion: 2
-        x: 8471
+        x: 4820
         y: 0
-        width: 488
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -369,19 +363,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12f6b3ca599a1fb10800000000000000
-      internalID: 2013576968716119841
+      spriteID: d48f35c47c79e0d90800000000000000
+      internalID: -7129594277846058931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saturnlooseanimated-sheet_11
+      name: sunnypulse_11
       rect:
         serializedVersion: 2
-        x: 9299
+        x: 5302
         y: 0
-        width: 494
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -390,50 +384,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 449d25921853ba640800000000000000
-      internalID: 5092222632532826436
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: saturnlooseanimated-sheet_12
-      rect:
-        serializedVersion: 2
-        x: 10128
-        y: 0
-        width: 493
-        height: 482
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9198e10f86aa759b0800000000000000
-      internalID: -5091413486037202663
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: saturnlooseanimated-sheet_13
-      rect:
-        serializedVersion: 2
-        x: 10962
-        y: 0
-        width: 488
-        height: 482
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bbd71ac61617e2f90800000000000000
-      internalID: -6976514109502030405
+      spriteID: a3ba2da5d760e4f00800000000000000
+      internalID: 1102826094216784698
       vertices: []
       indices: 
       edges: []

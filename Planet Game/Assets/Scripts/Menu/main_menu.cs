@@ -8,7 +8,8 @@ public class main_menu : MonoBehaviour
     public Button next_button;
     public Button prev_button;
     public Text stagetext;
-    public int selected_stage_index;
+    public static string sceneName = "";
+    public static int selected_stage_index;
 
     
     // Start is called before the first frame update
@@ -41,7 +42,7 @@ public class main_menu : MonoBehaviour
     }
     public void changeScene(){
         if(SaveGameManager.Instance.check_level_unlocked(selected_stage_index)){
-            SceneManager.LoadSceneAsync(stagetext.text, LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         }
         
     }
