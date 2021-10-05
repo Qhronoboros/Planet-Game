@@ -7968,6 +7968,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 534356341109993639, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dbb520b381ee1a74dbd7430950577d36, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
 --- !u!1001 &867313954
@@ -8774,6 +8778,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 534356341109993639, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dbb520b381ee1a74dbd7430950577d36, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
 --- !u!4 &903363818 stripped
@@ -12013,6 +12021,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 534356341109993639, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dbb520b381ee1a74dbd7430950577d36, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
 --- !u!4 &1169503767 stripped
@@ -13872,6 +13884,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 534356341109993639, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dbb520b381ee1a74dbd7430950577d36, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
 --- !u!4 &1379381990 stripped
@@ -14664,6 +14680,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 534356341109993639, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dbb520b381ee1a74dbd7430950577d36, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
 --- !u!4 &1411766148 stripped
@@ -15462,7 +15482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c0dfc27f6bc2e94fa59ab12d6376d88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbb520b381ee1a74dbd7430950577d36, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

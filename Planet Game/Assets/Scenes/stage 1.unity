@@ -3572,7 +3572,7 @@ MonoBehaviour:
   coin_text: {fileID: 240084710}
   special_text: {fileID: 379904905}
   special_child: {fileID: 906483418}
-  max_special: 1
+  max_special: 5
   deadObj: {fileID: 1367567185}
   lifeText: {fileID: 531084458}
   lifes: 3
