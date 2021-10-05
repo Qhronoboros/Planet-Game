@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Background
   - Ring
+  - Flare
   layers:
   - Default
   - TransparentFX
