@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7994282415147464406}
   - component: {fileID: 7994282415147464407}
   - component: {fileID: 6248019477459585565}
-  - component: {fileID: 7994282415147464425}
+  - component: {fileID: 7110723985457490495}
+  - component: {fileID: 1336411310052885599}
   m_Layer: 9
-  m_Name: meteor
+  m_Name: Comet
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +123,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.65
---- !u!114 &7994282415147464425
+--- !u!114 &7110723985457490495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,14 +132,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 7994282415147464426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f796748ec8440f45a09635ad467a8e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 91a3b2068b7b8cb4f81b4c6050844da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: eedaa33dbc10c7743b1c0e22fbd02d2e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   a_size: 1
-  a_min_size: 1
-  a_max_size: 3
+  a_min_size: 0.75
+  a_max_size: 2.5
   a_speed: 15
   max_lifetime: 15
   a_half_speed_multiplier: 15
+  stage: 1
+  animatorControllers:
+  - {fileID: 9100000, guid: 9bcb080e00ecd8b4181d3f7cffd828dc, type: 2}
+  - {fileID: 9100000, guid: 350b1927a983d84419a7bf235f29074f, type: 2}
+  - {fileID: 9100000, guid: 82d6c4fa46085ad4d9667847157864f0, type: 2}
+--- !u!95 &1336411310052885599
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994282415147464426}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -79,7 +79,6 @@ public class enemy_dog : MonoBehaviour
         {
             item.transform.parent = GameManager.Instance.coin_parent.transform;
         }
-        this.GetComponent<SpecificObject>().DestroySaveable();
         Destroy(this.gameObject);
     }
 

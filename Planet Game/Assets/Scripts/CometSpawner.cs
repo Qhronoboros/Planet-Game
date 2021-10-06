@@ -1,10 +1,10 @@
 
 using UnityEngine;
 
-public class Asteroid_spawner : MonoBehaviour
-{   
-    
-    public GameObject asteroid_prefab;
+public class CometSpawner : MonoBehaviour
+{
+
+    public GameObject comet_prefab;
     // spawn rate of asteroid in seconds
     public float spawn_rate = 4.0f;
     // amount of spawns
@@ -17,12 +17,13 @@ public class Asteroid_spawner : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         //invoke a repeating fuction(string methodName, float time, float repeatRate);
-        InvokeRepeating(nameof(spawn),this.spawn_rate,this.spawn_rate);
+        InvokeRepeating(nameof(spawn), this.spawn_rate, this.spawn_rate);
     }
 
-    private void spawn(){
+    private void spawn()
+    {
         if (!GameManager.playerDead && !GameManager.Instance.stageClear)
         {
             for (int i = 0; i < this.spawn_amount; i++)
@@ -40,18 +41,18 @@ public class Asteroid_spawner : MonoBehaviour
                 Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
                 //create the asteriod
-                GameObject asteroidObj = Instantiate(this.asteroid_prefab, spawn_point, rotation);
+                GameObject cometObj = Instantiate(this.comet_prefab, spawn_point, rotation);
 
-                Asteroid asteroid = asteroidObj.GetComponent<Asteroid>();
+                Meteor comet = cometObj.GetComponent<Meteor>();
 
                 //Set parent
-                asteroid.transform.parent = GameManager.Instance.asteroidParent.transform;
+                comet.transform.parent = GameManager.Instance.asteroidParent.transform;
 
                 // set the asteroid size by randomizing it
-                asteroid.a_size = Random.Range(asteroid.a_min_size, asteroid.a_max_size);
+                //comet.a_size = Random.Range(comet.a_min_size, comet.a_max_size);
                 // set the asteroid trajectory
                 //multiplied by negative spawn direction so the asteroid direction is going towards the spawnpoint
-                asteroid.set_trajectory(rotation * -spawn_direction);
+                comet.set_trajectory(rotation * -spawn_direction);
             }
         }
     }
@@ -59,6 +60,6 @@ public class Asteroid_spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
