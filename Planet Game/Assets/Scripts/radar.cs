@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class radar : MonoBehaviour
 {   
-    public GameObject radar_user;
-    bool parent_follow;
+    public bool parent_follow = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            radar_user.GetComponent<enemy_fox>().follow = true;
+            parent_follow = true;
         }
     }
 
@@ -19,7 +18,7 @@ public class radar : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            radar_user.GetComponent<enemy_fox>().follow = false;
+            parent_follow = false;
         }
     }
 

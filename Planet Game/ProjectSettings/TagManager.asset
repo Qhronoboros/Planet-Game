@@ -14,6 +14,7 @@ TagManager:
   - Background
   - Ring
   - Star
+  - Bread
   layers:
   - Default
   - TransparentFX
