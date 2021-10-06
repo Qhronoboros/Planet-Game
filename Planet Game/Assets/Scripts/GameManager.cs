@@ -261,7 +261,6 @@ public class GameManager : MonoBehaviour
 
         while (GrayscaleMat.color.r > 0.4f)
         {
-            Debug.Log("Here");
             yield return new WaitForSeconds(0.05f);
             GrayscaleMat.color -= new Color(0.02f, 0.02f, 0.02f, 0.0f);
         }

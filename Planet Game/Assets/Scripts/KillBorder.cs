@@ -9,7 +9,6 @@ public class KillBorder : MonoBehaviour
     {
         if (collision.tag == "Player" && !GameManager.Instance.player.GetComponent<Gravity>().planetsOrbiting.Contains(parentInstance.gameObject))
         {
-            Debug.Log("Enter Collided with player " + parentInstance.name);
             GameManager.Instance.player.GetComponent<PlayerController>().AddPlanet(parentInstance.gameObject);
         }
     }
@@ -18,7 +17,6 @@ public class KillBorder : MonoBehaviour
     {
         if (collision.tag == "Player" && GameManager.Instance.player.GetComponent<Gravity>().planetsOrbiting.Contains(parentInstance.gameObject))
         {
-            Debug.Log("Exit Collided with player " + parentInstance.name);
             GameManager.Instance.player.GetComponent<PlayerController>().RemovePlanet(parentInstance.gameObject);
         }
     }

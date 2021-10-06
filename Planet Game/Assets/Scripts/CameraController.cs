@@ -100,7 +100,7 @@ public class CameraController : MonoBehaviour
 
     public void TransitionWin()
     {
-        VCamWin.m_Lens.OrthographicSize = planetScript.planetRadius + 10;
+        //VCamWin.m_Lens.OrthographicSize = planetScript.planetRadius + 10;
 
         VCamPlanet.Priority = 0;
         VCamPlayer.Priority = 0;

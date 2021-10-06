@@ -69,6 +69,7 @@ public class SaveGameManager : MonoBehaviour
             string[] value = PlayerPrefs.GetString(SceneManager.GetActiveScene().buildIndex + "-" + i.ToString()).Split('_');
             GameObject temp = null;
             GameObject parent_of_obj = null;
+
             switch (value[0])
             {
                 case "Coins":
@@ -76,15 +77,25 @@ public class SaveGameManager : MonoBehaviour
                     parent_of_obj = GameObject.Find("Stage/stage_obj/coins");
                     temp.transform.SetParent(parent_of_obj.transform);
                     break;
-                case "Star":
-                    temp = Instantiate(Resources.Load("Prefabs/Star")) as GameObject;
+                case "Star1":
+                    temp = Instantiate(Resources.Load("Prefabs/Pluto Star")) as GameObject;
+                    parent_of_obj = GameObject.Find("Stage/stage_obj/stars");
+                    temp.transform.SetParent(parent_of_obj.transform);
+                    break;
+                case "Star2":
+                    temp = Instantiate(Resources.Load("Prefabs/Saturn Star")) as GameObject;
+                    parent_of_obj = GameObject.Find("Stage/stage_obj/stars");
+                    temp.transform.SetParent(parent_of_obj.transform);
+                    break;
+                case "Star3":
+                    temp = Instantiate(Resources.Load("Prefabs/Sun Star")) as GameObject;
                     parent_of_obj = GameObject.Find("Stage/stage_obj/stars");
                     temp.transform.SetParent(parent_of_obj.transform);
                     break;
                 case "Enemies":
-                    temp = Instantiate(Resources.Load("Prefabs/Fox Enemy")) as GameObject;
-                    parent_of_obj = GameObject.Find("Stage/enemies");
-                    temp.transform.SetParent(parent_of_obj.transform);
+                    //temp = Instantiate(Resources.Load("Prefabs/Fox Enemy")) as GameObject;
+                    //parent_of_obj = GameObject.Find("Stage/enemies");
+                    //temp.transform.SetParent(parent_of_obj.transform);
                     break;
                 case "Stage1Fragm":
                     temp = Instantiate(Resources.Load("Prefabs/special")) as GameObject;

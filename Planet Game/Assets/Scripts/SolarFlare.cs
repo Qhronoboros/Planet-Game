@@ -49,7 +49,6 @@ public class SolarFlare : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Move");
             GameManager.Instance.player.GetComponent<Rigidbody2D>().AddForce(force * transform.up, ForceMode2D.Impulse);
             yield return new WaitForSeconds(0.1f);
         }

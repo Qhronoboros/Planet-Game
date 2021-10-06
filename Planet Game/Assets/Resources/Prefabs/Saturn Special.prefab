@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2308015891371576306}
   - component: {fileID: 2308015891371576307}
   - component: {fileID: 2308015891371576304}
+  - component: {fileID: 7884373217502744994}
   m_Layer: 11
   m_Name: Saturn Special
   m_TagString: Special_obj
@@ -125,3 +126,16 @@ MonoBehaviour:
   player: {fileID: 0}
   mainPlanetObj: {fileID: 0}
   speed: 8
+--- !u!114 &7884373217502744994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2308015891371576310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc108eb899e06304fb7f4f685769c0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 8

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5414473975404789792}
   - component: {fileID: 5414473975404789793}
   - component: {fileID: 5414473975404789795}
+  - component: {fileID: 848709783}
   m_Layer: 0
   m_Name: Black Hole
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: -7564997713910450843, guid: c5ed37566fff5d04094f0c470174be83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 7e+14
+  powerOfDistance: 2
   warningBorder: {fileID: 0}
   killBorder: {fileID: 0}
   warningBorderDistance: 30
@@ -106,6 +108,25 @@ MonoBehaviour:
   planetRadius: 0
   ringLaunch: 40
   isPlanet: 0
+--- !u!95 &848709783
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414473975404789798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5a01c4ed79ecec43a5d85efd53994a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5414473975416562065
 GameObject:
   m_ObjectHideFlags: 0

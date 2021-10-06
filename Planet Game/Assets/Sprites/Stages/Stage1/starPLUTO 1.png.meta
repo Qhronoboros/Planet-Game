@@ -17,6 +17,21 @@ TextureImporter:
   - first:
       213: 7960219038945703742
     second: starPLUTO_4
+  - first:
+      213: 4506503526042044765
+    second: starPLUTO 1_0
+  - first:
+      213: -6733089571841201838
+    second: starPLUTO 1_1
+  - first:
+      213: -2522317027612272997
+    second: starPLUTO 1_2
+  - first:
+      213: -3702323808997679844
+    second: starPLUTO 1_3
+  - first:
+      213: -4703421428093670356
+    second: starPLUTO 1_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,54 +133,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: starPLUTO_0
+      name: starPLUTO 1_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 47
-        width: 402
-        height: 466
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3da81b8da60806ec0800000000000000
-      internalID: -3575716907741771053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starPLUTO_1
-      rect:
-        serializedVersion: 2
-        x: 527
-        y: 32
-        width: 433
-        height: 496
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c909f4ae4e8a761e0800000000000000
-      internalID: -2204607791437475684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starPLUTO_2
-      rect:
-        serializedVersion: 2
-        x: 991
+        x: 0
         y: 0
-        width: 498
+        width: 496
         height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e08108dd81cce950800000000000000
-      internalID: 6479766778837827814
+      spriteID: d5908c894115a8e30800000000000000
+      internalID: 4506503526042044765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starPLUTO_3
+      name: starPLUTO 1_1
       rect:
         serializedVersion: 2
-        x: 1520
-        y: 32
-        width: 433
-        height: 496
+        x: 496
+        y: 0
+        width: 496
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f69dacdafb86de220800000000000000
-      internalID: 2516782939233769839
+      spriteID: 259a48535b24f82a0800000000000000
+      internalID: -6733089571841201838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starPLUTO_4
+      name: starPLUTO 1_2
       rect:
         serializedVersion: 2
-        x: 2031
-        y: 47
-        width: 402
-        height: 466
+        x: 992
+        y: 0
+        width: 496
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,8 +189,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e37f8a67a01687e60800000000000000
-      internalID: 7960219038945703742
+      spriteID: b965046f60eeefcd0800000000000000
+      internalID: -2522317027612272997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starPLUTO 1_3
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 0
+        width: 496
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1dd8398c14be9cc0800000000000000
+      internalID: -3702323808997679844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starPLUTO 1_4
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 0
+        width: 496
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c248581271abeb0800000000000000
+      internalID: -4703421428093670356
       vertices: []
       indices: 
       edges: []
