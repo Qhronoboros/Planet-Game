@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarFlarePref: {fileID: 3693177170878259936, guid: d452155828cb43c49bd971ba33628efb, type: 3}
   offset: 3.3
-  spawnDelayMax: 5
-  spawnDelayMin: 1
+  spawnDelayMax: 2
+  spawnDelayMin: 0.2
   spawnAmountMax: 2
 --- !u!1 &502873578887877000
 GameObject:
@@ -78,7 +78,7 @@ Transform:
   m_GameObject: {fileID: 502873578887877000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 0}
   m_Children:
   - {fileID: 502873579960164576}
   - {fileID: 502873580097420525}
