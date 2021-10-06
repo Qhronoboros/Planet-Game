@@ -39,6 +39,23 @@ public class object_collision : MonoBehaviour
                 float temp = GameManager.Instance.get_special();
                 temp += 1;
                 GameManager.Instance.set_special(temp);
+                this.GetComponent<SpecificObject>().DestroySaveable();
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "Star")
+            {   
+                int temp = GameManager.Instance.get_star();
+                temp += 1;
+                GameManager.Instance.set_star(temp);
+                this.GetComponent<SpecificObject>().DestroySaveable();
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "Bread")
+            {   
+                int temp = GameManager.Instance.get_bread();
+                temp += 1;
+                GameManager.Instance.set_bread(temp);
+                this.GetComponent<SpecificObject>().DestroySaveable();
                 Destroy(gameObject);
             }
         }
@@ -86,7 +103,10 @@ public class object_collision : MonoBehaviour
             player = GameManager.Instance.player;
         }
 
-        StartCoroutine(go_in_zone());
+        if (this.gameObject.tag != "Star"){
+            StartCoroutine(go_in_zone());
+        }
+
 
     }
 

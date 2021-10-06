@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public CameraController cameraController;
     public GameObject stage;
     public GameObject asteroidParent;
+    public GameObject bread_parent;
+    public GameObject coin_parent;
 
     // Materials
     public Material defaultMat;
@@ -49,6 +51,14 @@ public class GameManager : MonoBehaviour
     private Text UI_special_text;
     private float special = 0;
     public float max_special = 5;
+    //bread
+    public int bread = 0;
+    public Text breadtext;
+
+    //star
+    public int star = 0;
+    public Text startext;
+    public int star_max = 1;
     // Lifes
     public GameObject deadObj;
     public Text lifeText;
@@ -96,6 +106,7 @@ public class GameManager : MonoBehaviour
         get_max_special();
         set_special(special);
         set_coin(SaveGameManager.Instance.get_coin());
+        // set_star(star);
 
     }
 
@@ -143,6 +154,23 @@ public class GameManager : MonoBehaviour
     public float get_max_special(){
         // max_special = special_child.transform.childCount;
         return max_special;
+    }
+
+    public int get_bread(){
+        return this.bread;
+        
+    }
+    public void set_bread(int bread_amount){
+        this.bread = bread_amount;
+        breadtext.text = this.bread.ToString();
+    }
+    public int get_star(){
+        return star;
+    }
+    public void set_star(int star_amount){
+        this.star = star_amount;
+        startext.text = this.star.ToString() + "/ " + this.star_max.ToString();
+
     }
     //stage clear
     public void stage_clear(){

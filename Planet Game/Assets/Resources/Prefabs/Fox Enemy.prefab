@@ -459,7 +459,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health_bar: {fileID: 3957690318492732187}
   player: {fileID: 0}
-  item_prefab: {fileID: 534356341109993635, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
+  item_prefab:
+  - {fileID: 6089936328903417339, guid: 4fc6d297aa0965444a19f28341abf210, type: 3}
+  - {fileID: 534356341109993635, guid: 9e13ad31d4a4012468052dbf26c2a67e, type: 3}
+  - {fileID: 6170656218192283701, guid: 2f4f2731066a7244fb1d1ef94bc2f563, type: 3}
   distance_above: 15
   follow: 0
   health: 0

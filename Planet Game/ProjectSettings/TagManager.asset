@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Background
   - Ring
+  - Star
   layers:
   - Default
   - TransparentFX

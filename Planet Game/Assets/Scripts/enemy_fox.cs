@@ -7,7 +7,7 @@ public class enemy_fox : MonoBehaviour
     //healthbar
     public GameObject health_bar;
     public Transform player;
-    public GameObject item_prefab;
+    public GameObject[] item_prefab;
     private float speed = 8;
     public float distance_above = 15;
     private Vector2 target;
@@ -62,12 +62,17 @@ public class enemy_fox : MonoBehaviour
         temp_score += 500;
         GameManager.Instance.setScore(temp_score);
 
-        if(item_id == 1){
-            GameObject item = Instantiate(item_prefab,this.transform.position,this.transform.rotation);
-            if (item.tag == "Special_obj")
-            {
-                item.transform.parent = GameManager.Instance.special_child.transform;
-            }
+        
+        GameObject item = Instantiate(item_prefab[item_id],this.transform.position,this.transform.rotation);
+        if (item.tag == "Special_obj")
+        {
+            item.transform.parent = GameManager.Instance.special_child.transform;
+        }else if (item.tag == "Bread")
+        {
+            item.transform.parent = GameManager.Instance.bread_parent.transform;
+        }else if (item.tag == "Coin")
+        {
+            item.transform.parent = GameManager.Instance.coin_parent.transform;
         }
         this.GetComponent<SpecificObject>().DestroySaveable();
         Destroy(this.gameObject);
