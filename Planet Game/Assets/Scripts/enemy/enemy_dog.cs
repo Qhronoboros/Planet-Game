@@ -112,9 +112,14 @@ public class enemy_dog : MonoBehaviour
             if(player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
             {
                 if (!GameManager.playerDead && !GameManager.Instance.stageClear && Time.time - timeLastProjectile > shootDelay)
-                {
+                {   
+                    int attack_patern = Random.Range(1, 3);
                     timeLastProjectile = Time.time;
-                    StartCoroutine(Shooting_rows());
+                    if(attack_patern == 1){
+                        StartCoroutine(Shooting());
+                    }else{
+                        StartCoroutine(Shooting_rows());
+                    }
                 }
             }
         }else{
@@ -141,7 +146,8 @@ public class enemy_dog : MonoBehaviour
     }
 
     IEnumerator Shooting()
-    {
+    {   
+        yield return new WaitForSeconds(0.75f);
         for (int i=0; i < 3; i++)
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
@@ -153,17 +159,26 @@ public class enemy_dog : MonoBehaviour
     }
     IEnumerator Shooting_rows()
     {   
-        for (int i=0; i < 3; i++)
-        {
+        for (int i=0; i < 1; i++)
+        {   
+            //x-as voor degrees y-as voor hoogte
             GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
             laser.GetComponent<ProjectileController>().owner = gameObject.tag;
-            laser.GetComponent<ProjectileController>().aimDirection = new Vector2(0f,-1f);
-            // GameObject laser1 = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
-            // laser1.GetComponent<ProjectileController>().owner = gameObject.tag;
-            // laser1.GetComponent<ProjectileController>().aimDirection = new Vector2(0,1f);
-            // GameObject laser2 = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
-            // laser2.GetComponent<ProjectileController>().owner = gameObject.tag;
-            // laser2.GetComponent<ProjectileController>().aimDirection = new Vector2(1,1f);
+            laser.GetComponent<ProjectileController>().aimDirection = new Vector2(0.4f,-1f);
+
+            GameObject laser1 = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
+            laser1.GetComponent<ProjectileController>().owner = gameObject.tag;
+            laser1.GetComponent<ProjectileController>().aimDirection = new Vector2(0,-1f);
+
+            yield return new WaitForSeconds(1.5f);
+            GameObject laser3 = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
+            laser3.GetComponent<ProjectileController>().owner = gameObject.tag;
+            laser3.GetComponent<ProjectileController>().aimDirection = new Vector2(0,-1f);
+
+            GameObject laser2 = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
+            laser2.GetComponent<ProjectileController>().owner = gameObject.tag;
+            laser2.GetComponent<ProjectileController>().aimDirection = new Vector2(-0.4f,-1f);
+            yield return new WaitForSeconds(1.5f);
 
             yield return new WaitForSeconds(shootDelayBurst);
         }
