@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageName: The Sun
-  sceneName: 
+  sceneName: stage 3
   stageIndex: 3
 --- !u!114 &1784912803
 MonoBehaviour:

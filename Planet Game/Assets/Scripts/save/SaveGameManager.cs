@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Globalization;
 
 public class SaveGameManager : MonoBehaviour
 {
@@ -123,7 +124,7 @@ public class SaveGameManager : MonoBehaviour
         value = value.Trim(new char[] {'(',')'});
         value = value.Replace(" ", "");
         string[] pos = value.Split(',');
-        return new Vector3(float.Parse(pos[0]),float.Parse(pos[1]),float.Parse(pos[2]));
+        return new Vector3(float.Parse(pos[0], CultureInfo.InvariantCulture),float.Parse(pos[1], CultureInfo.InvariantCulture),float.Parse(pos[2], CultureInfo.InvariantCulture));
     }
     // public Quaternion StringToQuaternion(string value){
     //     return Quaternion.identity;
