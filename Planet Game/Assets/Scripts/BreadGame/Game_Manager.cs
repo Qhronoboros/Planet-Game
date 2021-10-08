@@ -182,7 +182,7 @@ public class Game_Manager : MonoBehaviour
             //game_over();
         }
     }
-    public int get_life(){
+    public int get_health(){
         return health;
     }
 
