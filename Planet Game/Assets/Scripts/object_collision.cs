@@ -52,8 +52,8 @@ public class object_collision : MonoBehaviour
             }
             if (gameObject.tag == "Bread")
             {   
-                int temp = GameManager.Instance.get_bread();
-                temp += 1;
+                float temp = GameManager.Instance.get_bread();
+                temp += 1f;
                 GameManager.Instance.set_bread(temp);
                 this.GetComponent<SpecificObject>().DestroySaveable();
                 Destroy(gameObject);

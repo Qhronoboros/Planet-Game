@@ -174,6 +174,13 @@ public class SaveGameManager : MonoBehaviour
     public void save_coin(float amount){
         PlayerPrefs.SetFloat("coin",amount);
     }
+    public float get_bread(){
+        return PlayerPrefs.GetFloat("bread");
+    }
+
+    public void save_bread(float amount){
+        PlayerPrefs.SetFloat("bread",amount);
+    }
     public void save_score(){
 
     }
@@ -207,6 +214,7 @@ public class SaveGameManager : MonoBehaviour
         }
         //======coin=============
         save_coin(0f);
+        save_bread(0f);
         print("save game created");
     }
 

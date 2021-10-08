@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private float special = 0;
     public float max_special = 5;
     //bread
-    public int bread = 0;
+    public float bread = 0;
     public Text breadtext;
 
     //star
@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         get_max_special();
         set_special(special);
         set_coin(SaveGameManager.Instance.get_coin());
+        set_bread(SaveGameManager.Instance.get_bread());
         // set_star(star);
         sound_setting();
     }
@@ -157,11 +158,11 @@ public class GameManager : MonoBehaviour
         return max_special;
     }
 
-    public int get_bread(){
+    public float get_bread(){
         return this.bread;
         
     }
-    public void set_bread(int bread_amount){
+    public void set_bread(float bread_amount){
         this.bread = bread_amount;
         breadtext.text = this.bread.ToString();
     }
