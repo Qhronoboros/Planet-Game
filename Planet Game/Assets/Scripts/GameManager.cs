@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
     public Vector3 startPos = new Vector3(0, 16, 0);
     // Visible collectables on screen
     public List<GameObject> collectablesOnScreen = new List<GameObject>();
+  
 
     public enum PlayerDeaths
     {
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
         set_special(special);
         set_coin(SaveGameManager.Instance.get_coin());
         // set_star(star);
-
+        sound_setting();
     }
 
     // Set the planet the player is orbiting
@@ -251,6 +252,25 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    
+    public void sound_setting(){
+        AudioSource[] sources;
+        sources = GameObject.FindSceneObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        if(SaveGameManager.Instance.check_muted()){
+            foreach(AudioSource audioSource in sources)
+            {
+                audioSource.volume = 0f;
+            }
+        }else{
+            foreach(AudioSource audioSource in sources)
+            {
+                audioSource.volume = 1f;
+            }
+        }
+
+    }
+
 
     IEnumerator grayscale()
     {

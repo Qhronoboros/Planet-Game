@@ -91,7 +91,7 @@ public class enemy_fox : MonoBehaviour
     void Update()
     {   
         transform.up = -(player.position - transform.position);
-        if (follow){
+        if (transform.GetChild(0).GetComponent<radar>().parent_follow){
             
             float degree_to_radians = player.rotation.eulerAngles.z * (Mathf.PI / 180);
             float y_distance = Mathf.Cos(degree_to_radians)* distance_above ;

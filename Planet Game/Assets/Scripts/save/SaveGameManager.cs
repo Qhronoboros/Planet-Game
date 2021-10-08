@@ -186,6 +186,14 @@ public class SaveGameManager : MonoBehaviour
         return PlayerPrefs.HasKey(SceneManager.GetActiveScene().name);
     }
 
+    public bool check_muted(){
+        if(PlayerPrefs.GetInt("Sound") == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void create_new_save(){
         //make sure to delete all saved playerpref
         PlayerPrefs.DeleteAll();

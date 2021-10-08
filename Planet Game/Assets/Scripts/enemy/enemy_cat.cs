@@ -134,6 +134,7 @@ public class enemy_cat : MonoBehaviour
                 if(Vector2.Distance(transform.position,loc1) < 0.05){
                     location1 = false;
                     location2 = true;
+                    location3 = false;
                 }
             }
             if(!location1 && location2 && !location3){
@@ -141,8 +142,9 @@ public class enemy_cat : MonoBehaviour
                 float step = speed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, loc2, step);
                 if(Vector2.Distance(transform.position,loc2) < 0.05){
-                    location1 = true;
+                    location1 = false;
                     location2 = false;
+                    location3 = true;
                 }
             }
             if(!location1 && !location2 && location3){
@@ -152,6 +154,7 @@ public class enemy_cat : MonoBehaviour
                 if(Vector2.Distance(transform.position,loc3) < 0.05){
                     location1 = true;
                     location2 = false;
+                    location3 = false;
                 }
             }
         }
