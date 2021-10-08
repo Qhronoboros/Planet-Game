@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e106341a90ac1984590e9632701579b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -220,12 +220,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPlanetObj: {fileID: 0}
   projectilePrefab: {fileID: 3996525464930748556, guid: b8158704de61d8d478225e45d7b7d02a, type: 3}
+  helmetPrefab: {fileID: 681875951094213372, guid: 533fb72ac089e1d4b8e8971c1841ce42, type: 3}
   jumpArrow: {fileID: 0}
   jumpCounterText: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 2279174798412516067}
   animator: {fileID: 0}
-  jumpAudio: {fileID: 0}
-  hitAudio: {fileID: 0}
+  jumpAudio: {fileID: 8300000, guid: 5409a4dd0822b114b93d81d8581f9fba, type: 3}
+  hitAudio: {fileID: 8300000, guid: 6d355fd13fd05fa40a6588cd7ce8253b, type: 3}
   movementSpeed: 0
   maxMovementSpeed: 500
   accMovementSpeed: 200
@@ -378,6 +379,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e374e1ae-f5e2-4359-85fd-ed9bc24f31d7
     m_ActionName: BreadshipControls/Shoot[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 26a048ee-8cd0-4c7f-86ed-4ee39bbd5d2a
+    m_ActionName: BreadshipControls/Jump
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls

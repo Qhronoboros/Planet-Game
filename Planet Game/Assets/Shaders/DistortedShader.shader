@@ -49,14 +49,20 @@ Shader "Custom/Distorted"
                 return o;
             }
  
+             float random (float2 uv)
+            {
+                return frac(sin(dot(uv,float2(12.9898,78.233)))*43758.5453123);
+            }
+
+
             half4 frag( v2f i ) : SV_Target
             {
                 float3 baseWorldPos = mul( unity_ObjectToWorld, float4(0,0,0,0) ).xyz;
                 float distanceCenter = distance(i.grabPos.xy, baseWorldPos.xy);
                 float step = smoothstep(1.0, 0.0, distanceCenter);
-                float4 col = tex2Dproj(_GrabTexture, i.grabPos * distanceCenter);
+                float4 col = tex2Dproj(_GrabTexture, i.grabPos + float4(1.1f*2, 1.1f/2, 1.1f/2, 1.1f/2));
 
-                return col * distanceCenter/1.5;
+                return col;
             }
             ENDCG
         }

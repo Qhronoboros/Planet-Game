@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 73780902423221498}
   - component: {fileID: 73780902423221499}
   - component: {fileID: 2396206035663738059}
+  - component: {fileID: 3885870498062707393}
   m_Layer: 12
   m_Name: Cat Enemy
   m_TagString: Enemy
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e6b80b717888aa34986a09b57d8ccc58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -421,6 +422,27 @@ MonoBehaviour:
   shootDelay: 3
   shootDelayBurst: 0.4
   damaged: 0
+  shooting: 0
+  dead: 0
+--- !u!95 &3885870498062707393
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73780902423221497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b14ead3c20555c145828455f993eebf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &73780903902503649
 GameObject:
   m_ObjectHideFlags: 0

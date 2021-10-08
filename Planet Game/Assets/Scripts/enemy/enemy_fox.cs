@@ -25,23 +25,44 @@ public class enemy_fox : MonoBehaviour
     public float shootDelayBurst = 0.4f;
 
     public bool damaged = false;
-    public Coroutine lastCoroutine;
+    public Coroutine lastCoroutineDamage;
+    public Coroutine lastCoroutineShooting;
+    public bool shooting = false;
+    public bool dead = false;
 
     // On hit bullet
     public void OnHit()
     {
-        if (damaged)
+        if (health != 0)
         {
-            StopCoroutine(lastCoroutine);
-            damaged = false;
-        }
-        lastCoroutine = StartCoroutine(Damaged());
+            if (damaged)
+            {
+                StopCoroutine(lastCoroutineDamage);
+                damaged = false;
+            }
 
-        health -= 1;
-        health_bar.GetComponent<enemy_healthbar>().set_health_text( health.ToString() + "/" + max_health.ToString());
-        health_bar.GetComponent<enemy_healthbar>().set_health(health);
-        if(health == 0){
-            destroy_self();
+            health -= 1;
+            health_bar.GetComponent<enemy_healthbar>().set_health_text(health.ToString() + "/" + max_health.ToString());
+            health_bar.GetComponent<enemy_healthbar>().set_health(health);
+
+            if (health <= max_health/2 && !GetComponent<Animator>().GetBool("IsBroken"))
+            {
+                GetComponent<Animator>().SetBool("IsBroken", true);
+            }
+
+            if (health == 0)
+            {
+                dead = true;
+                if (shooting)
+                {
+                    StopCoroutine(lastCoroutineShooting);
+                }
+                StartCoroutine(DestroySelf());
+            }
+            else
+            {
+                lastCoroutineDamage = StartCoroutine(Damaged());
+            }
         }
     }
 
@@ -55,22 +76,41 @@ public class enemy_fox : MonoBehaviour
         damaged = false;
     }
 
-    public void destroy_self(){
+    IEnumerator DestroySelf()
+    {
         GetComponentInParent<AudioSource>().Play();
+
+        //Animate
+        GetComponent<SpriteRenderer>().material = GameManager.Instance.whiteFadeMat;
+        MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+        Renderer renderer = GetComponent<Renderer>();
+
+        renderer.GetPropertyBlock(propBlock);
+
+        for (int i=0; i <= 30; i++)
+        {
+            float colorValue = i / 30.0f;
+            Color color = new Color(colorValue, colorValue, colorValue, colorValue);
+            propBlock.SetColor("_Color", color);
+            renderer.SetPropertyBlock(propBlock);
+
+            yield return new WaitForSeconds(0.03f);
+        }
 
         float temp_score = GameManager.Instance.getScore();
         temp_score += 500;
         GameManager.Instance.setScore(temp_score);
 
-        
-        GameObject item = Instantiate(item_prefab[item_id],this.transform.position,this.transform.rotation);
+        GameObject item = Instantiate(item_prefab[item_id], this.transform.position, this.transform.rotation);
         if (item.tag == "Special_obj")
         {
             item.transform.parent = GameManager.Instance.special_child.transform;
-        }else if (item.tag == "Bread")
+        }
+        else if (item.tag == "Bread")
         {
             item.transform.parent = GameManager.Instance.bread_parent.transform;
-        }else if (item.tag == "Coin")
+        }
+        else if (item.tag == "Coin")
         {
             item.transform.parent = GameManager.Instance.coin_parent.transform;
         }
@@ -91,7 +131,7 @@ public class enemy_fox : MonoBehaviour
     void Update()
     {   
         transform.up = -(player.position - transform.position);
-        if (follow){
+        if (GetComponentInChildren<radar>().parent_follow){
             
             float degree_to_radians = player.rotation.eulerAngles.z * (Mathf.PI / 180);
             float y_distance = Mathf.Cos(degree_to_radians)* distance_above ;
@@ -105,10 +145,10 @@ public class enemy_fox : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target, step);
             if(player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
             {
-                if (!GameManager.playerDead && !GameManager.Instance.stageClear && Time.time - timeLastProjectile > shootDelay)
+                if (!GameManager.playerDead && !GameManager.stageClear && Time.time - timeLastProjectile > shootDelay && !dead)
                 {
                     timeLastProjectile = Time.time;
-                    StartCoroutine(Shooting());
+                    lastCoroutineShooting = StartCoroutine(Shooting());
                 }
             }
         }else{
@@ -119,6 +159,7 @@ public class enemy_fox : MonoBehaviour
 
     IEnumerator Shooting()
     {
+        shooting = true;
         for (int i=0; i < 3; i++)
         {
             GameObject laser = Instantiate(projectilePrefab, transform.position + transform.up, transform.rotation);
@@ -127,5 +168,6 @@ public class enemy_fox : MonoBehaviour
 
             yield return new WaitForSeconds(shootDelayBurst);
         }
+        shooting = false;
     }
 }

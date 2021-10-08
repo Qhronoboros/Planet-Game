@@ -2809,7 +2809,8 @@ MonoBehaviour:
   damagedMat: {fileID: 2100000, guid: 7b8fbf0505ce5f04d807df62161bffc4, type: 2}
   invincibleMat: {fileID: 2100000, guid: c7c9acfb7da82a140a149dc3e012267b, type: 2}
   vignetteMat: {fileID: 2100000, guid: 70da52c6094b37a4eb98c397418c604c, type: 2}
-  GrayscaleMat: {fileID: 2100000, guid: 992fe4c3596f87846a2ea29bf77c81ac, type: 2}
+  grayscaleMat: {fileID: 2100000, guid: 992fe4c3596f87846a2ea29bf77c81ac, type: 2}
+  whiteFadeMat: {fileID: 2100000, guid: fa873abc8a6a3c14b9d6bbf941849c49, type: 2}
   score_text: {fileID: 498057390}
   coin_text: {fileID: 240084710}
   special_text: {fileID: 379904905}
@@ -2833,7 +2834,6 @@ MonoBehaviour:
   gameControls: {fileID: 1843071733}
   tempGameOver: {fileID: 1119984345}
   temp_stage_clear: {fileID: 1076306691}
-  stageClear: 0
   nextStage: stage 2
   maxIntensity: 0.45
   startPos: {x: 0, y: 16, z: 0}
@@ -3541,7 +3541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 105.82001, y: -36.600098}
+  m_AnchoredPosition: {x: 105.819824, y: -36.600098}
   m_SizeDelta: {x: 411.2072, y: 90}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &498057392
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d7e2aac1839842831a0f97c1379c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroid_prefab: {fileID: 7994282415147464425, guid: 4794d30ee26981545a74119fedfea12e, type: 3}
+  asteroid_prefab: {fileID: 0}
   spawn_rate: 4
   spawn_amount: 1
   trajectory_variance: 13
@@ -11105,11 +11105,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2279174798412516060, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
   m_PrefabInstance: {fileID: 1678235571}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &1591586314 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2279174798412516067, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
-  m_PrefabInstance: {fileID: 1678235571}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1591586315
 Animator:
   serializedVersion: 3
@@ -11600,18 +11595,6 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1591586315}
-    - target: {fileID: 2279174798412516064, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
-      propertyPath: hitAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 6d355fd13fd05fa40a6588cd7ce8253b, type: 3}
-    - target: {fileID: 2279174798412516064, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
-      propertyPath: jumpAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 5409a4dd0822b114b93d81d8581f9fba, type: 3}
-    - target: {fileID: 2279174798412516064, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
-      propertyPath: spriteRenderer
-      value: 
-      objectReference: {fileID: 1591586314}
     - target: {fileID: 2279174798412516064, guid: 19adee85bd12e194fb45a1ce493978b4, type: 3}
       propertyPath: jumpCounterText
       value: 
@@ -12734,7 +12717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 69.6, y: -180}
+  m_AnchoredPosition: {x: 69.6001, y: -180}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1847068135

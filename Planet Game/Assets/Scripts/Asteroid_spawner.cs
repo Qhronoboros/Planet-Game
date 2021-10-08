@@ -23,7 +23,7 @@ public class Asteroid_spawner : MonoBehaviour
     }
 
     private void spawn(){
-        if (!GameManager.playerDead && !GameManager.Instance.stageClear)
+        if (!GameManager.playerDead && !GameManager.stageClear)
         {
             for (int i = 0; i < this.spawn_amount; i++)
             {

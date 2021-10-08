@@ -5915,7 +5915,6 @@ MonoBehaviour:
   gameControls: {fileID: 1819934232}
   tempGameOver: {fileID: 57756403}
   temp_stage_clear: {fileID: 817752871}
-  stageClear: 0
   nextStage: main_new
   maxIntensity: 0.45
   startPos: {x: 0, y: 34, z: 0}
@@ -13975,7 +13974,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 60
+    OrthographicSize: 40
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

@@ -15,7 +15,9 @@ public class main_menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SaveGameManager.Instance.unlock_level(3);
+        //SaveGameManager.Instance.unlock_level(3);
+        //SaveGameManager.Instance.unlock_level(2);
+        //SaveGameManager.Instance.unlock_level(1);
     }
 
     // Update is called once per frame

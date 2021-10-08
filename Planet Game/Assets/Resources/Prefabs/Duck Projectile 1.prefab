@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3996525464930748554}
   - component: {fileID: 2121825757}
   m_Layer: 7
-  m_Name: Duck Projectile
+  m_Name: Duck Projectile 1
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6497468883778768649, guid: 5903cdb6e98883e45b73100d51567326, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 
+  type: 
   aimDirection: {x: 0, y: 0}
   lifeTime: 10
   speed: 15
