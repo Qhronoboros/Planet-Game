@@ -242,6 +242,10 @@ public class Game_Manager : MonoBehaviour
     {
         set_health(3,"continue");
         playerDead = false;
+        if (lifes <= 1)
+        {
+            player.GetComponent<Animator>().SetBool("IsBroken", true);
+        }
         // player.transform.position = new Vector2(camera.transform.position.x - 7.0f, 0f);
         unfreeze_game();
         // deadObj.SetActive(false);

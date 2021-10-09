@@ -17,6 +17,7 @@ public class planet_breadgame : MonoBehaviour
             // Enemy_parent = transform.parent.parent.GetComponent<Stage_controller>().Planet;
             // Enemy_parent.transform.getChild(0).GetComponent<Enemy_fox_intro>().planet_destroyed = true;
             transform.parent.parent.Find("Enemy").transform.GetChild(0).GetComponent<Enemy_fox_intro>().planet_destroyed = true;
+            transform.parent.parent.Find("Enemy").transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
             GetComponent<CircleCollider2D>().enabled = false;
         }
     }

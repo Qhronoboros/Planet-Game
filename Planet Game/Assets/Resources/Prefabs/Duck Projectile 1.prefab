@@ -158,7 +158,7 @@ MonoBehaviour:
   owner: 
   type: 
   aimDirection: {x: 0, y: 0}
-  lifeTime: 10
+  lifeTime: 5
   speed: 15
 --- !u!82 &2121825757
 AudioSource:

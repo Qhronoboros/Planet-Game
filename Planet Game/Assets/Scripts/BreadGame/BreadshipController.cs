@@ -60,11 +60,6 @@ public class BreadshipController : MonoBehaviour
                 }
 
                 Game_Manager.Instance.set_health(temp_health, "projectile");
-
-                if (Game_Manager.Instance.lifes <= 1)
-                {
-                    GetComponent<Animator>().SetBool("IsBroken", true);
-                }
             }
         }
     }
