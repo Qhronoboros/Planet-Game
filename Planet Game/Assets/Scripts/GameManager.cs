@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     private int health = 3;
     private int maxHealth = 3;
     public Image[] hearts;
+    public Image heart;
     public Sprite full_heart;
     public Sprite empty_heart;
     //game over
@@ -104,6 +105,19 @@ public class GameManager : MonoBehaviour
         UIText = score_text.GetComponent<Text>();
         UI_coin_text = coin_text.GetComponent<Text>();
         UI_special_text = special_text.GetComponent<Text>();
+        if(PlayerPrefs.HasKey("item2")){
+            if(PlayerPrefs.GetInt("item2") == 1){
+                Image[] temp = new Image[hearts.Length + 1] ;
+                temp[0] = hearts[0];
+                temp[1] = hearts[1];
+                temp[2] = hearts[2];
+                temp[3] = heart;
+                hearts = temp;
+                heart.gameObject.SetActive(true);
+                maxHealth +=1;
+                health+=1;
+            }
+        }
         get_max_special();
         set_special(special);
         set_coin(SaveGameManager.Instance.get_coin());

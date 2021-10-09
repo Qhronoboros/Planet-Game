@@ -7,6 +7,7 @@ public class object_collision : MonoBehaviour
     public GameObject player;
     public GameObject mainPlanetObj;
     public float speed = 8;
+    public bool magnet = false;
 
     void OnBecameVisible()
     {
@@ -79,6 +80,25 @@ public class object_collision : MonoBehaviour
             }   
         }
     }
+
+    IEnumerator magnetized()
+    {   
+
+        while (magnet == true)
+        {
+            Vector2 target_position = player.transform.position;
+            float step = speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, target_position, step);
+            //Wait for a frame to give Unity and other scripts chance to run
+            yield return null;
+        }       
+    }
+
+    public void magnet_activate(){
+        StartCoroutine(magnetized());
+    }
+
+    
 
 
     void Start(){

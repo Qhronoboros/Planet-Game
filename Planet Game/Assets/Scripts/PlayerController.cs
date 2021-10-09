@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
-{
+{   
+    public bool magnetic = false;
     private static PlayerController _instance;
     public static PlayerController Instance
     {
@@ -83,6 +84,16 @@ public class PlayerController : MonoBehaviour
         // Give gravity script to self
         gravity = gameObject.AddComponent<Gravity>();
         gravity.assignPlanet(mainPlanetObj);
+        if(PlayerPrefs.HasKey("item1")){
+            if(PlayerPrefs.GetInt("item1") ==  1){
+                jumpLimit+=1;
+            }        
+        }
+        if(PlayerPrefs.HasKey("item3")){
+            if(PlayerPrefs.GetInt("item3") ==  1){
+                this.transform.GetChild(1).gameObject.SetActive(true);
+            }        
+        }
     }
 
     public void resetPlayer()
