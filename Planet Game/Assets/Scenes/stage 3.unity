@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5891,7 +5891,8 @@ MonoBehaviour:
   damagedMat: {fileID: 2100000, guid: 7b8fbf0505ce5f04d807df62161bffc4, type: 2}
   invincibleMat: {fileID: 2100000, guid: c7c9acfb7da82a140a149dc3e012267b, type: 2}
   vignetteMat: {fileID: 2100000, guid: 70da52c6094b37a4eb98c397418c604c, type: 2}
-  GrayscaleMat: {fileID: 2100000, guid: 992fe4c3596f87846a2ea29bf77c81ac, type: 2}
+  grayscaleMat: {fileID: 0}
+  whiteFadeMat: {fileID: 0}
   score_text: {fileID: 1037351438}
   coin_text: {fileID: 1184458251}
   special_text: {fileID: 1195158590}
