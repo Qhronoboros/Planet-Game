@@ -11,9 +11,6 @@ public class ProjectileController : MonoBehaviour
     public float speed = 0.3f;
     void Start()
     {   
-        if(SaveGameManager.Instance.check_muted()){
-            this.GetComponent<AudioSource>().volume = 0f;
-        }
         StartCoroutine(selfDestruct());
     }
 

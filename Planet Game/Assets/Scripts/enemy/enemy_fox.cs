@@ -148,30 +148,36 @@ public class enemy_fox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        transform.up = -(player.position - transform.position);
-        if (GetComponentInChildren<radar>().parent_follow){
-            
-            float degree_to_radians = player.rotation.eulerAngles.z * (Mathf.PI / 180);
-            float y_distance = Mathf.Cos(degree_to_radians)* distance_above ;
-            float x_distance = Mathf.Sin(degree_to_radians)* distance_above ;
-            // Debug.Log("rot " + player.rotation.eulerAngles.z + " xdistance :" + x_distance + " ydistance :" + y_distance);
-
-            target = new Vector2((player.position.x - x_distance), (player.position.y + y_distance));
-            float step = speed * Time.deltaTime;
-
-            // move sprite towards the target location
-            transform.position = Vector2.MoveTowards(transform.position, target, step);
-            if(player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
+        if (!dead)
+        {
+            transform.up = -(player.position - transform.position);
+            if (GetComponentInChildren<radar>().parent_follow)
             {
-                if (!GameManager.playerDead && !GameManager.stageClear && Time.time - timeLastProjectile > shootDelay && !dead)
+
+                float degree_to_radians = player.rotation.eulerAngles.z * (Mathf.PI / 180);
+                float y_distance = Mathf.Cos(degree_to_radians) * distance_above;
+                float x_distance = Mathf.Sin(degree_to_radians) * distance_above;
+                // Debug.Log("rot " + player.rotation.eulerAngles.z + " xdistance :" + x_distance + " ydistance :" + y_distance);
+
+                target = new Vector2((player.position.x - x_distance), (player.position.y + y_distance));
+                float step = speed * Time.deltaTime;
+
+                // move sprite towards the target location
+                transform.position = Vector2.MoveTowards(transform.position, target, step);
+                if (player.transform.rotation.z - transform.rotation.z > -0.03 && player.transform.rotation.z - transform.rotation.z < 0.03)
                 {
-                    timeLastProjectile = Time.time;
-                    lastCoroutineShooting = StartCoroutine(Shooting());
+                    if (!GameManager.playerDead && !GameManager.stageClear && Time.time - timeLastProjectile > shootDelay)
+                    {
+                        timeLastProjectile = Time.time;
+                        lastCoroutineShooting = StartCoroutine(Shooting());
+                    }
                 }
             }
-        }else{
-            float step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
+            else
+            {
+                float step = speed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, initial_position, step);
+            }
         }
     }
 
