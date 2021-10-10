@@ -104,6 +104,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake(){
         //PlayerPrefs.DeleteAll();
+
+        if (!PlayerPrefs.HasKey("inverted_launch"))
+        {
+            PlayerPrefs.SetInt("inverted_launch", 0);
+        }
+
+        LaunchToggle.invertedLaunch = PlayerPrefs.GetInt("inverted_launch") == 1 ? true : false;
+
         _instance = this;
         playerDead = false;
         stageClear = false;

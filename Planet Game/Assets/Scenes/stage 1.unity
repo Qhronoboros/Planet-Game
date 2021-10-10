@@ -9907,6 +9907,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c6a31c3d79ef2174198bfee49e322b17, type: 2}
+    - target: {fileID: 3322499990420670263, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3322499990506260588, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
       propertyPath: m_Text
       value: 0/1

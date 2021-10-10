@@ -1807,6 +1807,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: dbb520b381ee1a74dbd7430950577d36, type: 3}
+    - target: {fileID: 3322499990420670263, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3322499990506260588, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
       propertyPath: m_Text
       value: 0/1
@@ -1818,10 +1822,6 @@ PrefabInstance:
     - target: {fileID: 3322499991119296882, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3322499991211806350, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3711828198252533422, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
       propertyPath: m_AnchorMax.x

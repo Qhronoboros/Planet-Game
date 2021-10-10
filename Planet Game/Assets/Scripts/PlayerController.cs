@@ -261,6 +261,13 @@ public class PlayerController : MonoBehaviour
     public void OnJumping(InputAction.CallbackContext value)
     {
         Vector2 joystickMovement = value.ReadValue<Vector2>();
+
+        // Inverts the launching
+        if (LaunchToggle.invertedLaunch)
+        {
+            joystickMovement *= -1;
+        }
+
         // joystick start moving
         if (value.started)
         {
