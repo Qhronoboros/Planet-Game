@@ -25,8 +25,8 @@ public class SaveGameManager : MonoBehaviour
     void Awake()
     {
         //PlayerPrefs.DeleteAll();
-        //PlayerPrefs.SetFloat("coin", 500);
-        //PlayerPrefs.SetFloat("bread", 500);
+        PlayerPrefs.SetFloat("coin", 0);
+        PlayerPrefs.SetFloat("bread", 0);
 
         if (!PlayerPrefs.HasKey("inverted_launch"))
         {

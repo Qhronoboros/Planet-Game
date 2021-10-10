@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
 
-    public AudioClip jumpAudio;
-    public AudioClip hitAudio;
+    public AudioSource jumpTrack;
+    public AudioSource hitTrack;
 
     public float movementSpeed = 0f;
     public float maxMovementSpeed = 10.0f;
@@ -323,9 +323,7 @@ public class PlayerController : MonoBehaviour
 
                 GetComponent<Rigidbody2D>().AddForce((GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
                 UpdateJumpCounter(jumpCounter + 1);
-                GetComponent<AudioSource>().clip = jumpAudio;
-                GetComponent<AudioSource>().pitch = 2.0f;
-                GetComponent<AudioSource>().Play();
+                jumpTrack.Play();
 
                 if (flapping)
                 {
@@ -397,9 +395,7 @@ public class PlayerController : MonoBehaviour
 
                 if (temp_life > 0)
                 {
-                    GetComponent<AudioSource>().clip = hitAudio;
-                    GetComponent<AudioSource>().pitch = 1.0f;
-                    GetComponent<AudioSource>().Play();
+                    hitTrack.Play();
 
                     StartCoroutine(Invincible(invincibilityTime));
                 }

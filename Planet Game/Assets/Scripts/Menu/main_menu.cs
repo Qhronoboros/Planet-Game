@@ -11,7 +11,9 @@ public class main_menu : MonoBehaviour
     public static string sceneName = "";
     public static int selected_stage_index;
 
-    
+    public AudioSource unlockTrack;
+    public AudioSource lockTrack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,25 +28,14 @@ public class main_menu : MonoBehaviour
         
     }
 
-
-    public void buttons_pressed()
-    {
-        
-        StartCoroutine(button_pressed());
-
-    }
-    IEnumerator button_pressed()
-    {
-        next_button.interactable = false;
-        prev_button.interactable = false;       
-        yield return new WaitForSeconds (0.2f);
-        prev_button.interactable = true;
-        next_button.interactable = true;
-
-    }
     public void changeScene(){
         if(SaveGameManager.Instance.check_level_unlocked(selected_stage_index)){
+            unlockTrack.Play();
             SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        }
+        else
+        {
+            lockTrack.Play();
         }
         
     }

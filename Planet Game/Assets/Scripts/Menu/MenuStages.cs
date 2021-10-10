@@ -35,7 +35,7 @@ public class MenuStages : MonoBehaviour
     {
         for (int i = 0; i < stages.Count; i++)
         {
-            stages[i].transform.localPosition = Vector2.MoveTowards(stages[i].transform.localPosition, stagesPos[i], 3000.0f * Time.deltaTime);
+            stages[i].transform.localPosition = Vector2.MoveTowards(stages[i].transform.localPosition, stagesPos[i], 5000.0f * Time.deltaTime);
         }
 
         GameObject stage = stages[stages.Count / 2];

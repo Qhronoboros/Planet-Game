@@ -60,6 +60,12 @@ public class AudioVolume : MonoBehaviour
         masterSlider.value = masterVolume;
         musicSlider.value = musicVolume;
         ambianceSlider.value = ambianceVolume;
+
+        SetVolumeMaster(masterVolume);
+        SetVolumeMusic(musicVolume);
+        SetVolumeAmbiance(ambianceVolume);
+
+        Debug.Log(masterVolume.ToString() + " " + musicVolume.ToString() + " " + ambianceVolume);
     }
 
     public void SaveVolume()

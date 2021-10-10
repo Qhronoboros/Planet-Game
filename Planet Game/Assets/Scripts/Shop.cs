@@ -12,6 +12,8 @@ public class Shop : MonoBehaviour
     public GameObject info;
     GameObject itemcost_parent;
 
+    public AudioSource sufficientTrack;
+    public AudioSource insufficientTrack;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,7 @@ public class Shop : MonoBehaviour
             itemcost_parent = GameObject.Find(item+"/currency/bread");
             item_cost = float.Parse(itemcost_parent.GetComponent<Text>().text);
             if(item_cost < tempbread && PlayerPrefs.GetInt(item) == 0){
+                sufficientTrack.Play();
                 SaveGameManager.Instance.save_bread( tempbread - item_cost);
                 breadtext.text = SaveGameManager.Instance.get_bread().ToString();
                 PlayerPrefs.SetInt(item,1);
@@ -53,6 +56,7 @@ public class Shop : MonoBehaviour
                 tempgameobjicon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 255f);
                 tempgameobjicon.transform.GetChild(0).gameObject.SetActive(true);
             }else if(item_cost > tempbread && PlayerPrefs.GetInt(item) == 0){
+                insufficientTrack.Play();
                 info.transform.GetChild(0).GetComponent<Text>().text = "insufficient bread";
                 info.gameObject.SetActive(true);
             }
@@ -62,6 +66,7 @@ public class Shop : MonoBehaviour
             itemcost_parent = GameObject.Find(item+"/currency/coin");
             item_cost = float.Parse(itemcost_parent.GetComponent<Text>().text);
             if(item_cost < tempcoin && PlayerPrefs.GetInt(item) == 0){
+                sufficientTrack.Play();
                 SaveGameManager.Instance.save_coin( tempcoin - item_cost);
                 coinstext.text = SaveGameManager.Instance.get_coin().ToString();
                 PlayerPrefs.SetInt(item,1);
@@ -70,6 +75,7 @@ public class Shop : MonoBehaviour
                 tempgameobjicon.transform.GetChild(0).gameObject.SetActive(true);
 
             }else if(item_cost > tempcoin && PlayerPrefs.GetInt(item) == 0){
+                insufficientTrack.Play();
                 info.transform.GetChild(0).GetComponent<Text>().text = "insufficient coin";
                 info.gameObject.SetActive(true);                
             }

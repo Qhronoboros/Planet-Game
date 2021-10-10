@@ -17,8 +17,10 @@ public class BreadshipController : MonoBehaviour
     //
     public GameObject projectilePrefab;
     public Transform main_camera;
-    public AudioClip jumpAudio;
-    public AudioClip hitAudio;
+
+    public AudioSource jumpTrack;
+    public AudioSource hitTrack;
+
     public float movementSpeed = 5.5f;
     public float x_clamp = 9;
     public float y_clamp = 4;
@@ -52,9 +54,7 @@ public class BreadshipController : MonoBehaviour
 
                 if (temp_health > 0)
                 {
-                    GetComponent<AudioSource>().clip = hitAudio;
-                    GetComponent<AudioSource>().pitch = 1.0f;
-                    GetComponent<AudioSource>().Play();
+                    hitTrack.Play();
 
                     StartCoroutine(Invincible(invincibilityTime));
                 }
@@ -137,9 +137,7 @@ public class BreadshipController : MonoBehaviour
             {
 
                 GetComponent<Rigidbody2D>().AddForce(lastJoystickVector * jumpHeight * movementSpeed, ForceMode2D.Impulse);
-                GetComponent<AudioSource>().clip = jumpAudio;
-                GetComponent<AudioSource>().pitch = 2.0f;
-                GetComponent<AudioSource>().Play();
+                jumpTrack.Play();
 
             }
         }

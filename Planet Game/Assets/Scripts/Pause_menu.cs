@@ -20,7 +20,7 @@ public class Pause_menu : MonoBehaviour
     }
     public void Quit(){
         Resume();
-        SceneManager.LoadSceneAsync("main_menu", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Main Menu", LoadSceneMode.Single);
     }
     public void GoToNextStage()
     {
