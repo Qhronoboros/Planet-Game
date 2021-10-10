@@ -9450,8 +9450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac05d36736c72649a151d70a4ded7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName: Introduction
-  sceneName: introduction
+  stageName: introduction
+  sceneName: rocket stage 1
   stageIndex: 0
 --- !u!114 &1887576055
 MonoBehaviour:

@@ -1556,6 +1556,9 @@ MonoBehaviour:
   whiteFadeMat: {fileID: 2100000, guid: fa873abc8a6a3c14b9d6bbf941849c49, type: 2}
   score_text: {fileID: 498057390}
   coin_text: {fileID: 240084710}
+  specialPlutoPref: {fileID: 0}
+  specialSaturnPref: {fileID: 0}
+  specialSunPref: {fileID: 0}
   special_text: {fileID: 379904905}
   special_child: {fileID: 906483418}
   max_special: 5
@@ -10018,6 +10021,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c6a31c3d79ef2174198bfee49e322b17, type: 2}
+    - target: {fileID: 3322499990506260588, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
+      propertyPath: m_Text
+      value: 0/1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fbb5ad46fdfb694e83f484a5991d3f2, type: 3}
 --- !u!1001 &3551276887563255597
