@@ -3248,7 +3248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 5092577634891263649, guid: 1488ef8e9d248794f81f7edf187d1743, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5746,6 +5746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sun Special (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8225223159770320753, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
+      propertyPath: objectType
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
 --- !u!1001 &755880599
@@ -7051,6 +7055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sun Special (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8225223159770320753, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
+      propertyPath: objectType
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
 --- !u!1001 &894488976
@@ -7991,6 +7999,10 @@ PrefabInstance:
     - target: {fileID: 3596646051521123447, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
       propertyPath: m_Name
       value: Sun Special (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225223159770320753, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
+      propertyPath: objectType
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
@@ -9432,6 +9444,10 @@ PrefabInstance:
     - target: {fileID: 3596646051521123447, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
       propertyPath: m_Name
       value: Sun Special (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225223159770320753, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
+      propertyPath: objectType
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
@@ -15046,6 +15062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sun Special (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8225223159770320753, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
+      propertyPath: objectType
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
 --- !u!1001 &1811239242
@@ -18421,10 +18441,6 @@ PrefabInstance:
     - target: {fileID: 4809285514650973993, guid: d4b3014274c9db04bbfdf83e718cdb07, type: 3}
       propertyPath: m_Name
       value: Sun Star
-      objectReference: {fileID: 0}
-    - target: {fileID: 4809285514650973997, guid: d4b3014274c9db04bbfdf83e718cdb07, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4b3014274c9db04bbfdf83e718cdb07, type: 3}

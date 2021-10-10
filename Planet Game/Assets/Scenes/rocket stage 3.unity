@@ -2822,7 +2822,7 @@ MonoBehaviour:
   asteroid_prefab: {fileID: 7994282415147464426, guid: 8c5308a6b87f59143ac1a3a99ad23bf8, type: 3}
   Asteroids: {fileID: 325791469}
   Enemy: {fileID: 1955305054}
-  fox_prefab: {fileID: 73780902423221497, guid: e865b0319db6f0247aed6f61f76baa48, type: 3}
+  fox_prefab: {fileID: 73780902423221497, guid: 06e923c89bc7302479f45508b76570fb, type: 3}
   planet_prefab: {fileID: 1324270194433278804, guid: 2e008bb9fd30aae43aa6384750eac7c6, type: 3}
   Planet: {fileID: 1099689385}
   JoyStick_obj: {fileID: 289598776}

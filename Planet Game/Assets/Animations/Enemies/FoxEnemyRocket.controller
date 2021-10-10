@@ -57,7 +57,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fox_enemy_intro
+  m_Name: FoxEnemyRocket
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsBroken

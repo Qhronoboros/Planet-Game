@@ -70,11 +70,11 @@ public class BreadshipController : MonoBehaviour
             Debug.Log("holdShoot True");
             holdShoot = true;
         }
-        else if (value.canceled)
-        {
-            Debug.Log("holdShoot False");
-            holdShoot = false;
-        }
+        //else if (value.canceled)
+        //{
+        //    Debug.Log("holdShoot False");
+        //    holdShoot = false;
+        //}
     }
     public void OnJumping(InputAction.CallbackContext value)
     {
@@ -158,6 +158,7 @@ public class BreadshipController : MonoBehaviour
             laser.GetComponent<Projectile_controller>().owner = this.tag;
             laser.GetComponent<Projectile_controller>().aimDirection = Vector2.up;
             timeLastProjectile = Time.time;
+            holdShoot = false;
         }
         //movement
         transform.Translate((direction+ idle_movespeed) * movementSpeed * Time.deltaTime);

@@ -268,7 +268,7 @@ public class PlayerController : MonoBehaviour
             lastJoystickVector = Vector2.zero;
         }
 
-        // joysting drag
+        // joystick drag
         if (value.performed)
         {
             if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
@@ -346,10 +346,10 @@ public class PlayerController : MonoBehaviour
         {
             holdShoot = true;
         }
-        else if (value.canceled)
-        {
-            holdShoot = false;
-        }
+        //else if (value.canceled)
+        //{
+        //    holdShoot = false;
+        //}
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -460,6 +460,7 @@ public class PlayerController : MonoBehaviour
             laser.GetComponent<ProjectileController>().aimDirection = Vector2.up;
 
             timeLastProjectile = Time.time;
+            holdShoot = false;
         }
 
 

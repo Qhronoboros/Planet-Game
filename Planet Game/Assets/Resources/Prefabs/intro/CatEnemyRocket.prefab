@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 73780902423221499}
   - component: {fileID: -2611804721183912309}
   m_Layer: 12
-  m_Name: Fox_enemy_intro
+  m_Name: CatEnemyRocket
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 8512794764567927686, guid: 0d2610ac603d39b4fb7cc1360a25fe21, type: 3}
+  m_Sprite: {fileID: 2454573553900081570, guid: a2ec5e93f37fc3f43aa61b68d599d2cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -477,7 +477,7 @@ Animator:
   m_GameObject: {fileID: 73780902423221497}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a4b9f216a1a9a074ebf2752950159157, type: 2}
+  m_Controller: {fileID: 9100000, guid: c9fa67dbe18f4c640829bd39c3d0c2be, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
