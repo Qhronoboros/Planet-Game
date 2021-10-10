@@ -16,14 +16,14 @@ public class Setting : MonoBehaviour
     public void mute(){
         if(muteToggle.isOn){
             PlayerPrefs.SetInt("Sound", 1);
-            if(SceneManager.GetActiveScene().name != "main_new 1"){
+            if(SceneManager.GetActiveScene().name != "main_new"){
                 GameManager.Instance.sound_setting();
             }
             
         }
         if(!muteToggle.isOn){
             PlayerPrefs.SetInt("Sound", 0);
-            if(SceneManager.GetActiveScene().name != "main_new 1"){
+            if(SceneManager.GetActiveScene().name != "main_new"){
                 GameManager.Instance.sound_setting();
             }
             

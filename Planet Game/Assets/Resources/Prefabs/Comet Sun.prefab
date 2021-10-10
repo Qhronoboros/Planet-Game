@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7994282415147464407}
   - component: {fileID: 6248019477459585565}
   - component: {fileID: 1975604306283112734}
+  - component: {fileID: -7505607972387238042}
   m_Layer: 15
-  m_Name: commet
+  m_Name: Comet Sun
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 621230720304485314, guid: 283056b17946d4648b5ccad2313aad95, type: 3}
+  m_Sprite: {fileID: -4995077991206400720, guid: 49740b0f50821d7478e04e2ecf34b5f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,3 +143,22 @@ MonoBehaviour:
   a_speed: 15
   max_lifetime: 15
   a_half_speed_multiplier: 15
+--- !u!95 &-7505607972387238042
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994282415147464426}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82d6c4fa46085ad4d9667847157864f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

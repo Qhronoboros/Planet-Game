@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 73780902423221499}
   - component: {fileID: 73780902423221496}
   - component: {fileID: 7480970395448830558}
+  - component: {fileID: 6034006655069458222}
   m_Layer: 12
   m_Name: Fox Enemy
   m_TagString: Enemy
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f38ff017174747245baa941bf11b6e9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -473,6 +474,8 @@ MonoBehaviour:
   shootDelay: 3
   shootDelayBurst: 0.5
   damaged: 0
+  shooting: 0
+  dead: 0
 --- !u!114 &7480970395448830558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +489,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
+--- !u!95 &6034006655069458222
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73780902423221497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 259a38cc569a27a49b0320c58a311912, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &73780903902503649
 GameObject:
   m_ObjectHideFlags: 0

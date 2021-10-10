@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -8075188224655855856, guid: eec6471d2f40a6b4988675f64e571f6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28f5d0d524972045a6188fd574dbd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   mainPlanetObj: {fileID: 0}
   speed: 8
+  magnet: 0
 --- !u!114 &2918838242597789878
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,16 +8,23 @@ public class MenuDuckAnim : MonoBehaviour
     public GameObject pluto;
 
     public float jumpForce = 5.0f;
-    public bool isGrounded = false;
-
-    private void Start()
-    {
-        StartCoroutine(DuckJump());
-    }
+    public static bool isGrounded = false;
+    public Vector2 startPos;
+    public Coroutine jumpCoroutine;
 
     void Update()
     {
         pluto.transform.Rotate(0, 0, 50 * Time.deltaTime); //rotates 50 degrees per second around z axis
+    }
+
+    private void OnEnable()
+    {
+        jumpCoroutine = StartCoroutine(DuckJump());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(jumpCoroutine);
     }
 
     IEnumerator DuckJump()

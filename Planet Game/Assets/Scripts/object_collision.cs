@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class object_collision : MonoBehaviour
 {
-    public GameObject player;
     public GameObject mainPlanetObj;
     public float speed = 8;
     public bool magnet = false;
@@ -74,7 +73,7 @@ public class object_collision : MonoBehaviour
         float d_world_thisObj = Vector2.Distance(mainPlanetObj.transform.position , this.transform.position);
         // Debug.Log("world distance " + half_d_world_border + " name " + this.name + " dword : "+ d_world_thisObj);
         if(d_world_thisObj >= half_d_world_border){
-            Vector2 target_position = player.transform.position;
+            Vector2 target_position = GameManager.Instance.player.transform.position;
             while (Vector2.Distance(target_position, this.transform.position) > 0)
             {
                 float step = speed * Time.deltaTime;
@@ -89,7 +88,7 @@ public class object_collision : MonoBehaviour
     {   
         while (magnet == true)
         {
-            Vector2 target_position = player.transform.position;
+            Vector2 target_position = GameManager.Instance.player.transform.position;
             float step = speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, target_position, step);
             //Wait for a frame to give Unity and other scripts chance to run
@@ -121,9 +120,6 @@ public class object_collision : MonoBehaviour
             }
 
             mainPlanetObj = closestPlanet;
-        }
-        if (!player){
-            player = GameManager.Instance.player;
         }
 
         if (this.gameObject.tag != "Star"){

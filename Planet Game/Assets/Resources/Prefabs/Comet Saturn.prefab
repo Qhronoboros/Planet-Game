@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7994282415147464406}
   - component: {fileID: 7994282415147464407}
   - component: {fileID: 6248019477459585565}
-  - component: {fileID: 7110723985457490495}
-  - component: {fileID: 1336411310052885599}
-  m_Layer: 9
-  m_Name: Comet
+  - component: {fileID: 1975604306283112734}
+  - component: {fileID: 4310464786157345828}
+  m_Layer: 15
+  m_Name: Comet Saturn
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eedaa33dbc10c7743b1c0e22fbd02d2e, type: 3}
+  m_Sprite: {fileID: 4057709646279489288, guid: d4bc3cb055fd4f24e9738d8e1425558a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,10 +120,10 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1.83}
   serializedVersion: 2
-  m_Radius: 0.65
---- !u!114 &7110723985457490495
+  m_Radius: 1.74
+--- !u!114 &1975604306283112734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,25 +132,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7994282415147464426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a3b2068b7b8cb4f81b4c6050844da4, type: 3}
+  m_Script: {fileID: 11500000, guid: a796265004f05f044a8f000da89a9f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 621230720304485314, guid: 283056b17946d4648b5ccad2313aad95, type: 3}
   a_size: 1
-  a_min_size: 0.75
+  a_min_size: 1
   a_max_size: 2.5
   a_speed: 15
   max_lifetime: 15
   a_half_speed_multiplier: 15
-  stage: 1
-  animatorControllers:
-  - {fileID: 9100000, guid: 9bcb080e00ecd8b4181d3f7cffd828dc, type: 2}
-  - {fileID: 9100000, guid: 350b1927a983d84419a7bf235f29074f, type: 2}
-  - {fileID: 9100000, guid: 82d6c4fa46085ad4d9667847157864f0, type: 2}
---- !u!95 &1336411310052885599
+--- !u!95 &4310464786157345828
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -160,7 +153,7 @@ Animator:
   m_GameObject: {fileID: 7994282415147464426}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 350b1927a983d84419a7bf235f29074f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

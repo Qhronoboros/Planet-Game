@@ -24,6 +24,8 @@ public class SaveGameManager : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.SetFloat("coin", 500);
+        PlayerPrefs.SetFloat("bread", 500);
         SaveableObjects = new List<SaveableObject>();
         if (!check_save_exist()){
             create_new_save();

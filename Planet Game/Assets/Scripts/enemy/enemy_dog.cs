@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class enemy_dog : MonoBehaviour
 {
@@ -126,6 +127,22 @@ public class enemy_dog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "stage 1":
+                item_prefab[1] = GameManager.Instance.specialPlutoPref;
+                break;
+            case "stage 2":
+                item_prefab[1] = GameManager.Instance.specialSaturnPref;
+                break;
+            case "stage 3":
+                item_prefab[1] = GameManager.Instance.specialSunPref;
+                break;
+            default:
+                item_prefab[1] = GameManager.Instance.specialPlutoPref;
+                break;
+        }
+
         initial_position = transform.position;
         player = GameManager.Instance.player.transform;
         health = max_health;

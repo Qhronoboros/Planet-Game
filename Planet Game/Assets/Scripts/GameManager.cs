@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
     private Text UI_coin_text;
     private float coin = 0;
     //special
+    public GameObject specialPlutoPref;
+    public GameObject specialSaturnPref;
+    public GameObject specialSunPref;
     public GameObject special_text;
     public GameObject special_child;
     private Text UI_special_text;
