@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Setting : MonoBehaviour
 {   
@@ -15,11 +16,17 @@ public class Setting : MonoBehaviour
     public void mute(){
         if(muteToggle.isOn){
             PlayerPrefs.SetInt("Sound", 1);
-            GameManager.Instance.sound_setting();
+            if(SceneManager.GetActiveScene().name != "main_new 1"){
+                GameManager.Instance.sound_setting();
+            }
+            
         }
         if(!muteToggle.isOn){
             PlayerPrefs.SetInt("Sound", 0);
-            GameManager.Instance.sound_setting();
+            if(SceneManager.GetActiveScene().name != "main_new 1"){
+                GameManager.Instance.sound_setting();
+            }
+            
         }
         
         print(check_muted());
@@ -31,6 +38,7 @@ public class Setting : MonoBehaviour
         return PlayerPrefs.GetInt("Sound");
     }
     void Start(){
+        print(SceneManager.GetActiveScene().name);
         if(check_muted() == 1){
             muteToggle.isOn = true;
         }else{

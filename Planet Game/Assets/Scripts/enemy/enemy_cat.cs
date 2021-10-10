@@ -83,6 +83,7 @@ public class enemy_cat : MonoBehaviour
         {
             item.transform.parent = GameManager.Instance.coin_parent.transform;
         }
+        this.GetComponent<SpecificObject>().DestroySaveable();
         Destroy(this.gameObject);
     }
 

@@ -57,7 +57,7 @@ public class ProjectileController : MonoBehaviour
         }
         else if (other.tag == "Meteor")
         {
-            other.GetComponent<Asteroid>().OnHit();
+            other.GetComponent<Commet>().OnHit();
             Destroy(this.gameObject);
         }
     }

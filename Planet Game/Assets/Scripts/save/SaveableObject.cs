@@ -8,7 +8,7 @@ public abstract class SaveableObject : MonoBehaviour
     //types of objects
     enum ObjectType
     {   //dont use _ for objecttype
-        Coins, Enemies, Star1, Star2, Star3, CoinIntro, Bread, Stage1Fragm, Stage2Fragm ,Stage3Fragm
+        Coins, Fox, Dog, Cat, Star1, Star2, Star3, CoinIntro, Bread, Stage1Fragm, Stage2Fragm ,Stage3Fragm
     }
 
     protected string save;

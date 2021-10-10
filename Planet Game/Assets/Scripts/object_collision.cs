@@ -31,33 +31,37 @@ public class object_collision : MonoBehaviour
                 GameManager.Instance.set_coin(temp);
                 float temp_score = GameManager.Instance.getScore();
                 temp_score += 100;
-                GameManager.Instance.setScore(temp_score);
                 this.GetComponent<SpecificObject>().DestroySaveable();
                 Destroy(gameObject);
+                GameManager.Instance.setScore(temp_score);
+
             }
             if (gameObject.tag == "Special_obj")
             {//
                 float temp = GameManager.Instance.get_special();
                 temp += 1;
-                GameManager.Instance.set_special(temp);
                 this.GetComponent<SpecificObject>().DestroySaveable();
                 Destroy(gameObject);
+                GameManager.Instance.set_special(temp);
+                
             }
             if (gameObject.tag == "Star")
             {   
                 int temp = GameManager.Instance.get_star();
                 temp += 1;
-                GameManager.Instance.set_star(temp);
                 this.GetComponent<SpecificObject>().DestroySaveable();
                 Destroy(gameObject);
+                GameManager.Instance.set_star(temp);
+                
             }
             if (gameObject.tag == "Bread")
             {   
                 float temp = GameManager.Instance.get_bread();
                 temp += 1f;
-                GameManager.Instance.set_bread(temp);
                 this.GetComponent<SpecificObject>().DestroySaveable();
                 Destroy(gameObject);
+                GameManager.Instance.set_bread(temp);
+                
             }
         }
     }
@@ -83,7 +87,6 @@ public class object_collision : MonoBehaviour
 
     IEnumerator magnetized()
     {   
-
         while (magnet == true)
         {
             Vector2 target_position = player.transform.position;

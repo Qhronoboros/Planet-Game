@@ -1,10 +1,10 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid_spawner : MonoBehaviour
-{   
-    
-    public Asteroid asteroid_prefab;
+public class Commet_spawner : MonoBehaviour
+{
+    public Commet commet_prefab;
     // spawn rate of asteroid in seconds
     public float spawn_rate = 4.0f;
     // amount of spawns
@@ -35,25 +35,27 @@ public class Asteroid_spawner : MonoBehaviour
                 Vector3 spawn_point = this.transform.position + spawn_direction;
                 // randomize the variance
                 float variance = Random.Range(-this.trajectory_variance, this.trajectory_variance);
+                // float variance = 0;
+
                 //rotate asteroid for visuals
                 //vector3.forward means xyz = 001
                 Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
-
+                // transform.up = -(player.position - transform.position);
                 //create the asteriod
-                // GameObject asteroidObj = 
+                Commet commetObj = Instantiate(this.commet_prefab, spawn_point, rotation);
+                print(Vector2.Angle(spawn_point, this.transform.position));
+                commetObj.transform.up = -(this.transform.position - commetObj.transform.position);
 
-                Asteroid asteroid = Instantiate(this.asteroid_prefab, spawn_point, rotation);
 
                 //Set parent
-                asteroid.transform.parent = GameManager.Instance.asteroidParent.transform;
+                commetObj.transform.parent = GameManager.Instance.asteroidParent.transform;
 
                 // set the asteroid size by randomizing it
-                asteroid.a_size = Random.Range(asteroid.a_min_size, asteroid.a_max_size);
+                commetObj.a_size = Random.Range(commetObj.a_min_size, commetObj.a_max_size);
                 // set the asteroid trajectory
                 //multiplied by negative spawn direction so the asteroid direction is going towards the spawnpoint
-                asteroid.set_trajectory(rotation * -spawn_direction);
+                commetObj.set_trajectory(rotation * -spawn_direction);
             }
         }
     }
-
 }
