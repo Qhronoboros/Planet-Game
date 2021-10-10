@@ -148,9 +148,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_0
       rect:
         serializedVersion: 2
-        x: 173
+        x: 174
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -169,9 +169,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_1
       rect:
         serializedVersion: 2
-        x: 1003
+        x: 1004
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -190,9 +190,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_2
       rect:
         serializedVersion: 2
-        x: 1833
+        x: 1834
         y: 0
-        width: 485
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -211,9 +211,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_3
       rect:
         serializedVersion: 2
-        x: 2662
+        x: 2664
         y: 0
-        width: 486
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -232,9 +232,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_4
       rect:
         serializedVersion: 2
-        x: 3492
+        x: 3494
         y: 0
-        width: 485
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -253,9 +253,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_5
       rect:
         serializedVersion: 2
-        x: 4323
+        x: 4324
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -274,9 +274,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_6
       rect:
         serializedVersion: 2
-        x: 5153
+        x: 5154
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -295,9 +295,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_7
       rect:
         serializedVersion: 2
-        x: 5983
+        x: 5984
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -316,9 +316,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_8
       rect:
         serializedVersion: 2
-        x: 6813
+        x: 6814
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -337,9 +337,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_9
       rect:
         serializedVersion: 2
-        x: 7643
+        x: 7644
         y: 0
-        width: 485
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -358,9 +358,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_10
       rect:
         serializedVersion: 2
-        x: 8472
+        x: 8474
         y: 0
-        width: 486
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -379,9 +379,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_11
       rect:
         serializedVersion: 2
-        x: 9302
+        x: 9304
         y: 0
-        width: 485
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -400,9 +400,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_12
       rect:
         serializedVersion: 2
-        x: 10133
+        x: 10134
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -421,9 +421,9 @@ TextureImporter:
       name: saturnlooseanimated-sheet_13
       rect:
         serializedVersion: 2
-        x: 10963
+        x: 10964
         y: 0
-        width: 484
+        width: 482
         height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

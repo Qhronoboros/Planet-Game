@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject mainPlanetObj;
     public GameObject projectilePrefab;
+    public GameObject helmetPrefab;
+    public static GameObject helmet;
     public GameObject jumpArrow;
     public Text jumpCounterText;
 
@@ -101,6 +103,11 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Dead", false);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         transform.position = GameManager.Instance.startPos;
+
+        helmet = Instantiate(helmetPrefab, transform.position + new Vector3(0.5f, 1.2f, 0.0f), transform.rotation);
+        helmet.transform.parent = transform;
+        helmet.SetActive(false);
+
         currentMovement = MovementOptions.Default;
         isGrounded = false;
         holdShoot = false;
@@ -187,7 +194,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log(planet.name);
 
             GameManager.playerDeaths = GameManager.PlayerDeaths.Border;
-            GameManager.Instance.set_health(0);
+            GameManager.Instance.set_health(0, "border");
             Debug.Log("Remove Planet");
         }
     }
@@ -210,6 +217,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void FlipX(bool flip)
+    {
+        spriteRenderer.flipX = flip;
+        helmet.GetComponent<SpriteRenderer>().flipX = flip;
+        if (flip)
+        {
+            helmet.transform.localPosition = new Vector3(-0.5f, 1.2f, 0.0f);
+        }
+        else
+        {
+            helmet.transform.localPosition = new Vector3(0.5f, 1.2f, 0.0f);
+        }
+    }
+
     public void OnMovement(InputAction.CallbackContext value)
     {
         float joystickMovement = value.ReadValue<Vector2>().x;
@@ -217,7 +238,7 @@ public class PlayerController : MonoBehaviour
         if (joystickMovement < 0)
         {
             horizontalMovement = -1;
-            spriteRenderer.flipX = true;
+            FlipX(true);
             animator.SetBool("Moving", true);
             //currentMovement = MovementOptions.Left;
 
@@ -225,7 +246,7 @@ public class PlayerController : MonoBehaviour
         else if (joystickMovement > 0)
         {
             horizontalMovement = 1;
-            spriteRenderer.flipX = false;
+            FlipX(false);
             animator.SetBool("Moving", true);
             //currentMovement = MovementOptions.Right;
         }
@@ -277,11 +298,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (value.canceled)
-        {
-            Debug.Log("Canceled");
-        }
-
         // joystick release
         if (value.canceled)
         {
@@ -291,11 +307,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (lastJoystickVector.x < 0)
                 {
-                    spriteRenderer.flipX = true;
+                    FlipX(true);
                 }
                 else if (lastJoystickVector.x > 0)
                 {
-                    spriteRenderer.flipX = false;
+                    FlipX(false);
                 }
 
                 GetComponent<Rigidbody2D>().AddForce((GameManager.Instance.cameraController.transform.TransformDirection(lastJoystickVector)) * jumpHeight * 15, ForceMode2D.Impulse);
@@ -365,7 +381,7 @@ public class PlayerController : MonoBehaviour
     // Player got hit
     public void OnHit(string cause="")
     {
-        if (!GameManager.playerDead && !GameManager.Instance.stageClear)
+        if (!GameManager.playerDead && !GameManager.stageClear)
         {
             if (!invincibility)
             {
@@ -448,13 +464,13 @@ public class PlayerController : MonoBehaviour
 
 
         // Vignette
-        if (BorderDetector.borders.Count == 0 && !GameManager.playerDead)
-        {
-            BorderDetector.intensity = VignetteWarning.calcIntensity(GameManager.Instance.player.GetComponent<PlayerController>().gravity.planetsOrbiting);
-        }
-        else if (BorderDetector.borders.Count != 0 && !GameManager.playerDead)
+        if (BorderDetector.borders.Count != 0 && !GameManager.playerDead || GameManager.stageClear)
         {
             BorderDetector.intensity = 0;
+        }
+        else if (BorderDetector.borders.Count == 0 && !GameManager.playerDead)
+        {
+            BorderDetector.intensity = VignetteWarning.calcIntensity(GameManager.Instance.player.GetComponent<PlayerController>().gravity.planetsOrbiting);
         }
 
         //Debug.Log(BorderDetector.intensity.ToString() + " " + BorderDetector.borders.Count.ToString() + " " + GameManager.playerDead.ToString());

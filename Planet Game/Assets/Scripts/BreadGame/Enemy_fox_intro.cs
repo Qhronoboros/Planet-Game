@@ -34,26 +34,36 @@ public class Enemy_fox_intro : MonoBehaviour
     // On hit bullet
     public void OnHit()
     {
-        if (damaged)
+        if (planet_destroyed)
         {
-            StopCoroutine(lastCoroutine);
-            damaged = false;
-        }
-        lastCoroutine = StartCoroutine(Damaged());
+            if (damaged)
+            {
+                StopCoroutine(lastCoroutine);
+                damaged = false;
+            }
+            lastCoroutine = StartCoroutine(Damaged());
 
-        health -= 1;
-        health_bar.GetComponent<enemy_healthbar>().set_health_text( health.ToString() + "/" + max_health.ToString());
-        health_bar.GetComponent<enemy_healthbar>().set_health(health);
+            health -= 1;
+            health_bar.GetComponent<enemy_healthbar>().set_health_text(health.ToString() + "/" + max_health.ToString());
+            health_bar.GetComponent<enemy_healthbar>().set_health(health);
 
-        // if((health/max_health)*100f < 25f){
+            // if((health/max_health)*100f < 25f){
 
-        //     print("kill player");
-        //     // kill_player();
-        // }
-        if(health == 0){
-            Destroy(this.gameObject);
-            Game_Manager.Instance.stage_clear();
-            Game_Manager.Instance.nextStage = "stage 1";
+            //     print("kill player");
+            //     // kill_player();
+            // }
+
+            if (health <= max_health / 2 && !GetComponent<Animator>().GetBool("IsBroken"))
+            {
+                GetComponent<Animator>().SetBool("IsBroken", true);
+            }
+
+            if (health == 0)
+            {
+                Destroy(this.gameObject);
+                Game_Manager.Instance.stage_clear();
+                Game_Manager.Instance.nextStage = "stage 1";
+            }
         }
     }
 

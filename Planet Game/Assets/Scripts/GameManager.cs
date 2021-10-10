@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     public Material damagedMat;
     public Material invincibleMat;
     public Material vignetteMat;
-    public Material GrayscaleMat;
+    public Material grayscaleMat;
+    public Material whiteFadeMat;
 
     //score
     public GameObject score_text;
@@ -79,7 +80,7 @@ public class GameManager : MonoBehaviour
     public static PlayerDeaths playerDeaths = PlayerDeaths.Alive;
     public Coroutine grayscaleCoroutine;
     // Stage Clear
-    public bool stageClear = false;
+    public static bool stageClear = false;
     public string nextStage = "stage2 Testing";
     // Vignette
     public float maxIntensity = 0.45f;
@@ -99,8 +100,10 @@ public class GameManager : MonoBehaviour
 
 
     private void Awake(){
+        //PlayerPrefs.DeleteAll();
         _instance = this;
         playerDead = false;
+        stageClear = false;
         playerDeaths = PlayerDeaths.Alive;
         UIText = score_text.GetComponent<Text>();
         UI_coin_text = coin_text.GetComponent<Text>();
@@ -195,41 +198,58 @@ public class GameManager : MonoBehaviour
         SaveGameManager.Instance.save_coin(SaveGameManager.Instance.get_coin() + get_coin());
         SaveGameManager.Instance.unlock_level(SceneManager.GetActiveScene().buildIndex+1);
         SaveGameManager.Instance.Save();
-        planets[0].GetComponent<Animator>().SetBool("IsRepaired", true);
+        StartCoroutine(DelayRepairAnimation());
         playerInput.SwitchCurrentActionMap("EmptyMap");
         gameControls.SetActive(false);
         temp_stage_clear.SetActive(true);
     }
 
+    IEnumerator DelayRepairAnimation()
+    {
+        yield return new WaitForSeconds(1.0f);
+        planets[0].GetComponent<Animator>().SetBool("IsRepaired", true);
+    }
+
     // Health
     public void set_health(int game_health, string cause=""){
-        health = game_health;
+        if (!stageClear)
+        {
+            health = game_health;
 
-        if(health > maxHealth){
-            health = maxHealth;
-        }
-        if(health >= 0){
-            for(int i = 0; i < hearts.Length; i++){
-                if(i<health){
-                    hearts[i].sprite = full_heart;
-                }else{
-                    hearts[i].sprite = empty_heart;
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+            if (health >= 0)
+            {
+                for (int i = 0; i < hearts.Length; i++)
+                {
+                    if (i < health)
+                    {
+                        hearts[i].sprite = full_heart;
+                    }
+                    else
+                    {
+                        hearts[i].sprite = empty_heart;
+                    }
                 }
             }
-        }
 
-        if(health == 0){
-            if (cause == "projectile")
+            if (health == 0)
             {
-                playerDeaths = PlayerDeaths.Projectile;
+                if (cause == "projectile")
+                {
+                    playerDeaths = PlayerDeaths.Projectile;
+                }
+                else if (cause == "ring")
+                {
+                    playerDeaths = PlayerDeaths.Ring;
+                }
+                SetLifes(lifes - 1);
             }
-            else if (cause == "ring")
-            {
-                playerDeaths = PlayerDeaths.Ring;
-            }
-            SetLifes(lifes - 1);
         }
     }
+
     public int get_life(){
         return health;
     }
@@ -247,6 +267,9 @@ public class GameManager : MonoBehaviour
             playerDead = true;
             grayscaleCoroutine = StartCoroutine(grayscale());
             player.GetComponent<PlayerController>().animator.SetBool("Dead", true);
+            PlayerController.helmet.transform.parent = null;
+            PlayerController.helmet.SetActive(true);
+            PlayerController.helmet.GetComponent<Rigidbody2D>().AddForce(0.001f * Random.insideUnitCircle.normalized, ForceMode2D.Impulse);
             player.GetComponent<Gravity>().gravity = false;
             playerInput.SwitchCurrentActionMap("EmptyMap");
             gameControls.SetActive(false);
@@ -289,15 +312,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator grayscale()
     {
-        Instance.GrayscaleMat.color = new Color(1, 1, 1, 1);
-        player.GetComponent<SpriteRenderer>().material = GrayscaleMat;
+        Instance.grayscaleMat.color = new Color(1, 1, 1, 1);
+        player.GetComponent<SpriteRenderer>().material = grayscaleMat;
 
-        Debug.Log(GrayscaleMat.color.r);
-
-        while (GrayscaleMat.color.r > 0.4f)
+        while (grayscaleMat.color.r > 0.4f)
         {
             yield return new WaitForSeconds(0.05f);
-            GrayscaleMat.color -= new Color(0.02f, 0.02f, 0.02f, 0.0f);
+            grayscaleMat.color -= new Color(0.02f, 0.02f, 0.02f, 0.0f);
         }
     }
 }

@@ -145,12 +145,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 174
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,12 +166,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_1
       rect:
         serializedVersion: 2
-        x: 830
+        x: 1004
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_2
       rect:
         serializedVersion: 2
-        x: 1660
+        x: 1834
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,12 +208,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_3
       rect:
         serializedVersion: 2
-        x: 2490
+        x: 2664
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_4
       rect:
         serializedVersion: 2
-        x: 3320
+        x: 3494
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,12 +250,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_5
       rect:
         serializedVersion: 2
-        x: 4150
+        x: 4324
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,12 +271,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_6
       rect:
         serializedVersion: 2
-        x: 4980
+        x: 5154
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -292,12 +292,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_7
       rect:
         serializedVersion: 2
-        x: 5810
+        x: 5984
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -313,12 +313,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_8
       rect:
         serializedVersion: 2
-        x: 6640
+        x: 6814
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -334,12 +334,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_9
       rect:
         serializedVersion: 2
-        x: 7470
+        x: 7644
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -355,12 +355,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_10
       rect:
         serializedVersion: 2
-        x: 8300
+        x: 8474
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -376,12 +376,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_11
       rect:
         serializedVersion: 2
-        x: 9130
+        x: 9304
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -397,12 +397,12 @@ TextureImporter:
       name: saturnrepairanimated-sheet_12
       rect:
         serializedVersion: 2
-        x: 9960
+        x: 10134
         y: 0
-        width: 830
+        width: 482
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3468814669971904419, guid: 1dbf39b8afac2ed49a1034da95626765, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,8 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 
+  type: 
   aimDirection: {x: 0, y: 0}
-  lifeTime: 30
+  lifeTime: 10
   speed: 15
 --- !u!82 &2976819561964276912
 AudioSource:

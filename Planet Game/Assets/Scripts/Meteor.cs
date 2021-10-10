@@ -28,9 +28,6 @@ public class Meteor : MonoBehaviour
     {
         //randomize the sprites
         animator.runtimeAnimatorController = animatorControllers[stage];
-
-        trajectory = GetComponent<Rigidbody2D>().velocity;
-        Debug.Log(trajectory);
         //
         //this.transform.eulerAngles = new Vector3(0.0f,0.0f,Random.value *360);
         ////var to randomize scale
@@ -42,9 +39,6 @@ public class Meteor : MonoBehaviour
     // add force to the ateroid and destroy it at a certain time
     public void set_trajectory(Vector2 direction){
         rigid_body2D.AddForce(direction * this.a_speed);
-        Vector2 v = GetComponent<Rigidbody2D>().velocity;
-        transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg, Vector3.forward);
-
         Destroy(this.gameObject, this.max_lifetime);
     }
 

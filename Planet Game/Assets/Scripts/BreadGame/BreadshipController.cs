@@ -47,10 +47,10 @@ public class BreadshipController : MonoBehaviour
         {
             if (!invincibility)
             {
-                int temp_life = Game_Manager.Instance.get_life();
-                temp_life -= 1;
+                int temp_health = Game_Manager.Instance.get_health();
+                temp_health -= 1;
 
-                if (temp_life > 0)
+                if (temp_health > 0)
                 {
                     GetComponent<AudioSource>().clip = hitAudio;
                     GetComponent<AudioSource>().pitch = 1.0f;
@@ -59,7 +59,7 @@ public class BreadshipController : MonoBehaviour
                     StartCoroutine(Invincible(invincibilityTime));
                 }
 
-                Game_Manager.Instance.set_health(temp_life, "projectile");
+                Game_Manager.Instance.set_health(temp_health, "projectile");
             }
         }
     }

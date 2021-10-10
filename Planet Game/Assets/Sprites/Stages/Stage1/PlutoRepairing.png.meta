@@ -169,12 +169,12 @@ TextureImporter:
       name: PlutoRepairing_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 258
-        height: 258
+        x: 9
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: PlutoRepairing_1
       rect:
         serializedVersion: 2
-        x: 258
-        y: 0
-        width: 258
-        height: 258
+        x: 267
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,12 +211,12 @@ TextureImporter:
       name: PlutoRepairing_2
       rect:
         serializedVersion: 2
-        x: 516
-        y: 0
-        width: 258
-        height: 258
+        x: 525
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,12 +232,12 @@ TextureImporter:
       name: PlutoRepairing_3
       rect:
         serializedVersion: 2
-        x: 774
-        y: 0
-        width: 258
-        height: 258
+        x: 783
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: PlutoRepairing_4
       rect:
         serializedVersion: 2
-        x: 1032
-        y: 0
-        width: 258
-        height: 258
+        x: 1041
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -274,12 +274,12 @@ TextureImporter:
       name: PlutoRepairing_5
       rect:
         serializedVersion: 2
-        x: 1290
-        y: 0
-        width: 258
-        height: 258
+        x: 1299
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -295,12 +295,12 @@ TextureImporter:
       name: PlutoRepairing_6
       rect:
         serializedVersion: 2
-        x: 1548
-        y: 0
-        width: 258
-        height: 258
+        x: 1557
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,12 +316,12 @@ TextureImporter:
       name: PlutoRepairing_7
       rect:
         serializedVersion: 2
-        x: 1806
-        y: 0
-        width: 258
-        height: 258
+        x: 1815
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,12 +337,12 @@ TextureImporter:
       name: PlutoRepairing_8
       rect:
         serializedVersion: 2
-        x: 2064
-        y: 0
-        width: 258
-        height: 258
+        x: 2073
+        y: 13
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -358,12 +358,12 @@ TextureImporter:
       name: PlutoRepairing_9
       rect:
         serializedVersion: 2
-        x: 2322
-        y: 0
-        width: 258
-        height: 258
+        x: 2331
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -379,12 +379,12 @@ TextureImporter:
       name: PlutoRepairing_10
       rect:
         serializedVersion: 2
-        x: 2580
-        y: 0
-        width: 258
-        height: 258
+        x: 2589
+        y: 13
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -400,12 +400,12 @@ TextureImporter:
       name: PlutoRepairing_11
       rect:
         serializedVersion: 2
-        x: 2838
-        y: 0
-        width: 258
-        height: 258
+        x: 2847
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -421,12 +421,12 @@ TextureImporter:
       name: PlutoRepairing_12
       rect:
         serializedVersion: 2
-        x: 3096
-        y: 0
-        width: 258
-        height: 258
+        x: 3105
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -442,12 +442,12 @@ TextureImporter:
       name: PlutoRepairing_13
       rect:
         serializedVersion: 2
-        x: 3354
-        y: 0
-        width: 258
-        height: 258
+        x: 3363
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -463,12 +463,12 @@ TextureImporter:
       name: PlutoRepairing_14
       rect:
         serializedVersion: 2
-        x: 3612
-        y: 0
-        width: 258
-        height: 258
+        x: 3621
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -484,12 +484,12 @@ TextureImporter:
       name: PlutoRepairing_15
       rect:
         serializedVersion: 2
-        x: 3870
-        y: 0
-        width: 258
-        height: 258
+        x: 3879
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -505,12 +505,12 @@ TextureImporter:
       name: PlutoRepairing_16
       rect:
         serializedVersion: 2
-        x: 4128
-        y: 0
-        width: 258
-        height: 258
+        x: 4137
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -526,12 +526,12 @@ TextureImporter:
       name: PlutoRepairing_17
       rect:
         serializedVersion: 2
-        x: 4386
-        y: 0
-        width: 258
-        height: 258
+        x: 4395
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -547,12 +547,12 @@ TextureImporter:
       name: PlutoRepairing_18
       rect:
         serializedVersion: 2
-        x: 4644
-        y: 0
-        width: 258
-        height: 258
+        x: 4653
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -568,12 +568,12 @@ TextureImporter:
       name: PlutoRepairing_19
       rect:
         serializedVersion: 2
-        x: 4902
-        y: 0
-        width: 258
-        height: 258
+        x: 4911
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -589,12 +589,12 @@ TextureImporter:
       name: PlutoRepairing_20
       rect:
         serializedVersion: 2
-        x: 5160
-        y: 0
-        width: 258
-        height: 258
+        x: 5169
+        y: 8
+        width: 241
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

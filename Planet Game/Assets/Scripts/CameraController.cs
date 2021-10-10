@@ -60,22 +60,22 @@ public class CameraController : MonoBehaviour
         }
 
 
-        if (GameManager.Instance.stageClear && cameraState != CameraStates.WinView)
+        if (GameManager.stageClear && cameraState != CameraStates.WinView)
         {
             TransitionWin();
         }
-        else if (!planetScript.isPlanet || planetScript.calcDistance(GameManager.Instance.player, true) >= playerCamDistance && !GameManager.playerDead && !GameManager.Instance.stageClear && cameraState != CameraStates.PlayerView)
+        else if (!planetScript.isPlanet || planetScript.calcDistance(GameManager.Instance.player, true) >= playerCamDistance && !GameManager.playerDead && !GameManager.stageClear && cameraState != CameraStates.PlayerView)
         {
             //Debug.Log(planetScript.calcDistance(GameManager.Instance.player, true));
             //Debug.Log(playerCamDistance);
             //Debug.Log("Transitioning player");
             TransitionPlayer();
         }
-        else if (planetScript.isPlanet && planetScript.calcDistance(GameManager.Instance.player, true) < planetCamDistance && !GameManager.playerDead && !GameManager.Instance.stageClear && cameraState != CameraStates.PlanetView)
+        else if (planetScript.isPlanet && planetScript.calcDistance(GameManager.Instance.player, true) < planetCamDistance && !GameManager.playerDead && !GameManager.stageClear && cameraState != CameraStates.PlanetView)
         {
             TransitionPlanet();
         }
-        else if (GameManager.playerDeaths == GameManager.PlayerDeaths.Border && GameManager.playerDead && !GameManager.Instance.stageClear)
+        else if (GameManager.playerDeaths == GameManager.PlayerDeaths.Border && GameManager.playerDead && !GameManager.stageClear)
         {
             VCamPlayer.Follow = null;
             VCamPlayer.LookAt = null;
