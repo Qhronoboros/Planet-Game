@@ -27,6 +27,16 @@ public class SaveGameManager : MonoBehaviour
         //PlayerPrefs.DeleteAll();
         //PlayerPrefs.SetFloat("coin", 500);
         //PlayerPrefs.SetFloat("bread", 500);
+
+        if (!PlayerPrefs.HasKey("inverted_launch"))
+        {
+            PlayerPrefs.SetInt("inverted_launch", 0);
+        }
+
+        LaunchToggle.invertedLaunch = PlayerPrefs.GetInt("inverted_launch") == 1 ? true : false;
+
+
+
         SaveableObjects = new List<SaveableObject>();
         if (!check_save_exist()){
             create_new_save();

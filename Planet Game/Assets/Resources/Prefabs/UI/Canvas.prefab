@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &261909580531199304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 231950755554854119}
+  - component: {fileID: 2801843964762697860}
+  m_Layer: 0
+  m_Name: Audio Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &231950755554854119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261909580531199304}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -959.99994, y: -454.73682, z: 0}
+  m_LocalScale: {x: 0.6315789, y: 0.6315789, z: 0.6315789}
+  m_Children: []
+  m_Father: {fileID: 3322499989704040987}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2801843964762697860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261909580531199304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d922119594bd9f41badf756e43c8f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: cdae5a5f7719e62419a4f00c7fc431d1, type: 2}
+  masterSlider: {fileID: 4753126776013084683}
+  musicSlider: {fileID: 6065591330929058165}
+  ambianceSlider: {fileID: 4903259063968067571}
 --- !u!1 &557861025785469099
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,11 +133,11 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2610618555906568633}
+      - m_Target: {fileID: 2801843964762697860}
         m_TargetAssemblyTypeName: AudioVolume, Assembly-CSharp
         m_MethodName: SetVolumeMaster
         m_Mode: 0
@@ -815,11 +862,11 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2610618555906568633}
+      - m_Target: {fileID: 2801843964762697860}
         m_TargetAssemblyTypeName: AudioVolume, Assembly-CSharp
         m_MethodName: SetVolumeAmbiance
         m_Mode: 0
@@ -1257,7 +1304,7 @@ RectTransform:
   - {fileID: 3322499989659316464}
   - {fileID: 3322499990236309606}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1700,7 +1747,7 @@ RectTransform:
   - {fileID: 3322499989939152264}
   - {fileID: 3322499991111920770}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1949,7 +1996,7 @@ RectTransform:
   - {fileID: 3322499989811136173}
   - {fileID: 3322499989834073447}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2531,6 +2578,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 231950755554854119}
   - {fileID: 3322499990391996346}
   - {fileID: 3322499990567101896}
   - {fileID: 3322499990985051472}
@@ -3423,7 +3471,7 @@ RectTransform:
   - {fileID: 3322499989198543271}
   - {fileID: 3322499990869896360}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3708,7 +3756,7 @@ RectTransform:
   - {fileID: 3322499990085941085}
   - {fileID: 3322499990771144069}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5020,7 +5068,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5100,7 +5148,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5587,7 +5635,7 @@ RectTransform:
   - {fileID: 3322499990872556949}
   - {fileID: 3322499989548079441}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6448,6 +6496,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2801843964762697860}
+        m_TargetAssemblyTypeName: AudioVolume, Assembly-CSharp
+        m_MethodName: SaveVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 3322499990029093987}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -7046,7 +7106,7 @@ RectTransform:
   - {fileID: 3322499989424480852}
   - {fileID: 3322499989805512297}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7180,7 +7240,7 @@ RectTransform:
   m_Children:
   - {fileID: 3322499990425029564}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -7481,7 +7541,7 @@ RectTransform:
   - {fileID: 5940899754985529726}
   - {fileID: 1182365169755841022}
   m_Father: {fileID: 3322499989704040987}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7672,11 +7732,11 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2610618555906568633}
+      - m_Target: {fileID: 2801843964762697860}
         m_TargetAssemblyTypeName: AudioVolume, Assembly-CSharp
         m_MethodName: SetVolumeMusic
         m_Mode: 0
@@ -7697,7 +7757,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5940899754985529726}
-  - component: {fileID: 2610618555906568633}
   m_Layer: 5
   m_Name: Audio
   m_TagString: Untagged
@@ -7728,19 +7787,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 500}
   m_SizeDelta: {x: -1590.4001, y: -2073.364}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2610618555906568633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3548323706136187589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d922119594bd9f41badf756e43c8f0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: cdae5a5f7719e62419a4f00c7fc431d1, type: 2}
 --- !u!1 &4050973506864747889
 GameObject:
   m_ObjectHideFlags: 0
