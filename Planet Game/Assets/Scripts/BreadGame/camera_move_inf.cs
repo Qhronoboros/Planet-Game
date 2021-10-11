@@ -14,10 +14,10 @@ public class camera_move_inf : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > 299.5)
-        {
-            movespeed = 0.0f;
-        }
+        //if (transform.position.x > 299.5)
+        //{
+        //    movespeed = 0.0f;
+        //}
         transform.Translate(new Vector2(1, 0) * movespeed * Time.deltaTime);
     }
 }
