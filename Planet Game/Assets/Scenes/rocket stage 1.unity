@@ -8854,7 +8854,7 @@ MonoBehaviour:
   coin_text: {fileID: 134434166}
   deadObj: {fileID: 430973535}
   lifeText: {fileID: 985908383}
-  lifes: 1
+  lifes: 3
   hearts:
   - {fileID: 1956999388}
   - {fileID: 127608258}
@@ -12743,10 +12743,18 @@ PrefabInstance:
     - target: {fileID: 2258913992034557949, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 403084295}
     - target: {fileID: 2258913992034557949, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
+      objectReference: {fileID: 403084295}
+    - target: {fileID: 2258913992034557949, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258913992034557949, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: blink_image
       objectReference: {fileID: 0}
     - target: {fileID: 2258913992363414911, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

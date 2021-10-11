@@ -1561,7 +1561,7 @@ MonoBehaviour:
   specialSunPref: {fileID: 3596646051521123447, guid: abd0892c1192a194a8533f07c324bcb3, type: 3}
   special_text: {fileID: 379904905}
   special_child: {fileID: 906483418}
-  max_special: 1
+  max_special: 5
   bread: 0
   breadtext: {fileID: 306686001}
   star: 0
