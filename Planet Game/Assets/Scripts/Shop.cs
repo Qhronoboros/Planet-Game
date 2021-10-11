@@ -17,10 +17,8 @@ public class Shop : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
         // PlayerPrefs.DeleteAll();
-        coinstext.text = SaveGameManager.Instance.get_coin().ToString();
-        breadtext.text = SaveGameManager.Instance.get_bread().ToString();
+        
         for(int i = 1 ; i< shopitemamount+1 ; i++){
             if(!PlayerPrefs.HasKey("item"+i)){
                 PlayerPrefs.SetInt("item"+i,0);
@@ -39,6 +37,28 @@ public class Shop : MonoBehaviour
 
     }
 
+    // Refresh Text
+    private void OnEnable()
+    {
+        if (Cheats.infCoins)
+        {
+            coinstext.text = "��";
+        }
+        else
+        {
+            coinstext.text = SaveGameManager.Instance.get_coin().ToString();
+        }
+
+        if (Cheats.infBread)
+        {
+            breadtext.text = "��";
+        }
+        else
+        {
+            breadtext.text = SaveGameManager.Instance.get_bread().ToString();
+        }
+    }
+
     public void buy(){
 
         float tempcoin = SaveGameManager.Instance.get_coin();
@@ -48,10 +68,14 @@ public class Shop : MonoBehaviour
         if(GameObject.Find(item+"/currency/coin") == null){
             itemcost_parent = GameObject.Find(item+"/currency/bread");
             item_cost = float.Parse(itemcost_parent.GetComponent<Text>().text);
-            if(item_cost < tempbread && PlayerPrefs.GetInt(item) == 0){
+            if(PlayerPrefs.GetInt(item) == 0 && (item_cost < tempbread || Cheats.infCoins)){
+                if (!Cheats.infCoins)
+                {
+                    SaveGameManager.Instance.save_bread(tempbread - item_cost);
+                    breadtext.text = SaveGameManager.Instance.get_bread().ToString();
+                }
+
                 sufficientTrack.Play();
-                SaveGameManager.Instance.save_bread( tempbread - item_cost);
-                breadtext.text = SaveGameManager.Instance.get_bread().ToString();
                 PlayerPrefs.SetInt(item,1);
                 GameObject tempgameobjicon = GameObject.Find(item+"/icon");
                 tempgameobjicon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 255f);
@@ -66,10 +90,14 @@ public class Shop : MonoBehaviour
 
             itemcost_parent = GameObject.Find(item+"/currency/coin");
             item_cost = float.Parse(itemcost_parent.GetComponent<Text>().text);
-            if(item_cost < tempcoin && PlayerPrefs.GetInt(item) == 0){
+            if(PlayerPrefs.GetInt(item) == 0 && (item_cost < tempcoin || Cheats.infBread)){
+                if (!Cheats.infBread)
+                {
+                    SaveGameManager.Instance.save_coin(tempcoin - item_cost);
+                    coinstext.text = SaveGameManager.Instance.get_coin().ToString();
+                }
+
                 sufficientTrack.Play();
-                SaveGameManager.Instance.save_coin( tempcoin - item_cost);
-                coinstext.text = SaveGameManager.Instance.get_coin().ToString();
                 PlayerPrefs.SetInt(item,1);
                 GameObject tempgameobjicon = GameObject.Find(item+"/icon");
                 tempgameobjicon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 255f);

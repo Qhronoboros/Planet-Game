@@ -10,6 +10,24 @@ public class MenuStages : MonoBehaviour
     public List<Vector2> stagesPos = new List<Vector2>();
     public Text stageText;
 
+    public void RefreshLocks(GameObject stage)
+    {
+        bool floatActive = !SaveGameManager.Instance.check_level_unlocked(stage.GetComponent<MenuStageIndex>().stageIndex);
+        if (Cheats.unlockStages)
+        {
+            floatActive = false;
+        }
+        stage.transform.Find("lock").gameObject.SetActive(floatActive);
+    }
+
+    private void OnEnable()
+    {
+        foreach (GameObject stage in stages)
+        {
+            RefreshLocks(stage);
+        }
+    }
+
     private void Start()
     {
         foreach (GameObject stage in stages)
@@ -18,9 +36,7 @@ public class MenuStages : MonoBehaviour
 
             stagesPos.Add(position);
 
-            Debug.Log(stage.GetComponent<MenuStageIndex>().sceneName + " cleared: " + PlayerPrefs.GetInt(stage.GetComponent<MenuStageIndex>().sceneName));
-
-            stage.transform.Find("lock").gameObject.SetActive(!SaveGameManager.Instance.check_level_unlocked(stage.GetComponent<MenuStageIndex>().stageIndex));
+            //Debug.Log(stage.GetComponent<MenuStageIndex>().sceneName + " cleared: " + PlayerPrefs.GetInt(stage.GetComponent<MenuStageIndex>().sceneName));
 
             if (stage.GetComponent<Animator>() != null)
             {

@@ -53,13 +53,9 @@ public class AudioVolume : MonoBehaviour
             PlayerPrefs.SetFloat("ambiance_volume", 1.0f);
         }
 
-        masterVolume = PlayerPrefs.GetFloat("master_volume");
-        musicVolume = PlayerPrefs.GetFloat("music_volume");
-        ambianceVolume = PlayerPrefs.GetFloat("ambiance_volume");
-
-        masterSlider.value = masterVolume;
-        musicSlider.value = musicVolume;
-        ambianceSlider.value = ambianceVolume;
+        masterSlider.value = masterVolume = PlayerPrefs.GetFloat("master_volume");
+        musicSlider.value = musicVolume = PlayerPrefs.GetFloat("music_volume");
+        ambianceSlider.value = ambianceVolume = PlayerPrefs.GetFloat("ambiance_volume");
 
         SetVolumeMaster(masterVolume);
         SetVolumeMusic(musicVolume);

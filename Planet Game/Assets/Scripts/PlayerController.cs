@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     public float doubleJumpHeight = 1.0f;
     public float flySpeed = 5.0f;
     public float shootDelay = 0.2f;
-    private int jumpCounter = 0;
+    public int jumpCounter = 0;
     public int jumpLimit = 3;
     public Gravity gravity;
     public float spinRotation = 20.0f;
@@ -187,11 +187,9 @@ public class PlayerController : MonoBehaviour
             ChangePlanet(gravity.planetsOrbiting[gravity.planetsOrbiting.Count - 1]);
         }
 
-        if (gravity.planetsOrbiting.Count == 0 && !GameManager.playerDead)
+        if (gravity.planetsOrbiting.Count == 0 && !GameManager.playerDead && !Cheats.godMode)
         {
             // Kill player
-
-            Debug.Log(planet.name);
 
             GameManager.playerDeaths = GameManager.PlayerDeaths.Border;
             GameManager.Instance.set_health(0, "border");
@@ -201,7 +199,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext value)
     {
-        if (value.started && jumpCounter < 3)
+        if (value.started && (jumpCounter < 3 || Cheats.infLaunches))
         {
             if (isGrounded)
             {
@@ -292,7 +290,7 @@ public class PlayerController : MonoBehaviour
                 jumpArrow.SetActive(false);
             }
 
-            if (jumpCounter < jumpLimit)
+            if (jumpCounter < jumpLimit || Cheats.infLaunches)
             {
                 if (Vector2.Distance(joystickMovement, Vector2.zero) > 0.3f)
                 {
@@ -386,7 +384,7 @@ public class PlayerController : MonoBehaviour
     // Player got hit
     public void OnHit(string cause="")
     {
-        if (!GameManager.playerDead && !GameManager.stageClear)
+        if (!GameManager.playerDead && !GameManager.stageClear && !Cheats.godMode)
         {
             if (!invincibility)
             {
@@ -418,8 +416,15 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateJumpCounter(int value)
     {
-        jumpCounter = value;
-        jumpCounterText.text = (jumpLimit - value).ToString();
+        if (Cheats.infLaunches)
+        {
+            jumpCounterText.text = "Åá";
+        }
+        else
+        {
+            jumpCounter = value;
+            jumpCounterText.text = (jumpLimit - value).ToString();
+        }
     }
 
     private void FixedUpdate()
@@ -480,7 +485,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(BorderDetector.intensity.ToString() + " " + BorderDetector.borders.Count.ToString() + " " + GameManager.playerDead.ToString());
 
         GameManager.Instance.vignetteMat.SetColor("_VColor", new Color(1, Mathf.Max(1 - BorderDetector.intensity, 0.0f), Mathf.Max(1 - BorderDetector.intensity, 0.0f), 1));
-        GameManager.Instance.vignetteMat.SetFloat("_VRadius", Mathf.Max(1.0f - BorderDetector.intensity * 0.8f, 0.0f));
+        GameManager.Instance.vignetteMat.SetFloat("_VRadius", Mathf.Max(1.0f - BorderDetector.intensity * 0.8f, 0.5f));
         GameManager.Instance.vignetteMat.SetFloat("_VSoft", Mathf.Min(BorderDetector.intensity * 2, 1.0f));
     }
 }

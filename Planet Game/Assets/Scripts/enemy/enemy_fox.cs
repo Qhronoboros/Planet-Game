@@ -42,7 +42,15 @@ public class enemy_fox : MonoBehaviour
                 damaged = false;
             }
 
-            health -= 1;
+            if (Cheats.instaKill)
+            {
+                health = 0;
+            }
+            else
+            {
+                health -= 1;
+            }
+
             health_bar.GetComponent<enemy_healthbar>().set_health_text(health.ToString() + "/" + max_health.ToString());
             health_bar.GetComponent<enemy_healthbar>().set_health(health);
 
@@ -51,7 +59,7 @@ public class enemy_fox : MonoBehaviour
                 GetComponent<Animator>().SetBool("IsBroken", true);
             }
 
-            if (health == 0)
+            if (health <= 0)
             {
                 dead = true;
                 if (shooting)

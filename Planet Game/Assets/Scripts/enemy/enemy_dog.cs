@@ -47,7 +47,15 @@ public class enemy_dog : MonoBehaviour
                 damaged = false;
             }
 
-            health -= 1;
+            if (Cheats.instaKill)
+            {
+                health = 0;
+            }
+            else
+            {
+                health -= 1;
+            }
+
             health_bar.GetComponent<enemy_healthbar>().set_health_text(health.ToString() + "/" + max_health.ToString());
             health_bar.GetComponent<enemy_healthbar>().set_health(health);
 
