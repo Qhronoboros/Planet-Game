@@ -46,7 +46,7 @@ public class BreadshipController : MonoBehaviour
     }
     public void OnHit()
     {
-        if (!Game_Manager.playerDead && !Game_Manager.Instance.stageClear)
+        if (!Game_Manager.playerDead && !Game_Manager.Instance.stageClear && !Cheats.godMode)
         {
             if (!invincibility)
             {

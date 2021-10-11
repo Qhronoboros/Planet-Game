@@ -4348,7 +4348,7 @@ MonoBehaviour:
   gameControls: {fileID: 1228353539}
   tempGameOver: {fileID: 1228353537}
   temp_stage_clear: {fileID: 1228353538}
-  nextStage: main_new
+  nextStage: infinite
   maxIntensity: 0.45
   startPos: {x: 0, y: 34, z: 0}
   collectablesOnScreen: []

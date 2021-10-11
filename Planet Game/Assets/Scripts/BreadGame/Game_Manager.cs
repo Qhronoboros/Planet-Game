@@ -193,8 +193,15 @@ public class Game_Manager : MonoBehaviour
     {
         bool loseLife = value < lifes;
 
-        lifes = value;
-        lifeText.text = value.ToString() + "x";
+        if (Cheats.infLives)
+        {
+            lifeText.text = "‡";
+        }
+        else
+        {
+            lifes = value;
+            lifeText.text = value.ToString() + "x";
+        }
 
         if (loseLife)
         {
@@ -205,7 +212,7 @@ public class Game_Manager : MonoBehaviour
             // gameControls.SetActive(false);
 
 
-            if (lifes <= 0)
+            if (lifes <= 0 && !Cheats.infLives)
             {
                 Debug.Log("Game Over");
                 freeze_game();

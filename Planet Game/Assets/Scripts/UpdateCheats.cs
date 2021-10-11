@@ -16,16 +16,26 @@ public class UpdateCheats : MonoBehaviour
         }
         else
         {
-            lifeText.text = GameManager.Instance.lifes.ToString();
+            if (GameManager.Instance != null)
+            {
+                lifeText.text = GameManager.Instance.lifes.ToString();
+            }
+            else
+            {
+                lifeText.text = Game_Manager.Instance.lifes.ToString();
+            }
         }
 
-        if (Cheats.infLaunches)
+        if (jumpText != null)
         {
-            jumpText.text = "Åá";
-        }
-        else
-        {
-            jumpText.text = (GameManager.Instance.player.GetComponent<PlayerController>().jumpLimit - GameManager.Instance.player.GetComponent<PlayerController>().jumpCounter).ToString();
+            if (Cheats.infLaunches)
+            {
+                jumpText.text = "Åá";
+            }
+            else
+            {
+                jumpText.text = (GameManager.Instance.player.GetComponent<PlayerController>().jumpLimit - GameManager.Instance.player.GetComponent<PlayerController>().jumpCounter).ToString();
+            }
         }
     }
 }

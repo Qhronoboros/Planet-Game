@@ -10956,19 +10956,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasSource: {fileID: 2133252038}
   godModeToggle: {fileID: 1699296103}
-  godMode: 0
   unlockStagesToggle: {fileID: 1837334825}
-  unlockStages: 0
   infCoinsToggle: {fileID: 1721930001}
-  infCoins: 0
   infBreadToggle: {fileID: 282817893}
-  infBread: 0
   infLaunchesToggle: {fileID: 170657503}
-  infLaunches: 0
   infLivesToggle: {fileID: 908556525}
-  infLives: 0
   instaKillToggle: {fileID: 2042275121}
-  instaKill: 0
 --- !u!82 &1372006538
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14840,7 +14833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageName: Bonus Level
-  sceneName: 
+  sceneName: infinite
   stageIndex: 4
 --- !u!114 &1868721819
 MonoBehaviour:
@@ -15006,7 +14999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac05d36736c72649a151d70a4ded7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName: introduction
+  stageName: Rocket
   sceneName: rocket stage 1
   stageIndex: 0
 --- !u!114 &1887576055

@@ -16,7 +16,7 @@ public class Shop : MonoBehaviour
     public AudioSource insufficientTrack;
 
     // Start is called before the first frame update
-    void Start()
+    void Start() {
         // PlayerPrefs.DeleteAll();
         
         for(int i = 1 ; i< shopitemamount+1 ; i++){
@@ -31,10 +31,8 @@ public class Shop : MonoBehaviour
                     tempgameobjicon.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 255f);
                     tempgameobjicon.transform.GetChild(0).gameObject.SetActive(true);
                 }
-
             }
         }
-
     }
 
     // Refresh Text
@@ -42,7 +40,7 @@ public class Shop : MonoBehaviour
     {
         if (Cheats.infCoins)
         {
-            coinstext.text = "��";
+            coinstext.text = "∞";
         }
         else
         {
@@ -51,7 +49,7 @@ public class Shop : MonoBehaviour
 
         if (Cheats.infBread)
         {
-            breadtext.text = "��";
+            breadtext.text = "∞";
         }
         else
         {
