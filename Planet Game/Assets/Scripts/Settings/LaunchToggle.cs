@@ -7,6 +7,7 @@ public class LaunchToggle : MonoBehaviour
 {
     public static bool invertedLaunch;
     public Toggle toggleUI;
+    public AudioSource canvasSource;
 
     void Start()
     {
@@ -15,13 +16,13 @@ public class LaunchToggle : MonoBehaviour
             PlayerPrefs.SetInt("inverted_launch", 0);
         }
 
-        invertedLaunch = PlayerPrefs.GetInt("inverted_launch") == 1 ? true : false;
-
-        toggleUI.isOn = invertedLaunch;
+        toggleUI.isOn = invertedLaunch = PlayerPrefs.GetInt("inverted_launch") == 1 ? true : false;
     }
 
     public void toggleInvertedLaunch(bool value)
     {
+        canvasSource.Play();
+
         PlayerPrefs.SetInt("inverted_launch", System.Convert.ToInt32(value));
 
         invertedLaunch = value;

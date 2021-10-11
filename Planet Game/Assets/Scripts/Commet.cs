@@ -46,6 +46,11 @@ public class Commet : MonoBehaviour
     public void OnHit()
     {
         GetComponentInParent<AudioSource>().Play();
+        if (Cheats.instaKill)
+        {
+            Destroy(gameObject);
+        }
+
         //if can split in 2 then split
         // if ((this.a_size * 0.5) > this.a_min_size)
         // {

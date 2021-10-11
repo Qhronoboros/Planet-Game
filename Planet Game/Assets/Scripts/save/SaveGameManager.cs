@@ -25,8 +25,7 @@ public class SaveGameManager : MonoBehaviour
     void Awake()
     {
         //PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetFloat("coin", 0);
-        PlayerPrefs.SetFloat("bread", 0);
+        Cheats.CheatStart();
 
         if (!PlayerPrefs.HasKey("inverted_launch"))
         {
@@ -34,8 +33,6 @@ public class SaveGameManager : MonoBehaviour
         }
 
         LaunchToggle.invertedLaunch = PlayerPrefs.GetInt("inverted_launch") == 1 ? true : false;
-
-
 
         SaveableObjects = new List<SaveableObject>();
         if (!check_save_exist()){
