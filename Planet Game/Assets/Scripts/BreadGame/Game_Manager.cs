@@ -60,6 +60,7 @@ public class Game_Manager : MonoBehaviour
     public Image[] hearts;
     public Sprite full_heart;
     public Sprite empty_heart;
+    public Image heart;
     //game over
     public PlayerInput playerInput;
     public GameObject gameControls;
@@ -97,6 +98,19 @@ public class Game_Manager : MonoBehaviour
         // set_special(special);
         set_coin(SaveGameManager.Instance.get_coin());
         SetLifes(lifes);
+        if(PlayerPrefs.HasKey("item2")){
+            if(PlayerPrefs.GetInt("item2") == 1){
+                Image[] temp = new Image[hearts.Length + 1] ;
+                temp[0] = hearts[0];
+                temp[1] = hearts[1];
+                temp[2] = hearts[2];
+                temp[3] = heart;
+                hearts = temp;
+                heart.gameObject.SetActive(true);
+                maxHealth +=1;
+                health+=1;
+            }
+        }
     }
 
     // Set the planet the player is orbiting
@@ -130,20 +144,7 @@ public class Game_Manager : MonoBehaviour
     public float get_coin(){
         return this.coin;
     }
-    // public void set_special(float special_obj){
-    //     this.special = special_obj;
-    //     UI_special_text.text = this.special.ToString() + "/ " + this.max_special.ToString();
-    //     if(this.special == this.max_special){
-    //         stage_clear();
-    //     }
-    // }
-    // public float get_special(){
-    //     return this.special;
-    // }
-    // public float get_max_special(){
-    //     // max_special = special_child.transform.childCount;
-    //     return max_special;
-    // }
+
     //stage clear
     public void stage_clear(){
         stageClear = true;

@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class BreadshipController : MonoBehaviour
-{
+{   
+    public bool magnetic = false;
     //jumps
     public GameObject jumpArrow;
     public Text jumpCounterText;
@@ -146,6 +147,11 @@ public class BreadshipController : MonoBehaviour
     void Start()
     {
         jumpArrow = transform.GetChild(0).gameObject;
+        if(PlayerPrefs.HasKey("item3")){
+            if(PlayerPrefs.GetInt("item3") ==  1){
+                this.transform.GetChild(1).gameObject.SetActive(true);
+            }        
+        }
     }
 
     void Update()

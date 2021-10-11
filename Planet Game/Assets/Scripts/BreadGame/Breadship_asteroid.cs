@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Breadship_asteroid : MonoBehaviour
+
 {   public Transform camera;
     public Sprite[] sprites;
     public float a_size = 1.0f;
@@ -11,6 +12,8 @@ public class Breadship_asteroid : MonoBehaviour
     public float a_speed = 9.0f;
     private SpriteRenderer sprite_renderer;
     private Rigidbody2D rigid_body2D;
+    public  GameObject prefab_coin;
+
 
     // Start is called before the first frame update
     private void Awake(){
@@ -34,11 +37,13 @@ public class Breadship_asteroid : MonoBehaviour
     {
         GetComponentInParent<AudioSource>().Play();
         //if can split in 2 then split
-        if ((this.a_size * 0.5) > this.a_min_size)
-        {
-            create_split();
-            create_split();
+        int chance = Random.Range(1,5);
+        if(chance == 1){
+            GameObject coin = Instantiate(prefab_coin , this.transform.position , this.transform.rotation);
+            GameObject parent_of_obj = GameObject.Find("Coins");
+            coin.transform.SetParent(parent_of_obj.transform);
         }
+        
         Destroy(this.gameObject);
     }
 

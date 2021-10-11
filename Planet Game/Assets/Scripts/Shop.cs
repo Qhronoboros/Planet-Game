@@ -18,6 +18,7 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        // PlayerPrefs.DeleteAll();
         coinstext.text = SaveGameManager.Instance.get_coin().ToString();
         breadtext.text = SaveGameManager.Instance.get_bread().ToString();
         for(int i = 1 ; i< shopitemamount+1 ; i++){

@@ -44,44 +44,11 @@ public class Stage_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(camera.position.x >= 15.0f && !movement_popup ){
-            movement_popup = true;
-            Pause();
-            popup_text.text = "Use the left JoyStick to move";
-            popup.SetActive(true);
-        }
-
-        if(camera.position.x >= 35.0f && !coin_popup ){
-            coin_popup = true;
-            Pause();
-            popup_text.text = "Collect coins to get Score";
-            popup.SetActive(true);
-        }
-        if(camera.position.x >= 79.0f && spawning == false ){
+        if(camera.position.x >= 5.0f && spawning == false ){
             StartCoroutine(asteroidSpawn());
         }    
-        if(camera.position.x >= 80.0f && !shoot_popup ){
-            shoot_popup = true;
-            Pause();
-            popup_text.text = "Evade or Shoot asteroids with the shoot button on the right";
-            popup.SetActive(true);
-        }
-        if(camera.position.x >= 120.0f && !jump_popup ){
-            jump_popup = true;
-            Pause();
-            popup_text.text = "Drag and release the right joystick to launch";
-            popup.SetActive(true);
-        }
-        if(camera.position.x >= 275.5f && !spawn_planet ){
-            spawn_planet = true;
-            GameObject planeten = Instantiate(this.planet_prefab,new Vector2(300.0f,-4.4f) , this.transform.rotation);
-            planeten.transform.SetParent(Planet.transform);
-        }   
-        if(camera.position.x >= 299.5f && !spawn_fox ){
-            spawn_fox = true;
-            GameObject fox = Instantiate(this.fox_prefab,new Vector2(camera.position.x + asteroid_spawn_distance, 0f) , this.transform.rotation);
-            fox.transform.SetParent(Enemy.transform);
-        }                
+
+          
     }
 
     IEnumerator stage_info_text()
@@ -95,8 +62,8 @@ public class Stage_controller : MonoBehaviour
     {   
         spawning = true;
         // Instantiate
-        int amount =  Random.Range(1, 3);
-        float wait_time =  Random.Range(2.0f, 10.0f);
+        int amount =  Random.Range(1, 4);
+        float wait_time =  Random.Range(2.0f, 6.0f);
         instantiate_asteroid(amount);
         yield return new WaitForSeconds(wait_time);
         spawning = false;
@@ -108,6 +75,7 @@ public class Stage_controller : MonoBehaviour
         for(int i = 0 ; i < amount; i++){
             float pos_y =  Random.Range(-4.0f, 4.0f);
             GameObject asteroid = Instantiate(this.asteroid_prefab,new Vector2(camera.position.x + asteroid_spawn_distance, pos_y) , this.transform.rotation);
+
             asteroid.transform.SetParent(Asteroids.transform);
         }
     }

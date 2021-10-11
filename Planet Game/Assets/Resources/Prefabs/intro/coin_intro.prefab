@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095d5607b78d9e04aa53e8fc63606546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: 0
+  speed: 8
 --- !u!114 &2402100058268162545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc108eb899e06304fb7f4f685769c0cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 3
+  objectType: 7

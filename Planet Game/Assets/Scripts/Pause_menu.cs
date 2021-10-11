@@ -25,6 +25,7 @@ public class Pause_menu : MonoBehaviour
     public void GoToNextStage()
     {
         SceneManager.LoadSceneAsync(GameManager.Instance.nextStage, LoadSceneMode.Single);
+        Resume();
     }
 
     public void RestartNormal()
@@ -45,5 +46,6 @@ public class Pause_menu : MonoBehaviour
     public void GoToNextStageBread()
     {
         SceneManager.LoadSceneAsync(Game_Manager.Instance.nextStage, LoadSceneMode.Single);
+        Resume();
     }
 }

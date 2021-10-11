@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {   
+    public bool magnet = false;
+    public float speed = 8;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -19,5 +21,21 @@ public class Coin : MonoBehaviour
             Destroy(this.gameObject);
 
         }
+    }
+
+    IEnumerator magnetized()
+    {   
+        while (magnet == true)
+        {
+            Vector2 target_position = Game_Manager.Instance.player.transform.position;
+            float step = speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, target_position, step);
+            //Wait for a frame to give Unity and other scripts chance to run
+            yield return null;
+        }       
+    }
+
+    public void magnet_activate(){
+        StartCoroutine(magnetized());
     }
 }
