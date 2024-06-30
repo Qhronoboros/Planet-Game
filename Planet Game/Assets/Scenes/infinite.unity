@@ -218,6 +218,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2258913991545159276, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258913991581101765, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258913991888795330, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258913991888795332, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_Text
+      value: Endless Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258913992034557947, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2258913992034557949, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -269,6 +289,14 @@ PrefabInstance:
     - target: {fileID: 2258913992363414911, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: restartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258913993030466969, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258913993080465960, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2258913993135070264, guid: 19e2f3d029a7ae947923fa08acfd5c0f, type: 3}
       propertyPath: m_IsActive
@@ -733,7 +761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f0c7be7a6a894fb60ae9a7c05d27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalstages: 5
+  totalstages: 4
 --- !u!4 &859924730
 Transform:
   m_ObjectHideFlags: 0
@@ -1126,7 +1154,7 @@ MonoBehaviour:
   tempGameOver: {fileID: 1075399322}
   temp_stage_clear: {fileID: 1075399322}
   stageClear: 0
-  nextStage: stage1 1
+  nextStage: stage 1
   maxIntensity: 0.45
   startPos: {x: 0, y: 16, z: 0}
   collectablesOnScreen: []

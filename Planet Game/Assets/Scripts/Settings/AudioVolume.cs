@@ -18,21 +18,21 @@ public class AudioVolume : MonoBehaviour
     public void SetVolumeMaster(float sliderValue)
     {
         masterVolume = sliderValue;
-        Debug.Log(sliderValue);
+        // Debug.Log(sliderValue);
         mixer.SetFloat("VolumeMaster", Mathf.Log10(sliderValue) * 20);
     }
 
     public void SetVolumeMusic(float sliderValue)
     {
         musicVolume = sliderValue;
-        Debug.Log(sliderValue);
+        // Debug.Log(sliderValue);
         mixer.SetFloat("VolumeMusic", Mathf.Log10(sliderValue) * 20);
     }
 
     public void SetVolumeAmbiance(float sliderValue)
     {
         ambianceVolume = sliderValue;
-        Debug.Log(sliderValue);
+        // Debug.Log(sliderValue);
         mixer.SetFloat("VolumeAmbiance", Mathf.Log10(sliderValue) * 20);
     }
 
@@ -61,7 +61,7 @@ public class AudioVolume : MonoBehaviour
         SetVolumeMusic(musicVolume);
         SetVolumeAmbiance(ambianceVolume);
 
-        Debug.Log(masterVolume.ToString() + " " + musicVolume.ToString() + " " + ambianceVolume);
+        // Debug.Log(masterVolume.ToString() + " " + musicVolume.ToString() + " " + ambianceVolume);
     }
 
     public void SaveVolume()

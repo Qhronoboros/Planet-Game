@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: cf5c2740552ffa4459d47a8fffc3147c
   - enabled: 1
-    path: Assets/Scenes/rocket stage 1.unity
-    guid: 141669a8f05e0334b960caedc9904fc4
-  - enabled: 1
     path: Assets/Scenes/stage 1.unity
     guid: b447904ad80e82340a5f007575941c57
   - enabled: 1
