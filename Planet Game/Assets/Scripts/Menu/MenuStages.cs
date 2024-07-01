@@ -24,7 +24,8 @@ public class MenuStages : MonoBehaviour
 	{
 		foreach (GameObject stage in stages)
 		{
-			RefreshLocks(stage);
+			// Skip the intro stage from unlocking
+			if (stage.name != "intro") { RefreshLocks(stage); }
 		}
 	}
 
@@ -88,21 +89,18 @@ public class MenuStages : MonoBehaviour
 	{
 		GameObject stage = stages[stageIndex];
 		
-		float colorAmount;
-		if (middle) 
+		Color color = stage.GetComponent<Image>().color;
+		if (stage.name != "intro") 
 		{
-			colorAmount = 1.0f;
+			float colorAmount;
+			if (middle) { colorAmount = 1.0f; }
+			else { colorAmount = Mathf.Max((float)orderIndex / (stages.Count / 2), 0.3f); }
+			color = new Color(colorAmount, colorAmount, colorAmount, 1.0f);
+			// Debug.Log(stage.name + ": " + color);
+			stage.GetComponent<Image>().color = color;
 		}
-		else 
-		{
-			colorAmount = Mathf.Max((float)orderIndex / (stages.Count / 2), 0.3f);
-		}
-		Color color = new Color(colorAmount, colorAmount, colorAmount, 1.0f);
-
-		Debug.Log(stage.name + ": " + color);
 
 		stage.transform.SetSiblingIndex(orderIndex);
-		stage.GetComponent<Image>().color = color;
 
 		if (stage.transform.childCount > 1)
 		{

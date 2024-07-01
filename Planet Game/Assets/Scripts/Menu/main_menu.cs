@@ -29,7 +29,7 @@ public class main_menu : MonoBehaviour
     }
 
     public void changeScene(){
-        if(SaveGameManager.Instance.check_level_unlocked(selected_stage_index) || Cheats.unlockStages){
+        if((SaveGameManager.Instance.check_level_unlocked(selected_stage_index) || Cheats.unlockStages) && sceneName != "rocket stage 1"){
             unlockTrack.Play();
             SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         }
